@@ -1,0 +1,12 @@
+﻿@inherits UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<Layout1x2, ContentBlockSettings>>
+
+@{
+    if (Model?.Areas.Count() != 2) { return; }
+}
+ 
+<div class="grid md:grid-cols-2">
+    @foreach (var area in Model.Areas)
+    {
+        @await Html.GetPreviewBlockGridItemAreaHtmlAsync(area)
+    }
+</div>

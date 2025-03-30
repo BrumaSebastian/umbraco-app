@@ -3,3 +3,5 @@
 @{
     Layout = "master.cshtml";
 }
+
+@await Html.GetBlockListHtmlAsync(Model, "bodyContent")

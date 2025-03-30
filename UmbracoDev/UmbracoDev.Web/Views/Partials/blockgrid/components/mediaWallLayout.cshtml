@@ -1,0 +1,11 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<MediaWallLayout>>
+@{
+
+}
+
+<div class="grid grid-cols-2 gap-2">
+    @foreach (var area in Model.Areas)
+    {
+        @await Html.GetPreviewBlockGridItemAreaHtmlAsync(area)
+    }
+</div>

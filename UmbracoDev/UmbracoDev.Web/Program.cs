@@ -11,7 +11,7 @@ builder.CreateUmbracoBuilder()
 
 if (builder.Environment.IsDevelopment())
 {
-    builder.Services.AddHostedService<TailwindHostedService>();
+    //builder.Services.AddHostedService<TailwindHostedService>();
 }
 
 WebApplication app = builder.Build();

@@ -20,8 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Partials\blockgrid\components\" />
-    <Folder Include="Views\Partials\blocklist\components\" />
     <Folder Include="wwwroot\assets\" />
   </ItemGroup>
 

@@ -1,0 +1,6 @@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem<GridBlock, ContentBlockSettings>>
+@{
+    var s = Model;
+}
+
+@await Html.GetBlockGridHtmlAsync(Model.Content.Content)

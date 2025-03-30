@@ -1,0 +1,7 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<ImageBlock>>
+@{
+}
+
+<div class="flex content-center justify-center">
+    <img src="@Model.Content.Image.GetCropUrl()" alt="alt text"/>
+</div>
