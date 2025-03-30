@@ -29,9 +29,5 @@
     <!-- Razor files are needed for the backoffice to work correctly -->
     <CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>
   </PropertyGroup>
-
-    <!--<Target Name="BuildCss" AfterTargets="AfterBuild">
-	    <Exec Command="npx @tailwindcss/cli -i ./Styles/input.css -o ./wwwroot/css/tailwind.css"></Exec>
-    </Target>-->
-
+	
 </Project>

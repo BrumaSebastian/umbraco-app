@@ -18,9 +18,39 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
+	// Mixin Content Type with alias "siteProperties"
+	/// <summary>Site Properties</summary>
+	public partial interface ISiteProperties : IPublishedElement
+	{
+		/// <summary>Meta Description</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		string MetaDescription { get; }
+
+		/// <summary>Redirect Type</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		string RedirectType { get; }
+
+		/// <summary>Redirect URL</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		global::Umbraco.Cms.Core.Models.Link RedirectUrl { get; }
+
+		/// <summary>Site Logo</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		global::Umbraco.Cms.Core.Models.MediaWithCrops SiteLogo { get; }
+
+		/// <summary>Site Name</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		string SiteName { get; }
+	}
+
 	/// <summary>Site Properties</summary>
 	[PublishedModel("siteProperties")]
-	public partial class SiteProperties : PublishedElementModel
+	public partial class SiteProperties : PublishedElementModel, ISiteProperties
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -55,7 +85,12 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("metaDescription")]
-		public virtual string MetaDescription => this.Value<string>(_publishedValueFallback, "metaDescription");
+		public virtual string MetaDescription => GetMetaDescription(this, _publishedValueFallback);
+
+		/// <summary>Static getter for Meta Description</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		public static string GetMetaDescription(ISiteProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "metaDescription");
 
 		///<summary>
 		/// Redirect Type
@@ -63,7 +98,12 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("redirectType")]
-		public virtual string RedirectType => this.Value<string>(_publishedValueFallback, "redirectType");
+		public virtual string RedirectType => GetRedirectType(this, _publishedValueFallback);
+
+		/// <summary>Static getter for Redirect Type</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		public static string GetRedirectType(ISiteProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "redirectType");
 
 		///<summary>
 		/// Redirect URL
@@ -71,7 +111,12 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("redirectUrl")]
-		public virtual global::Umbraco.Cms.Core.Models.Link RedirectUrl => this.Value<global::Umbraco.Cms.Core.Models.Link>(_publishedValueFallback, "redirectUrl");
+		public virtual global::Umbraco.Cms.Core.Models.Link RedirectUrl => GetRedirectUrl(this, _publishedValueFallback);
+
+		/// <summary>Static getter for Redirect URL</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		public static global::Umbraco.Cms.Core.Models.Link GetRedirectUrl(ISiteProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<global::Umbraco.Cms.Core.Models.Link>(publishedValueFallback, "redirectUrl");
 
 		///<summary>
 		/// Site Logo
@@ -79,7 +124,12 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("siteLogo")]
-		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops SiteLogo => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "siteLogo");
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops SiteLogo => GetSiteLogo(this, _publishedValueFallback);
+
+		/// <summary>Static getter for Site Logo</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		public static global::Umbraco.Cms.Core.Models.MediaWithCrops GetSiteLogo(ISiteProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(publishedValueFallback, "siteLogo");
 
 		///<summary>
 		/// Site Name
@@ -87,6 +137,11 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("siteName")]
-		public virtual string SiteName => this.Value<string>(_publishedValueFallback, "siteName");
+		public virtual string SiteName => GetSiteName(this, _publishedValueFallback);
+
+		/// <summary>Static getter for Site Name</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		public static string GetSiteName(ISiteProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "siteName");
 	}
 }

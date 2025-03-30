@@ -1,3 +1,5 @@
+using UmbracoDev.Web.HostedServices;
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.CreateUmbracoBuilder()
@@ -6,6 +8,11 @@ builder.CreateUmbracoBuilder()
     .AddDeliveryApi()
     .AddComposers()
     .Build();
+
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services.AddHostedService<TailwindHostedService>();
+}
 
 WebApplication app = builder.Build();
 

@@ -1,14 +1,29 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 
+@{
+    var siteSettings = Model.GetSiteSettings();
+    var themeColorsCss = siteSettings?.GetThemeCss();
+}
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/tailwind.css" />
+    <link rel="stylesheet" href="~/css/tailwind.css" />
     <title>test</title>
 </head>
-<body>
-    @RenderBody()
+<body class="@themeColorsCss min-h-screen">
+    <header class="sticky top-0 z-50">
+        @await Html.PartialAsync("Header")
+    </header>
+
+    <main class="container mx-auto px-4 py-8"
+        @RenderBody()
+    </main>
+
+    <footer class="mt-auto">
+        @* @await Component.InvokeAsync("Footer") *@
+    </footer>
 </body>
 </html>

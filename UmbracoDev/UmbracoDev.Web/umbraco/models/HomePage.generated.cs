@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>Home Page</summary>
 	[PublishedModel("homePage")]
-	public partial class HomePage : PublishedContentModel
+	public partial class HomePage : PublishedContentModel, IMainContent
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -48,5 +48,13 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		}
 
 		// properties
+
+		///<summary>
+		/// Body Content
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("bodyContent")]
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel BodyContent => global::Umbraco.Cms.Web.Common.PublishedModels.MainContent.GetBodyContent(this, _publishedValueFallback);
 	}
 }
