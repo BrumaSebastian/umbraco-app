@@ -2532,6 +2532,9 @@
   .mx-auto {
     margin-inline: auto;
   }
+  .my-5 {
+    margin-block: calc(var(--spacing) * 5);
+  }
   .label {
     display: inline-flex;
     align-items: center;
@@ -2567,6 +2570,9 @@
   }
   .mt-3 {
     margin-top: calc(var(--spacing) * 3);
+  }
+  .mt-5 {
+    margin-top: calc(var(--spacing) * 5);
   }
   .mt-auto {
     margin-top: auto;
@@ -3151,6 +3157,12 @@
   .flex-wrap-reverse {
     flex-wrap: wrap-reverse;
   }
+  .place-content-center {
+    place-content: center;
+  }
+  .place-items-center {
+    place-items: center;
+  }
   .content-around {
     align-content: space-around;
   }
@@ -3204,6 +3216,9 @@
   }
   .gap-3 {
     gap: calc(var(--spacing) * 3);
+  }
+  .place-self-center {
+    place-self: center;
   }
   .self-baseline {
     align-self: baseline;
@@ -3394,6 +3409,9 @@
   .p-3 {
     padding: calc(var(--spacing) * 3);
   }
+  .p-4 {
+    padding: calc(var(--spacing) * 4);
+  }
   .p-8 {
     padding: calc(var(--spacing) * 8);
   }
@@ -3416,6 +3434,9 @@
   .px-5 {
     padding-inline: calc(var(--spacing) * 5);
   }
+  .px-15 {
+    padding-inline: calc(var(--spacing) * 15);
+  }
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
   }
@@ -3424,6 +3445,9 @@
   }
   .ps-3 {
     padding-inline-start: calc(var(--spacing) * 3);
+  }
+  .align-middle {
+    vertical-align: middle;
   }
   .text-2xl {
     font-size: var(--text-2xl);
@@ -3506,6 +3530,12 @@
   }
   .underline {
     text-decoration-line: underline;
+  }
+  .underline-offset-1 {
+    text-underline-offset: 1px;
+  }
+  .underline-offset-2 {
+    text-underline-offset: 2px;
   }
   .accent-\[\#360D0D\] {
     accent-color: #360D0D;

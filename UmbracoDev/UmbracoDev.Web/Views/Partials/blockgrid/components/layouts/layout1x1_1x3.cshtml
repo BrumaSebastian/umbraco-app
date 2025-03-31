@@ -1,0 +1,9 @@
+﻿@inherits UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<Layout1x1_1x3, ContentBlockSettings>>
+
+@{
+    var themeColorsCss = Model.Settings?.GetThemeCss();
+}
+ 
+<div class="@themeColorsCss p-4">
+    @await Html.GetPreviewBlockGridItemAreasHtmlAsync(Model)
+</div>

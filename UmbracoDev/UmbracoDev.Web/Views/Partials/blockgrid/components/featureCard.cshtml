@@ -1,0 +1,10 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<FeatureCard>>
+@{
+}
+
+<div class="flex flex-col place-items-center gap-3">
+    <img src="@Model.Content.Icon.GetCropUrl()" width="32"/>
+    <h1 class="text-lg">@Model.Content.Title</h1>
+    <p class="text-md">@Model.Content.Subtitle</p>
+    <a class="underline underline-offset-1" href="@Model.Content.CallToAction.Url">@Model.Content.CallToAction.Name</a>
+</div>

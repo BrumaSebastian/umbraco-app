@@ -5,6 +5,6 @@
     var themeColorsCss = Model.Settings?.GetThemeCss();
 }
  
-<div id="layout1x2" class="@themeColorsCss">
+<div id="layout1x2" class="py-4 @themeColorsCss">
     @await Html.GetPreviewBlockGridItemAreasHtmlAsync(Model)
 </div>
