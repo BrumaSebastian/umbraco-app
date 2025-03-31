@@ -16,7 +16,9 @@
             data-row-span="@item.RowSpan"
             style=" --umb-block-grid--item-column-span: @item.ColumnSpan; --umb-block-grid--item-row-span: @item.RowSpan; ">
             @{
-                var partialViewName = "blockgrid/components/" + item.Content.ContentType.Alias;
+                bool isLayout = item.Content.ContentType.Alias.Contains("layout");
+                var partialViewName = $"blockgrid/components/{(isLayout ? "layouts/" : "")}"  + item.Content.ContentType.Alias;
+
                 try
                 {
                     @await Html.PartialAsync(partialViewName, item)

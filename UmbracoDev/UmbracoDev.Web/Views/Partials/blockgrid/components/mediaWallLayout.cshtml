@@ -3,9 +3,14 @@
 
 }
 
-<div class="grid grid-cols-2 gap-2">
-    @foreach (var area in Model.Areas)
-    {
-        @await Html.GetPreviewBlockGridItemAreaHtmlAsync(area)
-    }
+<div class="m-4 max-w-xl justify-self-center"> 
+    @await Html.GetPreviewBlockGridItemAreasHtmlAsync(Model)
 </div>
+
+<style>
+    :root{
+        --umb-block-grid--areas-column-gap: calc(var(--spacing) * 3);
+        --umb-block-grid--areas-row-gap: calc(var(--spacing)* 3);
+    }
+
+</style>

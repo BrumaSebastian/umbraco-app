@@ -2,6 +2,5 @@
 @{
 }
 
-<div class="flex content-center justify-center">
-    <img src="@Model.Content.Image.GetCropUrl()" alt="alt text"/>
-</div>
+<img class="justify-self-center" src="@Model.Content.Image.GetCropUrl()" alt="alt text" 
+        style="width: 100%; height: 100%; object-fit: contain;" />

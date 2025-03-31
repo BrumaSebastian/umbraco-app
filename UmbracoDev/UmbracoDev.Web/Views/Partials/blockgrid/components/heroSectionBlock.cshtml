@@ -1,0 +1,20 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<HeroSectionBlock>>
+@{
+}
+
+<div class="flex h-full max-w-150 flex-col justify-center gap-3 justify-self-center px-5">
+    <h1 class="text-3xl">@Model.Content.Title</h1>
+    <p class="text-md">@Model.Content.Subtitle</p>
+    <div class="flex gap-2">
+
+        @if(Model.Content.PrimaryButton is not null)
+        {
+            <button class="btn btn-primary rounded-md">@Model.Content.PrimaryButton.Name</button>
+        }
+
+        @if (Model.Content.SecondaryButton is not null)
+        {
+            <button class="btn btn-outline btn-secondary rounded-md">@Model.Content.SecondaryButton.Name</button>
+        }
+    </div>
+</div>

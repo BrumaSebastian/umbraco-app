@@ -1,5 +1,10 @@
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<RichTextBlock>>
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<RichTextBlock>>
 @{
 }
 
-@Html.Raw(Model.Content.Text)
+
+<div class="flex h-full">
+    <h1>@Model.Content.Text</h1>
+    <h1>@Model.Content.Text</h1>
+    <h1>@Model.Content.Text</h1>
+</div>

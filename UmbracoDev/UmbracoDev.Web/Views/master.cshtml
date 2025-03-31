@@ -10,6 +10,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/blockgridlayout.css" />
     <link rel="stylesheet" href="~/css/tailwind.css" />
     <title>test</title>
 </head>
@@ -18,7 +19,7 @@
         @await Html.PartialAsync("Header")
     </header>
 
-    <main class="container mx-auto px-4 py-8"
+    <main class="w-full">
         @RenderBody()
     </main>
 

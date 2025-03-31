@@ -55,7 +55,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("bodyContent")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel BodyContent => global::Umbraco.Cms.Web.Common.PublishedModels.MainContent.GetBodyContent(this, _publishedValueFallback);
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel BodyContent => global::Umbraco.Cms.Web.Common.PublishedModels.MainContent.GetBodyContent(this, _publishedValueFallback);
 
 		///<summary>
 		/// Hide From Navigation

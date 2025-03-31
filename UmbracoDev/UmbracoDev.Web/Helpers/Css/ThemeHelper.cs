@@ -28,6 +28,23 @@ public static class ThemeHelper
         return string.Join(' ', classes.Where(c => !string.IsNullOrWhiteSpace(c)));
     }
 
+    public static string GetThemeCss(this ContentBlockSettings content)
+    {
+        if (content is not IThemeProperties themeProperties) return string.Empty;
+
+        List<string> classes =
+        [
+            ComposeCssClass(BACKGROUND_PREFIX, themeProperties.LightModeBackgroundColor),
+            ComposeCssClass(TEXT_PREFIX, themeProperties.LightModeTextColor),
+            ComposeCssClass(ACCENT_PREFIX, themeProperties.LightModeAccentColor),
+            ComposeCssClass(BACKGROUND_PREFIX, themeProperties.DarkModeBackgroundColor, true),
+            ComposeCssClass(TEXT_PREFIX, themeProperties.DarkModeTextColor, true),
+            ComposeCssClass(ACCENT_PREFIX, themeProperties.DarkModeAccentColor, true),
+        ];
+
+        return string.Join(' ', classes.Where(c => !string.IsNullOrWhiteSpace(c)));
+    }
+
     private static string ComposeCssClass(string type, PickedColor? pickedColor, bool isDarkModeColor = false)
     {
         if (pickedColor is null 
