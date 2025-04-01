@@ -22,14 +22,16 @@ public static class CssGeneratorHelper
 
             switch (value)
             {
-                case int intValue when intValue >= 0:
+                case int intValue when intValue > 0:
                     cssBuilder.Append($"{ConvertToCssProperty(elementPrefix, property.Name)}:calc(var(--spacing)*{intValue}); ");
                     break;
-                case string stringValue when !stringValue.Equals(DEFAULT, comparisonType: StringComparison.OrdinalIgnoreCase):
+                case string stringValue 
+                    when !string.IsNullOrWhiteSpace(stringValue) 
+                        && !stringValue.Equals(DEFAULT, comparisonType: StringComparison.OrdinalIgnoreCase):
                     cssBuilder.Append($"{ConvertToCssProperty(elementPrefix, property.Name)}:{stringValue.ToLower()}; ");
                     break;
                 default:
-                    Console.WriteLine($"Problem with the css generator {value} - {property.Name}");
+                    //Console.WriteLine($"Problem with the css generator {value} - {property.Name}");
                     break;
             }
         }

@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>Feature Card Settings</summary>
 	[PublishedModel("featureCardSettings")]
-	public partial class FeatureCardSettings : PublishedElementModel, IContainerStylingProperties, IMarginProperties, IPaddingProperties
+	public partial class FeatureCardSettings : PublishedElementModel, IAlignItemsProperties, IContainerStylingProperties, IMarginProperties, IPaddingProperties
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -48,6 +48,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		}
 
 		// properties
+
+		///<summary>
+		/// Align Items
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("alignItems")]
+		public virtual string AlignItems => global::Umbraco.Cms.Web.Common.PublishedModels.AlignItemsProperties.GetAlignItems(this, _publishedValueFallback);
 
 		///<summary>
 		/// Container Align Items

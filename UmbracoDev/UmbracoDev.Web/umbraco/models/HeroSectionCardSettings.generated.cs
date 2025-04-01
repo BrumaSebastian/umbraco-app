@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>Hero Section Card Settings</summary>
 	[PublishedModel("heroSectionCardSettings")]
-	public partial class HeroSectionCardSettings : PublishedElementModel, IAlignContentProperties, IAlignItemsProperties, IContainerStylingProperties, IMarginProperties, IPaddingProperties
+	public partial class HeroSectionCardSettings : PublishedElementModel, IAlignItemsProperties, IContainerStylingProperties, IMarginProperties, IPaddingProperties
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -48,14 +48,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		}
 
 		// properties
-
-		///<summary>
-		/// Align Content
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("alignContent")]
-		public virtual string AlignContent => global::Umbraco.Cms.Web.Common.PublishedModels.AlignContentProperties.GetAlignContent(this, _publishedValueFallback);
 
 		///<summary>
 		/// Align Items

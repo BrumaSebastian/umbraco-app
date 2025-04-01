@@ -1,10 +1,11 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<HeroSectionBlock, HeroSectionCardSettings>>
 @{
-    var paddingStyle = Model.Settings?.GetPaddingStyle();
-    var marginStyle = Model.Settings?.GetMarginStyle();
+    var paddingStyle = Model.Settings?.GenerateCss<IPaddingProperties>();
+    var marginStyle = Model.Settings?.GenerateCss<IMarginProperties>();
+    var allignStyle = Model.Settings?.GenerateCss<IAlignItemsProperties>();
 }
 
-<div class="flex flex-col" style="@paddingStyle @marginStyle">
+<div class="flex flex-col" style="@marginStyle@paddingStyle@allignStyle">
     <h1 class="text-3xl">@Model.Content.Title</h1>
     <p class="text-md">@Model.Content.Subtitle</p>
     <div class="flex gap-2">

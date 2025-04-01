@@ -4,6 +4,6 @@
     var themeColorsCss = Model.Settings?.GetThemeClasses();
 }
  
-<div class="@themeColorsCss p-4">
+<div class="@themeColorsCss w-full p-4">
     @await Html.GetBlockGridItemAreasHtmlAsync(Model)
 </div>

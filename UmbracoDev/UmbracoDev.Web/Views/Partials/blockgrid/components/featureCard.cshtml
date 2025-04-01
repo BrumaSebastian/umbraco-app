@@ -1,10 +1,11 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<FeatureCard, FeatureCardSettings>>
 @{
-    var paddingStyle = Model.Settings?.GetPaddingStyle();
-    var marginStyle = Model.Settings?.GetMarginStyle();
+    var paddingStyle = Model.Settings?.GenerateCss<IPaddingProperties>();
+    var marginStyle = Model.Settings?.GenerateCss<IMarginProperties>();
+    var allignStyle = Model.Settings?.GenerateCss<IAlignItemsProperties>();
 }
 
-<div class="flex flex-col gap-3" style="@paddingStyle @marginStyle">
+<div class="flex flex-col gap-3" style="@paddingStyle@marginStyle@allignStyle">
     <img src="@Model.Content.Icon.GetCropUrl()" width="32"/>
     <h1 class="text-lg">@Model.Content.Title</h1>
     <p class="text-md">@Model.Content.Subtitle</p>
