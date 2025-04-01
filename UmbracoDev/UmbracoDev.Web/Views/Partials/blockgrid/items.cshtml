@@ -7,8 +7,7 @@
 <div class="umb-block-grid__layout-container">
     @foreach (var item in Model)
     {
-        string containerAlignmentStyle = item.Settings?.GetAlignmentStyling();
-        string containerSpacingStyle = item.Settings?.GetCalculatedSpacingStyling();
+        string containerStyle = item.Settings?.GenerateCss<IContainerStylingProperties>("Container");
 
         <div
             class="umb-block-grid__layout-item flex"
@@ -17,8 +16,7 @@
             data-element-key="@item.ContentKey"
             data-col-span="@item.ColumnSpan"
             data-row-span="@item.RowSpan"
-             style=" --umb-block-grid--item-column-span: @item.ColumnSpan; --umb-block-grid--item-row-span: @item.RowSpan;
-                    @containerAlignmentStyle @containerSpacingStyle">
+             style=" --umb-block-grid--item-column-span: @item.ColumnSpan; --umb-block-grid--item-row-span: @item.RowSpan; @containerStyle">
             @{
                 bool isLayout = item.Content.ContentType.Alias.Contains("layout");
                 var partialViewName = $"blockgrid/components/{(isLayout ? "layouts/" : "")}"  + item.Content.ContentType.Alias;

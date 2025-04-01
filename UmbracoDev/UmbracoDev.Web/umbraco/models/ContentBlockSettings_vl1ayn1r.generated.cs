@@ -19,13 +19,13 @@ using Umbraco.Extensions;
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>Content Block Settings</summary>
-	[PublishedModel("contentBlockSettings")]
-	public partial class ContentBlockSettings : PublishedElementModel, IAlignContentProperties, IJustifyContentProperties, IMarginProperties, IPaddingProperties
+	[PublishedModel("contentBlockSettings_vl1ayn1r")]
+	public partial class ContentBlockSettings_vl1ayn1r : PublishedElementModel, IMarginProperties, IPaddingProperties, IThemeProperties
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		public new const string ModelTypeAlias = "contentBlockSettings";
+		public new const string ModelTypeAlias = "contentBlockSettings_vl1ayn1r";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
@@ -34,36 +34,20 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 			=> PublishedModelUtility.GetModelContentType(contentTypeCache, ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedContentTypeCache contentTypeCache, Expression<Func<ContentBlockSettings, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedContentTypeCache contentTypeCache, Expression<Func<ContentBlockSettings_vl1ayn1r, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(contentTypeCache), selector);
 #pragma warning restore 0109
 
 		private IPublishedValueFallback _publishedValueFallback;
 
 		// ctor
-		public ContentBlockSettings(IPublishedElement content, IPublishedValueFallback publishedValueFallback)
+		public ContentBlockSettings_vl1ayn1r(IPublishedElement content, IPublishedValueFallback publishedValueFallback)
 			: base(content, publishedValueFallback)
 		{
 			_publishedValueFallback = publishedValueFallback;
 		}
 
 		// properties
-
-		///<summary>
-		/// Align Content
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("alignContent")]
-		public virtual string AlignContent => global::Umbraco.Cms.Web.Common.PublishedModels.AlignContentProperties.GetAlignContent(this, _publishedValueFallback);
-
-		///<summary>
-		/// Justify Content
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("justifyContent")]
-		public virtual string JustifyContent => global::Umbraco.Cms.Web.Common.PublishedModels.JustifyContentProperties.GetJustifyContent(this, _publishedValueFallback);
 
 		///<summary>
 		/// Margin Bottom
@@ -120,5 +104,53 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[ImplementPropertyType("paddingTop")]
 		public virtual int PaddingTop => global::Umbraco.Cms.Web.Common.PublishedModels.PaddingProperties.GetPaddingTop(this, _publishedValueFallback);
+
+		///<summary>
+		/// Dark Mode Accent Color
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("darkModeAccentColor")]
+		public virtual global::Umbraco.Cms.Core.PropertyEditors.ValueConverters.ColorPickerValueConverter.PickedColor DarkModeAccentColor => global::Umbraco.Cms.Web.Common.PublishedModels.ThemeProperties.GetDarkModeAccentColor(this, _publishedValueFallback);
+
+		///<summary>
+		/// Dark Mode Background Color
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("darkModeBackgroundColor")]
+		public virtual global::Umbraco.Cms.Core.PropertyEditors.ValueConverters.ColorPickerValueConverter.PickedColor DarkModeBackgroundColor => global::Umbraco.Cms.Web.Common.PublishedModels.ThemeProperties.GetDarkModeBackgroundColor(this, _publishedValueFallback);
+
+		///<summary>
+		/// Dark Mode Text Color
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("darkModeTextColor")]
+		public virtual global::Umbraco.Cms.Core.PropertyEditors.ValueConverters.ColorPickerValueConverter.PickedColor DarkModeTextColor => global::Umbraco.Cms.Web.Common.PublishedModels.ThemeProperties.GetDarkModeTextColor(this, _publishedValueFallback);
+
+		///<summary>
+		/// Light Mode Accent Color
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("lightModeAccentColor")]
+		public virtual global::Umbraco.Cms.Core.PropertyEditors.ValueConverters.ColorPickerValueConverter.PickedColor LightModeAccentColor => global::Umbraco.Cms.Web.Common.PublishedModels.ThemeProperties.GetLightModeAccentColor(this, _publishedValueFallback);
+
+		///<summary>
+		/// Light Mode Background Color
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("lightModeBackgroundColor")]
+		public virtual global::Umbraco.Cms.Core.PropertyEditors.ValueConverters.ColorPickerValueConverter.PickedColor LightModeBackgroundColor => global::Umbraco.Cms.Web.Common.PublishedModels.ThemeProperties.GetLightModeBackgroundColor(this, _publishedValueFallback);
+
+		///<summary>
+		/// Light Mode Text Color
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("lightModeTextColor")]
+		public virtual global::Umbraco.Cms.Core.PropertyEditors.ValueConverters.ColorPickerValueConverter.PickedColor LightModeTextColor => global::Umbraco.Cms.Web.Common.PublishedModels.ThemeProperties.GetLightModeTextColor(this, _publishedValueFallback);
 	}
 }

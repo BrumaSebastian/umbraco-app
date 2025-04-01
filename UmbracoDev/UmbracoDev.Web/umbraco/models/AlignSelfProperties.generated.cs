@@ -18,19 +18,9 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
-	// Mixin Content Type with alias "alignSelfProperties"
-	/// <summary>Align Self Properties</summary>
-	public partial interface IAlignSelfProperties : IPublishedElement
-	{
-		/// <summary>Align Self</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		string AlignSelf { get; }
-	}
-
 	/// <summary>Align Self Properties</summary>
 	[PublishedModel("alignSelfProperties")]
-	public partial class AlignSelfProperties : PublishedElementModel, IAlignSelfProperties
+	public partial class AlignSelfProperties : PublishedElementModel
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -65,11 +55,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("alignSelf")]
-		public virtual string AlignSelf => GetAlignSelf(this, _publishedValueFallback);
-
-		/// <summary>Static getter for Align Self</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static string GetAlignSelf(IAlignSelfProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "alignSelf");
+		public virtual string AlignSelf => this.Value<string>(_publishedValueFallback, "alignSelf");
 	}
 }

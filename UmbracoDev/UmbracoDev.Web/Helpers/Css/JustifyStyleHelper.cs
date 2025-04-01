@@ -15,7 +15,7 @@ public static class JustifyStyleHelper
 
     public static string GetJustifyStyle(this IPublishedElement settings)
     {
-        if (settings is not IJustifySelfProperties) return string.Empty;
+        //if (settings is not IJustifySelfProperties) return string.Empty;
 
         StringBuilder stringBuilder = new();
 

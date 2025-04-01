@@ -16,6 +16,5 @@
         public const string ALIGN_SELF = "align-self";
         public const string ALIGN_CONTENT = "align-content";
         public const string ALIGN_ITEMS = "align-items";
-
     }
 }

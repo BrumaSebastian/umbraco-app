@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Org.BouncyCastle.Asn1.X509.Qualified;
+using Umbraco.Cms.Core;
 using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Web.Common.PublishedModels;
 
@@ -24,26 +25,10 @@ public static class ContainerStyleHelper
         { "ContainerAlignItems", CssElements.ALIGN_ITEMS }
     };
 
-    public static string GetAlignmentStyling(this IPublishedElement settings) 
-        => settings.GenerateCss(AlignmentElements, value => value);
-
-    public static string GetCalculatedSpacingStyling(this IPublishedElement settings)
-        => settings.GenerateCss(SpacingElements, value => $"calc(var(--spacing) * {value})");
-
-    private static string GenerateCss(this IPublishedElement settings, Dictionary<string, string> properties, Func<string, string> formatValue)
+    public static void GetContainerCss(this IPublishedElement settings)
     {
-        if (settings is not IContainerStylingProperties) return string.Empty;
+        if (settings is not IContainerStylingProperties containerStylingProperties) return;
 
-        StringBuilder cssBuilder = new();
-
-        foreach (var (propertyName, cssElement) in properties)
-        {
-            var value = settings.Value<string>(propertyName);
-            if (string.IsNullOrWhiteSpace(value)) continue;
-
-            cssBuilder.Append($"{cssElement}:{formatValue(value)}; ");
-        }
-
-        return cssBuilder.ToString().TrimEnd();
+        var containerProperties = typeof(IContainerStylingProperties).GetProperties();
     }
 }
