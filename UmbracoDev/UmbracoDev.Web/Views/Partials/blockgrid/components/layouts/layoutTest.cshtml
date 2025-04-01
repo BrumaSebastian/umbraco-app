@@ -1,7 +1,7 @@
-﻿@inherits UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<Layout1x2, ContentBlockSettings>>
+﻿@inherits UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<LayoutTest, ContentBlockSettings>>
 
 @{
-    if (Model?.Areas.Count() != 2) { return; }
+   
     var themeColorsCss = Model.Settings?.GetThemeCss();
 }
  

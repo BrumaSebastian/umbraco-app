@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>Content Block Settings</summary>
 	[PublishedModel("contentBlockSettings")]
-	public partial class ContentBlockSettings : PublishedElementModel, IMarginProperties, IPaddingProperties, IThemeProperties
+	public partial class ContentBlockSettings : PublishedElementModel, IAlignSelfProperties, IJustifySelfProperties, IMarginProperties, IPaddingProperties, IThemeProperties
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -48,6 +48,22 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		}
 
 		// properties
+
+		///<summary>
+		/// Align Self
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("alignSelf")]
+		public virtual string AlignSelf => global::Umbraco.Cms.Web.Common.PublishedModels.AlignSelfProperties.GetAlignSelf(this, _publishedValueFallback);
+
+		///<summary>
+		/// Justify Self
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("justifySelf")]
+		public virtual string JustifySelf => global::Umbraco.Cms.Web.Common.PublishedModels.JustifySelfProperties.GetJustifySelf(this, _publishedValueFallback);
 
 		///<summary>
 		/// Margin Bottom
