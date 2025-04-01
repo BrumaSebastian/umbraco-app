@@ -7,7 +7,7 @@
     var siteSettings = Model.GetSiteSettings();
 }
 
-<div class="navbar bg-base-100 shadow-sm">
+<div class="navbar shadow-sm">
     <div class="navbar-start">
         <a class="btn btn-ghost text-xl" href="/">
             <img src="@(siteSettings?.SiteLogo?.GetCropUrl() ?? "/assets//placeholder_32x32.png")" />

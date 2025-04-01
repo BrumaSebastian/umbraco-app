@@ -1,22 +1,21 @@
 ﻿using System.Text;
 using Umbraco.Cms.Core.Models.PublishedContent;
+using Umbraco.Cms.Web.Common.PublishedModels;
 
 namespace UmbracoDev.Web.Helpers.Css;
 
-public static class ContentBlockStyleHelper
+public static class JustifyStyleHelper
 {
-    private const string JUSTIFY_SELF = "justify-self";
-    private const string ALIGN_SELF = "align-self";
-
     private static readonly Dictionary<string, string> PropertyNameToCssElement = new()
     {
-        { "JustifySelf", JUSTIFY_SELF },
-        { "AlignSelf", ALIGN_SELF }
+        { "JustifySelf", CssElements.JUSTIFY_SELF },
+        { "JustifyContent", CssElements.JUSTIFY_CONTENT},
+        { "JustifyItems", CssElements.JUSTIFY_ITEMS},
     };
 
-    public static string GetStyle(this IPublishedElement settings)
+    public static string GetJustifyStyle(this IPublishedElement settings)
     {
-        if (settings is null) return string.Empty;
+        if (settings is not IJustifySelfProperties) return string.Empty;
 
         StringBuilder stringBuilder = new();
 

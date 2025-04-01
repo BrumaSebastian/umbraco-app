@@ -18,24 +18,24 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
-	// Mixin Content Type with alias "alignContentProperties"
-	/// <summary>Align Content Properties</summary>
-	public partial interface IAlignContentProperties : IPublishedElement
+	// Mixin Content Type with alias "alignItemsProperties"
+	/// <summary>Align Items Properties</summary>
+	public partial interface IAlignItemsProperties : IPublishedElement
 	{
-		/// <summary>Align Content</summary>
+		/// <summary>Align Items</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		string AlignContent { get; }
+		string AlignItems { get; }
 	}
 
-	/// <summary>Align Content Properties</summary>
-	[PublishedModel("alignContentProperties")]
-	public partial class AlignContentProperties : PublishedElementModel, IAlignContentProperties
+	/// <summary>Align Items Properties</summary>
+	[PublishedModel("alignItemsProperties")]
+	public partial class AlignItemsProperties : PublishedElementModel, IAlignItemsProperties
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		public new const string ModelTypeAlias = "alignContentProperties";
+		public new const string ModelTypeAlias = "alignItemsProperties";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
@@ -44,14 +44,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 			=> PublishedModelUtility.GetModelContentType(contentTypeCache, ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedContentTypeCache contentTypeCache, Expression<Func<AlignContentProperties, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedContentTypeCache contentTypeCache, Expression<Func<AlignItemsProperties, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(contentTypeCache), selector);
 #pragma warning restore 0109
 
 		private IPublishedValueFallback _publishedValueFallback;
 
 		// ctor
-		public AlignContentProperties(IPublishedElement content, IPublishedValueFallback publishedValueFallback)
+		public AlignItemsProperties(IPublishedElement content, IPublishedValueFallback publishedValueFallback)
 			: base(content, publishedValueFallback)
 		{
 			_publishedValueFallback = publishedValueFallback;
@@ -60,16 +60,16 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// Align Content
+		/// Align Items
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("alignContent")]
-		public virtual string AlignContent => GetAlignContent(this, _publishedValueFallback);
+		[ImplementPropertyType("alignItems")]
+		public virtual string AlignItems => GetAlignItems(this, _publishedValueFallback);
 
-		/// <summary>Static getter for Align Content</summary>
+		/// <summary>Static getter for Align Items</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static string GetAlignContent(IAlignContentProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "alignContent");
+		public static string GetAlignItems(IAlignItemsProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "alignItems");
 	}
 }

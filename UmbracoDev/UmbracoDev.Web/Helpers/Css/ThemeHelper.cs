@@ -1,5 +1,4 @@
-﻿using Umbraco.Cms.Core.Models.PublishedContent;
-using Umbraco.Cms.Web.Common.PublishedModels;
+﻿using Umbraco.Cms.Web.Common.PublishedModels;
 using static Umbraco.Cms.Core.PropertyEditors.ValueConverters.ColorPickerValueConverter;
 
 namespace UmbracoDev.Web.Helpers.Css;
@@ -11,24 +10,7 @@ public static class ThemeHelper
     private const string TEXT_PREFIX = "text";
     private const string ACCENT_PREFIX = "accent";
 
-    public static string GetThemeCss(this IPublishedContent content)
-    {
-        if (content is not IThemeProperties themeProperties) return string.Empty;
-
-        List<string> classes =
-        [
-            ComposeCssClass(BACKGROUND_PREFIX, themeProperties.LightModeBackgroundColor),
-            ComposeCssClass(TEXT_PREFIX, themeProperties.LightModeTextColor),
-            ComposeCssClass(ACCENT_PREFIX, themeProperties.LightModeAccentColor),
-            ComposeCssClass(BACKGROUND_PREFIX, themeProperties.DarkModeBackgroundColor, true),
-            ComposeCssClass(TEXT_PREFIX, themeProperties.DarkModeTextColor, true),
-            ComposeCssClass(ACCENT_PREFIX, themeProperties.DarkModeAccentColor, true),
-        ];
-
-        return string.Join(' ', classes.Where(c => !string.IsNullOrWhiteSpace(c)));
-    }
-
-    public static string GetThemeCss(this ContentBlockSettings content)
+    public static string GetThemeClasses(this IThemeProperties content)
     {
         if (content is not IThemeProperties themeProperties) return string.Empty;
 

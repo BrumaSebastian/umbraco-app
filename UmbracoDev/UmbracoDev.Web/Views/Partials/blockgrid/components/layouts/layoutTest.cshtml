@@ -1,8 +1,8 @@
-﻿@inherits UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<LayoutTest, ContentBlockSettings>>
+﻿@inherits UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<LayoutTest, LayoutSettings>>
 
 @{
    
-    var themeColorsCss = Model.Settings?.GetThemeCss();
+    var themeColorsCss = Model.Settings?.GetThemeClasses();
 }
  
 <div class="py-4 @themeColorsCss">

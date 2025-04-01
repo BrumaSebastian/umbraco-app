@@ -3,7 +3,7 @@
 
 @{
     var siteSettings = Model.GetSiteSettings();
-    var themeColorsCss = siteSettings?.GetThemeCss();
+    var themeColorsCss = siteSettings?.GetThemeClasses();
 }
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -12,14 +12,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/blockgridlayout.css" />
     <link rel="stylesheet" href="/css/tailwind.css" />
-    <title>test</title>
+    <title>DevApp</title>
 </head>
-<body class="@themeColorsCss min-h-screen">
-    <header class="sticky top-0 z-50">
+<body class="min-h-screen">
+    <header class="sticky top-0 z-50 @themeColorsCss">
         @await Html.PartialAsync("Header")
     </header>
 
-    <main class="w-full">
+    <main class="w-full @themeColorsCss">
         @RenderBody()
     </main>
 

@@ -7,16 +7,18 @@
 <div class="umb-block-grid__layout-container">
     @foreach (var item in Model)
     {
-        string contentBlockStyle = item.Settings?.GetStyle() ?? string.Empty;
+        string containerAlignmentStyle = item.Settings?.GetAlignmentStyling();
+        string containerSpacingStyle = item.Settings?.GetCalculatedSpacingStyling();
 
         <div
-            class="umb-block-grid__layout-item"
+            class="umb-block-grid__layout-item flex"
             data-content-element-type-alias="@item.Content.ContentType.Alias"
             data-content-element-type-key="@item.Content.ContentType.Key"
             data-element-key="@item.ContentKey"
             data-col-span="@item.ColumnSpan"
             data-row-span="@item.RowSpan"
-            style=" --umb-block-grid--item-column-span: @item.ColumnSpan; --umb-block-grid--item-row-span: @item.RowSpan; @contentBlockStyle">
+             style=" --umb-block-grid--item-column-span: @item.ColumnSpan; --umb-block-grid--item-row-span: @item.RowSpan;
+                    @containerAlignmentStyle @containerSpacingStyle">
             @{
                 bool isLayout = item.Content.ContentType.Alias.Contains("layout");
                 var partialViewName = $"blockgrid/components/{(isLayout ? "layouts/" : "")}"  + item.Content.ContentType.Alias;
