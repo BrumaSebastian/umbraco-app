@@ -2,8 +2,19 @@
 
 @{
     var themeColorsCss = Model.Settings?.GetThemeClasses();
+    var areas = Model.Areas.ToList();
 }
- 
-<div class="@themeColorsCss w-full p-4">
-    @await Html.GetBlockGridItemAreasHtmlAsync(Model)
+
+<div id="layout1x1_1x3" class="@themeColorsCss w-full">
+    <div class="flex w-full flex-col">
+        @await Html.GetBlockGridItemsHtmlAsync(areas[0])
+        <div class="grid md:grid-cols-3">
+            @for (int i = 1; i < 4; i++)
+            {
+                <div class="area">
+                    @await Html.GetBlockGridItemsHtmlAsync(areas[i], "itemsSimple")
+                </div>
+            }
+        </div>
+    </div>
 </div>

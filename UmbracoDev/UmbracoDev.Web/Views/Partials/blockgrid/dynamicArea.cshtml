@@ -3,7 +3,7 @@
 
 <div class="umb-block-grid__area"
      style="--area-grid-columns:@Model.ColumnSpan;
-            --area-column-span:@Model.ColumnSpan;
+            --area-column-span:@Model.ColumnSpan; 
             --area-row-span:@Model.RowSpan;">
-    @await Html.GetBlockGridItemsHtmlAsync(Model)
+    @await Html.GetBlockGridItemsHtmlAsync(Model, "dynamicItems")
 </div>

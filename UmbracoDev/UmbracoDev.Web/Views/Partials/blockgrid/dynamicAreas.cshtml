@@ -10,6 +10,6 @@
      style="--area-grid-columns:@numberOfColumns;">
     @foreach (var area in Model.Areas)
     {
-        @await Html.GetBlockGridItemAreaHtmlAsync(area)
+        @await Html.GetBlockGridItemAreaHtmlAsync(area, "dynamicArea")
     }
 </div>

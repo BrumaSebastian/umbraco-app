@@ -1,10 +1,44 @@
 ﻿@using Umbraco.Cms.Core.Models.Blocks
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IEnumerable<BlockGridItem>>
 @{
-    if (Model?.Any() != true) { return; }
+    if (Model?.Any() != true) { return; }    
 }
 
-<div class="umb-block-grid__layout-container">
+@foreach (var item in Model)
+{
+    string g = item.Content.ContentType.Alias;
+    if (g == "heroSectionBlock")
+    {
+
+    }
+    var gridItemStyle = item.Settings?.GenerateCss<IGridLayoutItemProperties>("GridItem");
+    
+    <div class="umb-block-grid__layout-item"
+         style="--item-column-span:@item.ColumnSpan; --item-row-span:@item.RowSpan;@gridItemStyle">
+        @{
+            bool isLayout = item.Content.ContentType.Alias.Contains("layout");
+            var partialViewName = $"blockgrid/components/{(isLayout ? "layouts/" : "")}" + item.Content.ContentType.Alias;
+
+            try
+            {
+                @await Html.PartialAsync(partialViewName, item)
+            }
+            catch (InvalidOperationException)
+            {
+                <p>
+                    <strong>Could not render component of type: @(item.Content.ContentType.Alias)</strong>
+                    <br />
+                    This likely happened because the partial view <em>@partialViewName</em> could not be found.
+                </p>
+            }
+        }
+
+    </div>
+}
+
+
+
+@* <div class="umb-block-grid__layout-container">
     @foreach (var item in Model)
     {
         string containerStyle = item.Settings?.GenerateCss<IContainerStylingProperties>("Container");
@@ -16,7 +50,7 @@
             data-element-key="@item.ContentKey"
             data-col-span="@item.ColumnSpan"
             data-row-span="@item.RowSpan"
-             style=" --umb-block-grid--item-column-span: @item.ColumnSpan; --umb-block-grid--item-row-span: @item.RowSpan; @containerStyle">
+            style="--item-column-span:@item.ColumnSpan; --item-row-span:@item.RowSpan; @containerStyle ">
             @{
                 bool isLayout = item.Content.ContentType.Alias.Contains("layout");
                 var partialViewName = $"blockgrid/components/{(isLayout ? "layouts/" : "")}"  + item.Content.ContentType.Alias;
@@ -36,4 +70,4 @@
             }
         </div>
     }
-</div>
+</div> *@

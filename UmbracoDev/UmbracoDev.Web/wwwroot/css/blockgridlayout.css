@@ -1,7 +1,8 @@
-﻿.umb-block-grid__layout-container {
+﻿.umb-block-grid__layout-container
+{
     position: relative;
     display: grid;
-    grid-template-columns: repeat(var(--umb-block-grid--grid-columns, 1), minmax(0, 1fr));
+    grid-template-columns: repeat(var(--grid-columns, 1), minmax(0, 1fr));
     grid-auto-flow: row;
     grid-auto-rows: minmax(50px, min-content);
     column-gap: var(--umb-block-grid--column-gap, 0);
@@ -9,39 +10,43 @@
 }
 
 .umb-block-grid__layout-item {
-    position: relative;
+    /*position: relative;*/
     /* For small devices we scale columnSpan by three, to make everything bigger than 1/3 take full width: */
-    grid-column-end: span min(calc(var(--umb-block-grid--item-column-span, 1) * 3), var(--umb-block-grid--grid-columns));
-    grid-row: span var(--umb-block-grid--item-row-span, 1);
+    display: flex;
+    grid-column-end: span min(calc(var(--item-column-span, 1) * 3), var(--grid-columns));
+    grid-row: span var(--item-row-span, 1);
 }
 
 .umb-block-grid__area-container,
 .umb-block-grid__block--view::part(area-container) {
     position: relative;
     display: grid;
-    grid-template-columns: repeat( var(--umb-block-grid--area-grid-columns, var(--umb-block-grid--grid-columns, 1)), minmax(0, 1fr) );
+    grid-template-columns: repeat( var(--area-grid-columns, 1), minmax(0, 1fr));
     grid-auto-flow: row;
-    grid-auto-rows: minmax(50px, min-content);
+    grid-auto-rows: min-content;
     column-gap: var(--umb-block-grid--areas-column-gap, 0);
     row-gap: var(--umb-block-grid--areas-row-gap, 0);
 }
 
 .umb-block-grid__area {
-    position: relative;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat( var(--area-grid-columns, 1), minmax(0, 1fr));
+    grid-template-rows: repeat( var(--area-row-span, 1), minmax(0, 1fr));
+    grid-auto-flow: row;
+    column-gap: var(--umb-block-grid--areas-column-gap, 0);
+    row-gap: var(--umb-block-grid--areas-row-gap, 0);
     /* For small devices we scale columnSpan by three, to make everything bigger than 1/3 take full width: */
-    grid-column-end: span min(calc(var(--umb-block-grid--area-column-span, 1) * 3), var(--umb-block-grid--area-grid-columns));
+    grid-column-end: span min(calc(var(--area-column-span, 1) * 3), var(--area-grid-columns));
     grid-row: span var(--umb-block-grid--area-row-span, 1);
 }
 
 @media (min-width: 1024px) {
     .umb-block-grid__layout-item {
-        grid-column-end: span min(var(--umb-block-grid--item-column-span, 1), var(--umb-block-grid--grid-columns));
+        grid-column-end: span min(var(--item-column-span, 1), var(--grid-columns));
     }
 
+
     .umb-block-grid__area {
-        grid-column-end: span min(var(--umb-block-grid--area-column-span, 1), var(--umb-block-grid--area-grid-columns));
+        grid-column-end: span min(var(--area-column-span, 1), var(--area-grid-columns));
     }
 }

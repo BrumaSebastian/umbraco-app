@@ -18,14 +18,14 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
-	/// <summary>Feature Card Settings</summary>
-	[PublishedModel("featureCardSettings")]
-	public partial class FeatureCardSettings : PublishedElementModel, IAlignItemsProperties, IContainerStylingProperties, IGridLayoutItemProperties, IMarginProperties, IPaddingProperties
+	/// <summary>Media Wall Layout Settings</summary>
+	[PublishedModel("mediaWallLayoutSettings")]
+	public partial class MediaWallLayoutSettings : PublishedElementModel, IContainerStylingProperties, IGridLayoutItemProperties
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		public new const string ModelTypeAlias = "featureCardSettings";
+		public new const string ModelTypeAlias = "mediaWallLayoutSettings";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
@@ -34,28 +34,20 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 			=> PublishedModelUtility.GetModelContentType(contentTypeCache, ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedContentTypeCache contentTypeCache, Expression<Func<FeatureCardSettings, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedContentTypeCache contentTypeCache, Expression<Func<MediaWallLayoutSettings, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(contentTypeCache), selector);
 #pragma warning restore 0109
 
 		private IPublishedValueFallback _publishedValueFallback;
 
 		// ctor
-		public FeatureCardSettings(IPublishedElement content, IPublishedValueFallback publishedValueFallback)
+		public MediaWallLayoutSettings(IPublishedElement content, IPublishedValueFallback publishedValueFallback)
 			: base(content, publishedValueFallback)
 		{
 			_publishedValueFallback = publishedValueFallback;
 		}
 
 		// properties
-
-		///<summary>
-		/// Align Items
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("alignItems")]
-		public virtual string AlignItems => global::Umbraco.Cms.Web.Common.PublishedModels.AlignItemsProperties.GetAlignItems(this, _publishedValueFallback);
 
 		///<summary>
 		/// Container Align Items
@@ -200,61 +192,5 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[ImplementPropertyType("gridItemPaddingTop")]
 		public virtual int GridItemPaddingTop => global::Umbraco.Cms.Web.Common.PublishedModels.GridLayoutItemProperties.GetGridItemPaddingTop(this, _publishedValueFallback);
-
-		///<summary>
-		/// Margin Bottom
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("marginBottom")]
-		public virtual int MarginBottom => global::Umbraco.Cms.Web.Common.PublishedModels.MarginProperties.GetMarginBottom(this, _publishedValueFallback);
-
-		///<summary>
-		/// Margin Left
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("marginLeft")]
-		public virtual int MarginLeft => global::Umbraco.Cms.Web.Common.PublishedModels.MarginProperties.GetMarginLeft(this, _publishedValueFallback);
-
-		///<summary>
-		/// Margin Right
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("marginRight")]
-		public virtual int MarginRight => global::Umbraco.Cms.Web.Common.PublishedModels.MarginProperties.GetMarginRight(this, _publishedValueFallback);
-
-		///<summary>
-		/// Margin Top
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("marginTop")]
-		public virtual int MarginTop => global::Umbraco.Cms.Web.Common.PublishedModels.MarginProperties.GetMarginTop(this, _publishedValueFallback);
-
-		///<summary>
-		/// Padding Bottom
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("paddingBottom")]
-		public virtual int PaddingBottom => global::Umbraco.Cms.Web.Common.PublishedModels.PaddingProperties.GetPaddingBottom(this, _publishedValueFallback);
-
-		///<summary>
-		/// Padding Left
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("paddingLeft")]
-		public virtual int PaddingLeft => global::Umbraco.Cms.Web.Common.PublishedModels.PaddingProperties.GetPaddingLeft(this, _publishedValueFallback);
-
-		///<summary>
-		/// Padding Right
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("paddingRight")]
-		public virtual int PaddingRight => global::Umbraco.Cms.Web.Common.PublishedModels.PaddingProperties.GetPaddingRight(this, _publishedValueFallback);
-
-		///<summary>
-		/// Padding Top
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("paddingTop")]
-		public virtual int PaddingTop => global::Umbraco.Cms.Web.Common.PublishedModels.PaddingProperties.GetPaddingTop(this, _publishedValueFallback);
 	}
 }

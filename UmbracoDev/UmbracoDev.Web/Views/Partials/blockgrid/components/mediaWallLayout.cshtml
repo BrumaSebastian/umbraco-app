@@ -1,15 +1,13 @@
-﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<MediaWallLayout>>
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<MediaWallLayout, MediaWallLayoutSettings>>
 @{
 
 }
 
-<div class="m-4 max-w-xl"> 
-    @await Html.GetBlockGridItemAreasHtmlAsync(Model)
-</div>
-
+@await Html.GetBlockGridItemAreasHtmlAsync(Model)
+@* 
 <style>
     :root{
         --umb-block-grid--areas-column-gap: calc(var(--spacing) * 3);
         --umb-block-grid--areas-row-gap: calc(var(--spacing)* 3);
     }
-</style>
+</style> *@
