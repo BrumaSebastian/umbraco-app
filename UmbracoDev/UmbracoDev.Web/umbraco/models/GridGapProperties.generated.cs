@@ -18,14 +18,23 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
-	/// <summary>One Column Grid Block</summary>
-	[PublishedModel("grid1x1Block")]
-	public partial class Grid1x1Block : PublishedElementModel
+	// Mixin Content Type with alias "gridGapProperties"
+	/// <summary>Grid Gap Properties</summary>
+	public partial interface IGridGapProperties : IPublishedElement
+	{
+		/// <summary>Gap</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		int Gap { get; }
+	}
+
+	/// <summary>Grid Gap Properties</summary>
+	[PublishedModel("gridGapProperties")]
+	public partial class GridGapProperties : PublishedElementModel, IGridGapProperties
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		public new const string ModelTypeAlias = "grid1x1Block";
+		public new const string ModelTypeAlias = "gridGapProperties";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
@@ -34,19 +43,30 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 			=> PublishedModelUtility.GetModelContentType(contentTypeCache, ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedContentTypeCache contentTypeCache, Expression<Func<Grid1x1Block, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedContentTypeCache contentTypeCache, Expression<Func<GridGapProperties, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(contentTypeCache), selector);
 #pragma warning restore 0109
 
 		private IPublishedValueFallback _publishedValueFallback;
 
 		// ctor
-		public Grid1x1Block(IPublishedElement content, IPublishedValueFallback publishedValueFallback)
+		public GridGapProperties(IPublishedElement content, IPublishedValueFallback publishedValueFallback)
 			: base(content, publishedValueFallback)
 		{
 			_publishedValueFallback = publishedValueFallback;
 		}
 
 		// properties
+
+		///<summary>
+		/// Gap
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[ImplementPropertyType("gap")]
+		public virtual int Gap => GetGap(this, _publishedValueFallback);
+
+		/// <summary>Static getter for Gap</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		public static int GetGap(IGridGapProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<int>(publishedValueFallback, "gap");
 	}
 }

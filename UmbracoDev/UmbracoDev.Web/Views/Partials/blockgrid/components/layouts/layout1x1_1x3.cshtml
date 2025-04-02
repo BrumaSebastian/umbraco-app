@@ -1,14 +1,16 @@
-﻿@inherits UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<Layout1x1_1x3, LayoutSettings>>
+﻿@inherits UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<Layout1x1_1x3, Layout1X1_1X3Settings>>
 
 @{
     var themeColorsCss = Model.Settings?.GetThemeClasses();
+    var layoutStyles = Model.Settings?.GenerateCss<ILayoutProperties>("layout");
+    var gridStyles = Model.Settings?.GenerateCss<IGridGapProperties>();
     var areas = Model.Areas.ToList();
 }
 
-<div id="layout1x1_1x3" class="@themeColorsCss w-full">
+<div id="layout1x1_1x3" class="@themeColorsCss w-full" style="@layoutStyles">
     <div class="flex w-full flex-col">
         @await Html.GetBlockGridItemsHtmlAsync(areas[0])
-        <div class="grid md:grid-cols-3">
+        <div class="grid md:grid-cols-3" style="@gridStyles">
             @for (int i = 1; i < 4; i++)
             {
                 <div class="area">
