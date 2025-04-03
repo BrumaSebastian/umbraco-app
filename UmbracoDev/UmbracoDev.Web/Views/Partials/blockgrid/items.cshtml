@@ -16,18 +16,25 @@
             var backgroundImageStyle = item.Settings?.GenerateCss<IBackgroundImageProperties>();
             var overlayStyle = item.Settings?.GenerateCss<IOverlayProperties>(Compositions.OVERLAY);
 
-            <div id="overlay_@item.Content.ContentType.Alias" class="absolute h-full w-full">
-                @if (!string.IsNullOrWhiteSpace(backgroundImageStyle))
-                {
-                    <div class="hero-background absolute h-full w-full" style="@backgroundImageStyle"> </div>
-                }
+            bool isBackgroundImageSet = !string.IsNullOrWhiteSpace(backgroundImageStyle);
+            bool isColoredOverlaySet = !string.IsNullOrWhiteSpace(overlayStyle);
+            bool isOverlayActive = isBackgroundImageSet || isColoredOverlaySet;
 
-                @if (!string.IsNullOrWhiteSpace(overlayStyle))
-                {
-                    <div class="absolute z-1 h-full w-full" style="@overlayStyle"></div>
-                }
-            </div>
+            if (isOverlayActive)
+            {
+                <div id="overlay_@item.Content.ContentType.Alias" class="absolute h-full w-full">
+                    @if (isBackgroundImageSet)
+                    {
+                        <div class="hero-background absolute h-full w-full" style="@backgroundImageStyle"> </div>
+                    }
 
+                    @if (isColoredOverlaySet)
+                    {
+                        <div class="absolute z-1 h-full w-full" style="@overlayStyle"></div>
+                    }
+                </div>
+            }
+            
             try
             {
                 @await Html.PartialAsync(partialViewName, item)

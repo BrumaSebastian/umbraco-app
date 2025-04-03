@@ -2,9 +2,9 @@
 @{
     if (Model.Content.Image is null) return;
     var paddingStyle = Model.Settings?.GenerateCss<IPaddingProperties>();
+    var imageStyle = Model.Settings?.GenerateCss<IImageBlockProperties>(Compositions.IMAGE);
+    var src = Model.Content.Image.Path == "" ? "/assets/placeholder_400x300.png" : Model.Content.Image.GetCropUrl();
 }
 
-<div class="justify-self-center" style="@paddingStyle">
-    <img class="" src="@Model.Content.Image.GetCropUrl()" alt="alt text"
-         style="width: 100%; height: 100%; object-fit:contain;" />
-</div>
+<img src="@src" alt="alt text" style="@imageStyle" />
+

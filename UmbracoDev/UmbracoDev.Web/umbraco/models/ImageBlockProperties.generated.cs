@@ -18,14 +18,32 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
-	/// <summary>Image Block Settings</summary>
-	[PublishedModel("imageBlockSettings")]
-	public partial class ImageBlockSettings : PublishedElementModel, IImageBlockProperties, IPaddingProperties
+	// Mixin Content Type with alias "imageBlockProperties"
+	/// <summary>Image Block Properties</summary>
+	public partial interface IImageBlockProperties : IPublishedElement
+	{
+		/// <summary>Image Height</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		int ImageHeightPercent { get; }
+
+		/// <summary>ImageObjectFit</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		string ImageObjectFit { get; }
+
+		/// <summary>Image Width</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		int ImageWidthPercent { get; }
+	}
+
+	/// <summary>Image Block Properties</summary>
+	[PublishedModel("imageBlockProperties")]
+	public partial class ImageBlockProperties : PublishedElementModel, IImageBlockProperties
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		public new const string ModelTypeAlias = "imageBlockSettings";
+		public new const string ModelTypeAlias = "imageBlockProperties";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
@@ -34,14 +52,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 			=> PublishedModelUtility.GetModelContentType(contentTypeCache, ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedContentTypeCache contentTypeCache, Expression<Func<ImageBlockSettings, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedContentTypeCache contentTypeCache, Expression<Func<ImageBlockProperties, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(contentTypeCache), selector);
 #pragma warning restore 0109
 
 		private IPublishedValueFallback _publishedValueFallback;
 
 		// ctor
-		public ImageBlockSettings(IPublishedElement content, IPublishedValueFallback publishedValueFallback)
+		public ImageBlockProperties(IPublishedElement content, IPublishedValueFallback publishedValueFallback)
 			: base(content, publishedValueFallback)
 		{
 			_publishedValueFallback = publishedValueFallback;
@@ -54,7 +72,11 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[ImplementPropertyType("imageHeightPercent")]
-		public virtual int ImageHeightPercent => global::Umbraco.Cms.Web.Common.PublishedModels.ImageBlockProperties.GetImageHeightPercent(this, _publishedValueFallback);
+		public virtual int ImageHeightPercent => GetImageHeightPercent(this, _publishedValueFallback);
+
+		/// <summary>Static getter for Image Height</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		public static int GetImageHeightPercent(IImageBlockProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<int>(publishedValueFallback, "imageHeightPercent");
 
 		///<summary>
 		/// ImageObjectFit
@@ -62,41 +84,22 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("imageObjectFit")]
-		public virtual string ImageObjectFit => global::Umbraco.Cms.Web.Common.PublishedModels.ImageBlockProperties.GetImageObjectFit(this, _publishedValueFallback);
+		public virtual string ImageObjectFit => GetImageObjectFit(this, _publishedValueFallback);
+
+		/// <summary>Static getter for ImageObjectFit</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		public static string GetImageObjectFit(IImageBlockProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "imageObjectFit");
 
 		///<summary>
 		/// Image Width: Define the width of the image in %
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[ImplementPropertyType("imageWidthPercent")]
-		public virtual int ImageWidthPercent => global::Umbraco.Cms.Web.Common.PublishedModels.ImageBlockProperties.GetImageWidthPercent(this, _publishedValueFallback);
+		public virtual int ImageWidthPercent => GetImageWidthPercent(this, _publishedValueFallback);
 
-		///<summary>
-		/// Padding Bottom
-		///</summary>
+		/// <summary>Static getter for Image Width</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("paddingBottom")]
-		public virtual int PaddingBottom => global::Umbraco.Cms.Web.Common.PublishedModels.PaddingProperties.GetPaddingBottom(this, _publishedValueFallback);
-
-		///<summary>
-		/// Padding Left
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("paddingLeft")]
-		public virtual int PaddingLeft => global::Umbraco.Cms.Web.Common.PublishedModels.PaddingProperties.GetPaddingLeft(this, _publishedValueFallback);
-
-		///<summary>
-		/// Padding Right
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("paddingRight")]
-		public virtual int PaddingRight => global::Umbraco.Cms.Web.Common.PublishedModels.PaddingProperties.GetPaddingRight(this, _publishedValueFallback);
-
-		///<summary>
-		/// Padding Top
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("paddingTop")]
-		public virtual int PaddingTop => global::Umbraco.Cms.Web.Common.PublishedModels.PaddingProperties.GetPaddingTop(this, _publishedValueFallback);
+		public static int GetImageWidthPercent(IImageBlockProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<int>(publishedValueFallback, "imageWidthPercent");
 	}
 }

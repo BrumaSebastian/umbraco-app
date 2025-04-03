@@ -50,6 +50,13 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
+		/// Media Wall Size: Change the display size of the media wall
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[ImplementPropertyType("mediaWallSize")]
+		public virtual int MediaWallSize => this.Value<int>(_publishedValueFallback, "mediaWallSize");
+
+		///<summary>
 		/// Container Align Items
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]

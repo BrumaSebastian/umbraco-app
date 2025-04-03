@@ -2,15 +2,33 @@
 @{
     var layoutStyle = Model.Settings?.GenerateCss<ILayoutProperties>(Compositions.LAYOUT);
     var gridStyles = Model.Settings?.GenerateCss<IGridGapProperties>();
+    var areas = Model.Areas.ToList();
+    int size = Model.Settings?.MediaWallSize is int mediaWallSize && mediaWallSize != 0 ? mediaWallSize : 1;
 }
 
-@* @await Html.GetBlockGridItemAreasHtmlAsync(Model) *@
-
 <div id="layout_mediaWall" class="max-w-lg" style="@layoutStyle">
-    <div class="grid grid-cols-2" style="@gridStyles">
-        @foreach (var area in Model.Areas)
-        {
-            @await Html.GetBlockGridItemsHtmlAsync(area, Components.ITEMS_SIMPLE)
-        }
+    <div class="grid grid-cols-1 sm:grid-cols-2" style="@gridStyles">
+        <div class="grid-masonry">
+            <div style="block-size: calc(1em * @size);">
+                @await Html.GetBlockGridItemsHtmlAsync(areas[0], Components.ITEMS_SIMPLE)
+            </div>
+            <div style="block-size: calc(2em * @size);">
+                @await Html.GetBlockGridItemsHtmlAsync(areas[1], Components.ITEMS_SIMPLE)
+            </div>
+            <div style="block-size: calc(2em * @size);">
+                @await Html.GetBlockGridItemsHtmlAsync(areas[2], Components.ITEMS_SIMPLE)
+            </div>
+        </div>
+        <div class="grid-masonry">
+            <div style="block-size: calc(2em * @size);">
+                @await Html.GetBlockGridItemsHtmlAsync(areas[0], Components.ITEMS_SIMPLE)
+            </div>
+            <div style="block-size: calc(2em * @size);">
+                @await Html.GetBlockGridItemsHtmlAsync(areas[1], Components.ITEMS_SIMPLE)
+            </div>
+            <div style="block-size: calc(1em * @size);">
+                @await Html.GetBlockGridItemsHtmlAsync(areas[2], Components.ITEMS_SIMPLE)
+            </div>
+        </div>
     </div>
 </div>

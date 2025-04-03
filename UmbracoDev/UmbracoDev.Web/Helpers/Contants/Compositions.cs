@@ -7,4 +7,5 @@ public static class Compositions
     public const string GRID_ITEM = "gridItem";
     public const string LAYOUT = "layout";
     public const string COLUMN = "column";
+    public const string IMAGE = "image";
 }
