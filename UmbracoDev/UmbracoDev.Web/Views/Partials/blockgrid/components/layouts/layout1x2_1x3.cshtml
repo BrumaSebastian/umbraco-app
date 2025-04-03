@@ -2,10 +2,10 @@
 
 @{
     var themeColorsCss = Model.Settings?.GetThemeClasses();
-    var layoutStyles = Model.Settings?.GenerateCss<ILayoutProperties>("layout");
+    var layoutStyles = Model.Settings?.GenerateCss<ILayoutProperties>(Compositions.LAYOUT);
     var gridStyles = Model.Settings?.GenerateCss<IGridGapProperties>();
-    var column1Styles = Model.Settings?.GenerateCss<IColumn1Properties>("column1");
-    var column2Styles = Model.Settings?.GenerateCss<IColumn2Properties>("column2");
+    var column1Styles = Model.Settings?.GenerateCss<IColumn1Properties>($"{Compositions.COLUMN}1");
+    var column2Styles = Model.Settings?.GenerateCss<IColumn2Properties>($"{Compositions.COLUMN}2");
     var areas = Model.Areas.ToList();
 }
 
@@ -13,17 +13,17 @@
     <div class="flex w-full flex-col gap-5">
         <div class="grid md:grid-cols-2" style="@gridStyles">
             <div id="@areas[0].Alias" style="@column1Styles">
-                @await Html.GetBlockGridItemsHtmlAsync(areas[0], "itemsSimple")
+                @await Html.GetBlockGridItemsHtmlAsync(areas[0], Components.ITEMS_SIMPLE)
             </div>
             <div id="@areas[1].Alias" style="@column2Styles">
-                @await Html.GetBlockGridItemsHtmlAsync(areas[1], "itemsSimple")
+                @await Html.GetBlockGridItemsHtmlAsync(areas[1], Components.ITEMS_SIMPLE)
             </div>
         </div>
         <div class="grid md:grid-cols-3" style="@gridStyles">
             @for (int i = 2; i < 5; i++)
             {
                 <div id="@areas[i].Alias">
-                    @await Html.GetBlockGridItemsHtmlAsync(areas[i], "itemsSimple")
+                    @await Html.GetBlockGridItemsHtmlAsync(areas[i], Components.ITEMS_SIMPLE)
                 </div>
             }
         </div>

@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.Models.PublishedContent;
+using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Cms.Web.Common.PublishedModels;
 
 namespace UmbracoDev.Web.Helpers.Css;
@@ -24,6 +25,9 @@ public static class CssGeneratorHelper
 
             switch (value)
             {
+                case MediaWithCrops<Image> image when image is not null:
+                    cssBuilder.Append($"{ConvertToCssProperty(elementPrefix, property.Name)}:url({image.GetCropUrl()}); ");
+                    break;
                 case int intValue when intValue > 0:
                     cssBuilder.Append($"{ConvertToCssProperty(elementPrefix, property.Name)}:calc(var(--spacing)*{intValue}); ");
                     break;
@@ -31,9 +35,6 @@ public static class CssGeneratorHelper
                     when !string.IsNullOrWhiteSpace(stringValue) 
                         && !stringValue.Equals(DEFAULT, comparisonType: StringComparison.OrdinalIgnoreCase):
                     cssBuilder.Append($"{ConvertToCssProperty(elementPrefix, property.Name)}:{stringValue.ToLower()}; ");
-                    break;
-                case MediaWithCrops<Image> image when image is not null:
-                    cssBuilder.Append($"{ConvertToCssProperty(elementPrefix, property.Name)}:url({image.GetCropUrl()}); ");
                     break;
                 default:
                     //Console.WriteLine($"Problem with the css generator {value} - {property.Name}");

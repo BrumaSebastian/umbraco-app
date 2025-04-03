@@ -3,7 +3,7 @@
 @{
     if (Model?.Areas.Count() != 2) { return; }
     var themeColorsCss = Model.Settings?.GetThemeClasses();
-    var layoutStyle = Model.Settings?.GenerateCss<ILayoutProperties>("layout");
+    var layoutStyle = Model.Settings?.GenerateCss<ILayoutProperties>(Compositions.LAYOUT);
     var gridStyles = Model.Settings?.GenerateCss<IGridGapProperties>();
     var areas = Model.Areas.ToList();
 }
@@ -11,10 +11,10 @@
 <div id="layout1x2" class="@themeColorsCss w-full" style="@layoutStyle">
     <div class="grid md:grid-cols-2" style="@gridStyles">
         <div id="@areas[0].Alias">
-            @await Html.GetBlockGridItemsHtmlAsync(areas[0], "itemsSimple")
+            @await Html.GetBlockGridItemsHtmlAsync(areas[0], Components.ITEMS_SIMPLE)
         </div>
         <div id="@areas[1].Alias">
-            @await Html.GetBlockGridItemsHtmlAsync(areas[1], "itemsSimple")
+            @await Html.GetBlockGridItemsHtmlAsync(areas[1], Components.ITEMS_SIMPLE)
         </div>
     </div>
 </div>

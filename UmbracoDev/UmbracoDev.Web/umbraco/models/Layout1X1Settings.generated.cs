@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>Layout 1x1 Settings</summary>
 	[PublishedModel("layout1X1Settings")]
-	public partial class Layout1X1Settings : PublishedElementModel, IBackgroundImageProperties, ILayoutProperties, IThemeProperties
+	public partial class Layout1X1Settings : PublishedElementModel, IBackgroundImageProperties, ILayoutProperties, IOverlayProperties, IThemeProperties
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -112,6 +112,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[ImplementPropertyType("layoutPaddingTop")]
 		public virtual int LayoutPaddingTop => global::Umbraco.Cms.Web.Common.PublishedModels.LayoutProperties.GetLayoutPaddingTop(this, _publishedValueFallback);
+
+		///<summary>
+		/// Overlay Color
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("overlayBackgroundColor")]
+		public virtual string OverlayBackgroundColor => global::Umbraco.Cms.Web.Common.PublishedModels.OverlayProperties.GetOverlayBackgroundColor(this, _publishedValueFallback);
 
 		///<summary>
 		/// Dark Mode Accent Color

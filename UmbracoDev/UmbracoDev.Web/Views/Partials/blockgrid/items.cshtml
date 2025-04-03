@@ -1,4 +1,5 @@
 ﻿@using Umbraco.Cms.Core.Models.Blocks
+@using UmbracoDev.Web.Helpers.Contants
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IEnumerable<BlockGridItem>>
 @{
     if (Model?.Any() != true) { return; }    
@@ -6,18 +7,25 @@
 
 @foreach (var item in Model)
 {
-    var gridItemStyle = item.Settings?.GenerateCss<IGridLayoutItemProperties>("GridItem");
-    
+    var gridItemStyle = item.Settings?.GenerateCss<IGridLayoutItemProperties>(Compositions.GRID_ITEM);
+
     <div class="umb-block-grid__layout-item"
-         style="--item-column-span:@item.ColumnSpan; --item-row-span:@item.RowSpan;@gridItemStyle">
+    style="--item-column-span:@item.ColumnSpan; --item-row-span:@item.RowSpan;@gridItemStyle">
         @{
             bool isLayout = item.Content.ContentType.Alias.Contains("layout");
             var partialViewName = $"blockgrid/components/{(isLayout ? "layouts/" : "")}" + item.Content.ContentType.Alias;
             var backgroundImageStyle = item.Settings?.GenerateCss<IBackgroundImageProperties>();
+            var overlayStyle = item.Settings?.GenerateCss<IOverlayProperties>(Compositions.OVERLAY);
 
             try
             {
-                <div id="overlay_@item.Content.ContentType.Alias" class="hero-background w-full" style="@backgroundImageStyle">
+                <div id="overlay_@item.Content.ContentType.Alias" class="hero-background relative w-full" style="@backgroundImageStyle">
+
+                    @if (!string.IsNullOrWhiteSpace(overlayStyle))
+                    {
+                        <div class="absolute h-full w-full" style="@overlayStyle"></div>
+                    }
+
                     @await Html.PartialAsync(partialViewName, item)
                 </div>
             }
