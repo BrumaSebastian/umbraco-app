@@ -5,7 +5,7 @@
     var allignStyle = Model.Settings?.GenerateCss<IAlignItemsProperties>();
 }
 
-<div class="flex flex-col" style="@marginStyle@paddingStyle@allignStyle">
+<div class="flex flex-col gap-2" style="@marginStyle@paddingStyle@allignStyle">
     <h1 class="text-3xl">@Model.Content.Title</h1>
     <p class="text-md">@Model.Content.Subtitle</p>
     <div class="flex gap-2">

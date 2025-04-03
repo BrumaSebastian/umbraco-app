@@ -9,11 +9,13 @@
 
 <div id="layout1x1_1x3" class="@themeColorsCss w-full" style="@layoutStyles">
     <div class="flex w-full flex-col">
-        @await Html.GetBlockGridItemsHtmlAsync(areas[0])
+        <div id="@areas[0].Alias">
+            @await Html.GetBlockGridItemsHtmlAsync(areas[0])
+        </div>
         <div class="grid md:grid-cols-3" style="@gridStyles">
             @for (int i = 1; i < 4; i++)
             {
-                <div class="area">
+                <div id="@areas[i].Alias">
                     @await Html.GetBlockGridItemsHtmlAsync(areas[i], "itemsSimple")
                 </div>
             }

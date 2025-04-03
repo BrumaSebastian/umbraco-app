@@ -66,6 +66,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual string GridItemAlignItems => global::Umbraco.Cms.Web.Common.PublishedModels.GridLayoutItemProperties.GetGridItemAlignItems(this, _publishedValueFallback);
 
 		///<summary>
+		/// Grid Item Background Image
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("gridItemBackgroundImage")]
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops GridItemBackgroundImage => global::Umbraco.Cms.Web.Common.PublishedModels.GridLayoutItemProperties.GetGridItemBackgroundImage(this, _publishedValueFallback);
+
+		///<summary>
 		/// Justify Content
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]

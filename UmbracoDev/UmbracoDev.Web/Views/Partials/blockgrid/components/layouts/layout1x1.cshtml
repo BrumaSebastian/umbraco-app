@@ -1,0 +1,14 @@
+﻿@inherits UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<Layout1X1, Layout1X1Settings>>
+
+@{
+    if (Model?.Areas.Count() != 1) { return; }
+    var themeColorsCss = Model.Settings?.GetThemeClasses();
+    var layoutStyle = Model.Settings?.GenerateCss<ILayoutProperties>("layout");
+    var areas = Model.Areas.ToList();
+}
+
+    <div id="layout_1x1" class="@themeColorsCss bg-black opacity-50" style="@layoutStyle">
+        <div id="@areas[0].Alias">
+            @await Html.GetBlockGridItemsHtmlAsync(areas[0], "itemsSimple")
+        </div>
+    </div>

@@ -40,6 +40,12 @@
     grid-row: span var(--umb-block-grid--area-row-span, 1);
 }
 
+.hero-background {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 @media (min-width: 1024px) {
     .umb-block-grid__layout-item {
         grid-column-end: span min(var(--item-column-span, 1), var(--grid-columns));
@@ -50,3 +56,4 @@
         grid-column-end: span min(var(--area-column-span, 1), var(--area-grid-columns));
     }
 }
+

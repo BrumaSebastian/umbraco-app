@@ -1,0 +1,31 @@
+﻿@inherits UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<Layout1x2_1x3, Layout1X2_1X3Settings>>
+
+@{
+    var themeColorsCss = Model.Settings?.GetThemeClasses();
+    var layoutStyles = Model.Settings?.GenerateCss<ILayoutProperties>("layout");
+    var gridStyles = Model.Settings?.GenerateCss<IGridGapProperties>();
+    var column1Styles = Model.Settings?.GenerateCss<IColumn1Properties>("column1");
+    var column2Styles = Model.Settings?.GenerateCss<IColumn2Properties>("column2");
+    var areas = Model.Areas.ToList();
+}
+
+<div id="layout1x1_1x3" class="@themeColorsCss w-full" style="@layoutStyles">
+    <div class="flex w-full flex-col gap-5">
+        <div class="grid md:grid-cols-2" style="@gridStyles">
+            <div id="@areas[0].Alias" style="@column1Styles">
+                @await Html.GetBlockGridItemsHtmlAsync(areas[0], "itemsSimple")
+            </div>
+            <div id="@areas[1].Alias" style="@column2Styles">
+                @await Html.GetBlockGridItemsHtmlAsync(areas[1], "itemsSimple")
+            </div>
+        </div>
+        <div class="grid md:grid-cols-3" style="@gridStyles">
+            @for (int i = 2; i < 5; i++)
+            {
+                <div id="@areas[i].Alias">
+                    @await Html.GetBlockGridItemsHtmlAsync(areas[i], "itemsSimple")
+                </div>
+            }
+        </div>
+    </div>
+</div>
