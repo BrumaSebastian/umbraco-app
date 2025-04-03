@@ -9,25 +9,28 @@
 {
     var gridItemStyle = item.Settings?.GenerateCss<IGridLayoutItemProperties>(Compositions.GRID_ITEM);
 
-    <div class="umb-block-grid__layout-item"
-    style="--item-column-span:@item.ColumnSpan; --item-row-span:@item.RowSpan;@gridItemStyle">
+    <div class="umb-block-grid__layout-item relative" style="--item-column-span:@item.ColumnSpan; --item-row-span:@item.RowSpan;@gridItemStyle">
         @{
-            bool isLayout = item.Content.ContentType.Alias.Contains("layout");
+            bool isLayout = item.Content.ContentType.Alias.Contains("layout", StringComparison.InvariantCultureIgnoreCase);
             var partialViewName = $"blockgrid/components/{(isLayout ? "layouts/" : "")}" + item.Content.ContentType.Alias;
             var backgroundImageStyle = item.Settings?.GenerateCss<IBackgroundImageProperties>();
             var overlayStyle = item.Settings?.GenerateCss<IOverlayProperties>(Compositions.OVERLAY);
 
+            <div id="overlay_@item.Content.ContentType.Alias" class="absolute h-full w-full">
+                @if (!string.IsNullOrWhiteSpace(backgroundImageStyle))
+                {
+                    <div class="hero-background absolute h-full w-full" style="@backgroundImageStyle"> </div>
+                }
+
+                @if (!string.IsNullOrWhiteSpace(overlayStyle))
+                {
+                    <div class="absolute z-1 h-full w-full" style="@overlayStyle"></div>
+                }
+            </div>
+
             try
             {
-                <div id="overlay_@item.Content.ContentType.Alias" class="hero-background relative w-full" style="@backgroundImageStyle">
-
-                    @if (!string.IsNullOrWhiteSpace(overlayStyle))
-                    {
-                        <div class="absolute h-full w-full" style="@overlayStyle"></div>
-                    }
-
-                    @await Html.PartialAsync(partialViewName, item)
-                </div>
+                @await Html.PartialAsync(partialViewName, item)
             }
             catch (InvalidOperationException)
             {

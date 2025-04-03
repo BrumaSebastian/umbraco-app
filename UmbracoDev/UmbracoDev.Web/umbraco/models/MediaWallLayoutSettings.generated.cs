@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>Media Wall Layout Settings</summary>
 	[PublishedModel("mediaWallLayoutSettings")]
-	public partial class MediaWallLayoutSettings : PublishedElementModel, IContainerStylingProperties, IGridLayoutItemProperties
+	public partial class MediaWallLayoutSettings : PublishedElementModel, IContainerStylingProperties, IGridGapProperties, IGridLayoutItemProperties
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -120,6 +120,13 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[ImplementPropertyType("containerPaddingTop")]
 		public virtual int ContainerPaddingTop => global::Umbraco.Cms.Web.Common.PublishedModels.ContainerStylingProperties.GetContainerPaddingTop(this, _publishedValueFallback);
+
+		///<summary>
+		/// Gap
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[ImplementPropertyType("gap")]
+		public virtual int Gap => global::Umbraco.Cms.Web.Common.PublishedModels.GridGapProperties.GetGap(this, _publishedValueFallback);
 
 		///<summary>
 		/// Align Items

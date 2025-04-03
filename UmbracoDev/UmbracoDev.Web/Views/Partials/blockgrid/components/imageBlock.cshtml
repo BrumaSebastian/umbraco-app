@@ -1,10 +1,10 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<ImageBlock, ImageBlockSettings>>
 @{
+    if (Model.Content.Image is null) return;
     var paddingStyle = Model.Settings?.GenerateCss<IPaddingProperties>();
 }
 
 <div class="justify-self-center" style="@paddingStyle">
-
     <img class="" src="@Model.Content.Image.GetCropUrl()" alt="alt text"
          style="width: 100%; height: 100%; object-fit:contain;" />
 </div>

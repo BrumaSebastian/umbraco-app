@@ -46,6 +46,11 @@
     background-repeat: no-repeat;
 }
 
+.layout {
+    z-index: 10;
+    position: relative;
+}
+
 @media (min-width: 1024px) {
     .umb-block-grid__layout-item {
         grid-column-end: span min(var(--item-column-span, 1), var(--grid-columns));

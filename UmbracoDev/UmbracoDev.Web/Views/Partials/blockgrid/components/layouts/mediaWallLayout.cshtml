@@ -1,0 +1,16 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<MediaWallLayout, MediaWallLayoutSettings>>
+@{
+    var layoutStyle = Model.Settings?.GenerateCss<ILayoutProperties>(Compositions.LAYOUT);
+    var gridStyles = Model.Settings?.GenerateCss<IGridGapProperties>();
+}
+
+@* @await Html.GetBlockGridItemAreasHtmlAsync(Model) *@
+
+<div id="layout_mediaWall" class="max-w-lg" style="@layoutStyle">
+    <div class="grid grid-cols-2" style="@gridStyles">
+        @foreach (var area in Model.Areas)
+        {
+            @await Html.GetBlockGridItemsHtmlAsync(area, Components.ITEMS_SIMPLE)
+        }
+    </div>
+</div>
