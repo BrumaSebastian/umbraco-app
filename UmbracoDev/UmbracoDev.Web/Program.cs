@@ -8,7 +8,7 @@ builder.CreateUmbracoBuilder()
     .AddWebsite()
     .AddDeliveryApi()
     .AddComposers()
-    //.AddNotificationAsyncHandler<ContentSavedNotification, GenerateTailwindClasses>()
+    .AddNotificationAsyncHandler<ContentSavedNotification, GenerateTailwindClasses>()
     .Build();
 
 if (builder.Environment.IsDevelopment())
