@@ -10,24 +10,24 @@
     <div class="grid grid-cols-1 sm:grid-cols-2" style="@gridStyles">
         <div class="grid-masonry">
             <div style="block-size: calc(1em * @size);">
-                @await Html.GetBlockGridItemsHtmlAsync(areas[0], Components.ITEMS_SIMPLE)
+                @await Html.GetBlockGridItemsHtmlAsync(areas[0])
             </div>
             <div style="block-size: calc(2em * @size);">
-                @await Html.GetBlockGridItemsHtmlAsync(areas[1], Components.ITEMS_SIMPLE)
+                @await Html.GetBlockGridItemsHtmlAsync(areas[1])
             </div>
             <div style="block-size: calc(2em * @size);">
-                @await Html.GetBlockGridItemsHtmlAsync(areas[2], Components.ITEMS_SIMPLE)
+                @await Html.GetBlockGridItemsHtmlAsync(areas[2])
             </div>
         </div>
         <div class="grid-masonry">
             <div style="block-size: calc(2em * @size);">
-                @await Html.GetBlockGridItemsHtmlAsync(areas[0], Components.ITEMS_SIMPLE)
+                @await Html.GetBlockGridItemsHtmlAsync(areas[3])
             </div>
             <div style="block-size: calc(2em * @size);">
-                @await Html.GetBlockGridItemsHtmlAsync(areas[1], Components.ITEMS_SIMPLE)
+                @await Html.GetBlockGridItemsHtmlAsync(areas[4])
             </div>
             <div style="block-size: calc(1em * @size);">
-                @await Html.GetBlockGridItemsHtmlAsync(areas[2], Components.ITEMS_SIMPLE)
+                @await Html.GetBlockGridItemsHtmlAsync(areas[5])
             </div>
         </div>
     </div>

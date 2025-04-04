@@ -2,5 +2,6 @@
 
 public static class Components
 {
-    public const string ITEMS_SIMPLE = "itemsSimple";
+    public const string ITEMS_GRID = "itemsGrid";
+    public const string ITEMS_LAYOUT = "itemsLayout";
 }

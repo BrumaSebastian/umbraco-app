@@ -6,7 +6,7 @@
 
 @foreach (var item in Model)
 {
-    var partialViewName = $"blockgrid/components/" + item.Content.ContentType.Alias;
+    var partialViewName = $"blockgrid/components/layouts/" + item.Content.ContentType.Alias;
 
     try
     {

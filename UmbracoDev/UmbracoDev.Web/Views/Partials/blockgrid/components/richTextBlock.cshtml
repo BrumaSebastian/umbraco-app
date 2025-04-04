@@ -4,6 +4,6 @@
     var marginStyle = Model.Settings?.GenerateCss<IMarginProperties>();
 }
 
-<div style="@paddingStyle@marginStyle">
+<div id="@Model.Content.ContentType.Alias" style="@paddingStyle@marginStyle">
     @Html.Raw(Model.Content.Text)
 </div>

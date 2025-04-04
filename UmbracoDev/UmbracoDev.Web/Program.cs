@@ -1,4 +1,5 @@
-using UmbracoDev.Web.HostedServices;
+using Umbraco.Cms.Core.Notifications;
+using UmbracoDev.Web.Handlers.Notifications;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,7 @@ builder.CreateUmbracoBuilder()
     .AddWebsite()
     .AddDeliveryApi()
     .AddComposers()
+    //.AddNotificationAsyncHandler<ContentSavedNotification, GenerateTailwindClasses>()
     .Build();
 
 if (builder.Environment.IsDevelopment())

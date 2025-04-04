@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Composers\" />
     <Folder Include="wwwroot\app_plugins\" />
     <Folder Include="wwwroot\assets\" />
   </ItemGroup>

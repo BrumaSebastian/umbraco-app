@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>Image Block Settings</summary>
 	[PublishedModel("imageBlockSettings")]
-	public partial class ImageBlockSettings : PublishedElementModel, IImageBlockProperties, IPaddingProperties
+	public partial class ImageBlockSettings : PublishedElementModel, IImageBlockProperties, IPaddingProperties, ITwBorderRadiusProperties
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -98,5 +98,13 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[ImplementPropertyType("paddingTop")]
 		public virtual int PaddingTop => global::Umbraco.Cms.Web.Common.PublishedModels.PaddingProperties.GetPaddingTop(this, _publishedValueFallback);
+
+		///<summary>
+		/// Border Size: Select the border radius size
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("twRounded")]
+		public virtual string TwRounded => global::Umbraco.Cms.Web.Common.PublishedModels.TwBorderRadiusProperties.GetTwRounded(this, _publishedValueFallback);
 	}
 }
