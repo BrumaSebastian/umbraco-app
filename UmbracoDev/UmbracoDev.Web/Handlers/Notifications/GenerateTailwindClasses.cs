@@ -15,7 +15,7 @@ public class GenerateTailwindClasses : INotificationAsyncHandler<ContentSavedNot
         foreach (var content in notification.SavedEntities)
         {
             var contentProperties = content.Properties
-                .Where(p => p.PropertyType.PropertyEditorAlias == "Umbraco.BlockGrid"
+                .Where(p => p.PropertyType.PropertyEditorAlias == "Umbraco.BlockGrid" 
                     || p.PropertyType.PropertyEditorAlias == "Umbraco.BlockList");
 
             foreach (var property in contentProperties)
@@ -27,8 +27,7 @@ public class GenerateTailwindClasses : INotificationAsyncHandler<ContentSavedNot
                 var blockItems = JsonConvert.DeserializeObject<BlockItem>(value);
                 var tailwindSettings = blockItems?.SettingsData
                     .SelectMany(sd => sd.Values)
-                    .Where(sd => sd.Alias.StartsWith(TAILWIND_PREFIX))
-                    .ToList();
+                    .Where(sd => sd.Alias.StartsWith(TAILWIND_PREFIX));
 
                 ConstructTailwindClasses(tailwindSettings, tailwindClasses);
             }
@@ -36,12 +35,12 @@ public class GenerateTailwindClasses : INotificationAsyncHandler<ContentSavedNot
 
         var jsonObject = JsonConvert.SerializeObject(tailwindClasses, Formatting.Indented);
         string filePath = Path.Combine($"{Directory.GetCurrentDirectory()}/Styles/", "data.json");
-        await File.WriteAllTextAsync(filePath, jsonObject);
+        await File.WriteAllTextAsync(filePath, jsonObject, cancellationToken);
 
         return;
     }
 
-    private static void ConstructTailwindClasses(List<Setting> tailwindSettings, HashSet<string> tailwindClasses)
+    private static void ConstructTailwindClasses(IEnumerable<Setting> tailwindSettings, HashSet<string> tailwindClasses)
     {
         foreach (var setting in tailwindSettings)
         {
