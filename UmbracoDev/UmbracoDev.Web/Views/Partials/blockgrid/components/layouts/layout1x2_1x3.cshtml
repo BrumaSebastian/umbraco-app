@@ -12,20 +12,13 @@
 <div id="layout1x1_1x3" class="@themeColorsCss w-full" style="@layoutStyles">
     <div class="flex w-full flex-col gap-5">
         <div class="grid md:grid-cols-2" style="@gridStyles">
-            <div id="@areas[0].Alias" style="@column1Styles">
-                @await Html.GetBlockGridItemsHtmlAsync(areas[0])
-            </div>
-            <div id="@areas[1].Alias" style="@column2Styles">
-                @await Html.GetBlockGridItemsHtmlAsync(areas[1])
-            </div>
+            @await Html.GetBlockGridItemsHtmlAsync(areas[0], Components.ITEMS_LAYOUT)
+            @await Html.GetBlockGridItemsHtmlAsync(areas[1], Components.ITEMS_LAYOUT)
         </div>
         <div class="grid md:grid-cols-3" style="@gridStyles">
-            @for (int i = 2; i < 5; i++)
-            {
-                <div id="@areas[i].Alias">
-                    @await Html.GetBlockGridItemsHtmlAsync(areas[i])
-                </div>
-            }
+            @await Html.GetBlockGridItemsHtmlAsync(areas[2], Components.ITEMS_LAYOUT)
+            @await Html.GetBlockGridItemsHtmlAsync(areas[3], Components.ITEMS_LAYOUT)
+            @await Html.GetBlockGridItemsHtmlAsync(areas[4], Components.ITEMS_LAYOUT)
         </div>
     </div>
 </div>
