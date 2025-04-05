@@ -3,8 +3,9 @@
     if (Model.Content.Image is null) return;
     var paddingStyle = Model.Settings?.GenerateCss<IPaddingProperties>();
     var imageStyle = Model.Settings?.GenerateCss<IImageBlockProperties>(Compositions.IMAGE);
-    // var src = Model.Content.Image.Path == "" ? "/assets/placeholder_400x300.png" : Model.Content.Image.GetCropUrl();
+    bool mediaExists = Model.Content.Image.Content.GetProperty("umbracoBytes")?.HasValue() ?? false;
+    var src = mediaExists ? Model.Content.Image.GetCropUrl() : "/assets/placeholder_400x300.png";
 }
 
-<img class="rounded-md" src="@Model.Content.Image.GetCropUrl()" alt="alt text" style="@imageStyle" />
+<img class="rounded-md" src="@src" alt="alt text" style="@imageStyle" />
 
