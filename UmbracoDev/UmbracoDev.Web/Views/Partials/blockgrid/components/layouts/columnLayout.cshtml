@@ -1,4 +1,4 @@
-﻿@inherits UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<ColumnLayout, ColumnSettings>>
+﻿@* @inherits UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<ColumnLayout, ColumnSettings>>
 
 @{
     var area = Model?.Areas.SingleOrDefault();
@@ -11,3 +11,4 @@
 <div id="@area.Alias" style="@columnStyle">
     @await Html.GetBlockGridItemsHtmlAsync(area)
 </div>
+ *@

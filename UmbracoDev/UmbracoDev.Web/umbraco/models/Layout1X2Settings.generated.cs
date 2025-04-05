@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>Layout 1x2 Settings</summary>
 	[PublishedModel("layout1X2Settings")]
-	public partial class Layout1X2Settings : PublishedElementModel, IGridGapProperties, ILayoutProperties, IThemeProperties
+	public partial class Layout1X2Settings : PublishedElementModel, IGridGapProperties, ILayoutProperties, ITwThemeProperties
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -113,51 +113,141 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual int LayoutPaddingTop => global::Umbraco.Cms.Web.Common.PublishedModels.LayoutProperties.GetLayoutPaddingTop(this, _publishedValueFallback);
 
 		///<summary>
-		/// Dark Mode Accent Color
+		/// Dark Mode Accent
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("darkModeAccentColor")]
-		public virtual global::Umbraco.Cms.Core.PropertyEditors.ValueConverters.ColorPickerValueConverter.PickedColor DarkModeAccentColor => global::Umbraco.Cms.Web.Common.PublishedModels.ThemeProperties.GetDarkModeAccentColor(this, _publishedValueFallback);
+		[ImplementPropertyType("darkModeAccent")]
+		public virtual bool DarkModeAccent => global::Umbraco.Cms.Web.Common.PublishedModels.TwThemeProperties.GetDarkModeAccent(this, _publishedValueFallback);
 
 		///<summary>
-		/// Dark Mode Background Color
+		/// Dark Mode Background
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("darkModeBackgroundColor")]
-		public virtual global::Umbraco.Cms.Core.PropertyEditors.ValueConverters.ColorPickerValueConverter.PickedColor DarkModeBackgroundColor => global::Umbraco.Cms.Web.Common.PublishedModels.ThemeProperties.GetDarkModeBackgroundColor(this, _publishedValueFallback);
+		[ImplementPropertyType("darkModeBackground")]
+		public virtual bool DarkModeBackground => global::Umbraco.Cms.Web.Common.PublishedModels.TwThemeProperties.GetDarkModeBackground(this, _publishedValueFallback);
 
 		///<summary>
-		/// Dark Mode Text Color
+		/// Dark Mode Text
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("darkModeTextColor")]
-		public virtual global::Umbraco.Cms.Core.PropertyEditors.ValueConverters.ColorPickerValueConverter.PickedColor DarkModeTextColor => global::Umbraco.Cms.Web.Common.PublishedModels.ThemeProperties.GetDarkModeTextColor(this, _publishedValueFallback);
+		[ImplementPropertyType("darkModeText")]
+		public virtual bool DarkModeText => global::Umbraco.Cms.Web.Common.PublishedModels.TwThemeProperties.GetDarkModeText(this, _publishedValueFallback);
 
 		///<summary>
-		/// Light Mode Accent Color
+		/// Light Mode Accent
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("lightModeAccentColor")]
-		public virtual global::Umbraco.Cms.Core.PropertyEditors.ValueConverters.ColorPickerValueConverter.PickedColor LightModeAccentColor => global::Umbraco.Cms.Web.Common.PublishedModels.ThemeProperties.GetLightModeAccentColor(this, _publishedValueFallback);
+		[ImplementPropertyType("lightModeAccent")]
+		public virtual bool LightModeAccent => global::Umbraco.Cms.Web.Common.PublishedModels.TwThemeProperties.GetLightModeAccent(this, _publishedValueFallback);
 
 		///<summary>
-		/// Light Mode Background Color
+		/// Light Mode Background
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("lightModeBackgroundColor")]
-		public virtual global::Umbraco.Cms.Core.PropertyEditors.ValueConverters.ColorPickerValueConverter.PickedColor LightModeBackgroundColor => global::Umbraco.Cms.Web.Common.PublishedModels.ThemeProperties.GetLightModeBackgroundColor(this, _publishedValueFallback);
+		[ImplementPropertyType("lightModeBackground")]
+		public virtual bool LightModeBackground => global::Umbraco.Cms.Web.Common.PublishedModels.TwThemeProperties.GetLightModeBackground(this, _publishedValueFallback);
 
 		///<summary>
-		/// Light Mode Text Color
+		/// Light Mode Text
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[ImplementPropertyType("lightModeText")]
+		public virtual bool LightModeText => global::Umbraco.Cms.Web.Common.PublishedModels.TwThemeProperties.GetLightModeText(this, _publishedValueFallback);
+
+		///<summary>
+		/// Dark Mode Custom Accent Color
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("lightModeTextColor")]
-		public virtual global::Umbraco.Cms.Core.PropertyEditors.ValueConverters.ColorPickerValueConverter.PickedColor LightModeTextColor => global::Umbraco.Cms.Web.Common.PublishedModels.ThemeProperties.GetLightModeTextColor(this, _publishedValueFallback);
+		[ImplementPropertyType("twDarkModeCustomAccentColor")]
+		public virtual string TwDarkModeCustomAccentColor => global::Umbraco.Cms.Web.Common.PublishedModels.TwThemeProperties.GetTwDarkModeCustomAccentColor(this, _publishedValueFallback);
+
+		///<summary>
+		/// Dark Mode Custom Background Color
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("twDarkModeCustomBackgroundColor")]
+		public virtual string TwDarkModeCustomBackgroundColor => global::Umbraco.Cms.Web.Common.PublishedModels.TwThemeProperties.GetTwDarkModeCustomBackgroundColor(this, _publishedValueFallback);
+
+		///<summary>
+		/// Dark Mode Custom Text Color
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("twDarkModeCustomTextColor")]
+		public virtual string TwDarkModeCustomTextColor => global::Umbraco.Cms.Web.Common.PublishedModels.TwThemeProperties.GetTwDarkModeCustomTextColor(this, _publishedValueFallback);
+
+		///<summary>
+		/// Dark Mode Preset Accent Color
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("twDarkModePresetAccentColor")]
+		public virtual global::Umbraco.Cms.Core.PropertyEditors.ValueConverters.ColorPickerValueConverter.PickedColor TwDarkModePresetAccentColor => global::Umbraco.Cms.Web.Common.PublishedModels.TwThemeProperties.GetTwDarkModePresetAccentColor(this, _publishedValueFallback);
+
+		///<summary>
+		/// Dark Mode Preset Background Color
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("twDarkModePresetBackgroundColor")]
+		public virtual global::Umbraco.Cms.Core.PropertyEditors.ValueConverters.ColorPickerValueConverter.PickedColor TwDarkModePresetBackgroundColor => global::Umbraco.Cms.Web.Common.PublishedModels.TwThemeProperties.GetTwDarkModePresetBackgroundColor(this, _publishedValueFallback);
+
+		///<summary>
+		/// Dark Mode Preset Text Color
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("twDarkModePresetTextColor")]
+		public virtual global::Umbraco.Cms.Core.PropertyEditors.ValueConverters.ColorPickerValueConverter.PickedColor TwDarkModePresetTextColor => global::Umbraco.Cms.Web.Common.PublishedModels.TwThemeProperties.GetTwDarkModePresetTextColor(this, _publishedValueFallback);
+
+		///<summary>
+		/// Light Mode Custom Accent Color
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("twLightModeCustomAccentColor")]
+		public virtual string TwLightModeCustomAccentColor => global::Umbraco.Cms.Web.Common.PublishedModels.TwThemeProperties.GetTwLightModeCustomAccentColor(this, _publishedValueFallback);
+
+		///<summary>
+		/// Light Mode Custom Background Color
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("twLightModeCustomBackgroundColor")]
+		public virtual string TwLightModeCustomBackgroundColor => global::Umbraco.Cms.Web.Common.PublishedModels.TwThemeProperties.GetTwLightModeCustomBackgroundColor(this, _publishedValueFallback);
+
+		///<summary>
+		/// Light Mode Custom Text Color
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("twLightModeCustomTextColor")]
+		public virtual string TwLightModeCustomTextColor => global::Umbraco.Cms.Web.Common.PublishedModels.TwThemeProperties.GetTwLightModeCustomTextColor(this, _publishedValueFallback);
+
+		///<summary>
+		/// Light Mode Preset Accent Color: Select the accent color from predefined colors
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("twLightModePresetAccentColor")]
+		public virtual global::Umbraco.Cms.Core.PropertyEditors.ValueConverters.ColorPickerValueConverter.PickedColor TwLightModePresetAccentColor => global::Umbraco.Cms.Web.Common.PublishedModels.TwThemeProperties.GetTwLightModePresetAccentColor(this, _publishedValueFallback);
+
+		///<summary>
+		/// Light Mode Preset Background Color: Select the background color from predefined colors
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("twLightModePresetBackgroundColor")]
+		public virtual global::Umbraco.Cms.Core.PropertyEditors.ValueConverters.ColorPickerValueConverter.PickedColor TwLightModePresetBackgroundColor => global::Umbraco.Cms.Web.Common.PublishedModels.TwThemeProperties.GetTwLightModePresetBackgroundColor(this, _publishedValueFallback);
+
+		///<summary>
+		/// Light Mode Preset Text Color: Select the text color from predefined colors
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("twLightModePresetTextColor")]
+		public virtual global::Umbraco.Cms.Core.PropertyEditors.ValueConverters.ColorPickerValueConverter.PickedColor TwLightModePresetTextColor => global::Umbraco.Cms.Web.Common.PublishedModels.TwThemeProperties.GetTwLightModePresetTextColor(this, _publishedValueFallback);
 	}
 }

@@ -18,19 +18,9 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
-	// Mixin Content Type with alias "twBorderRadiusProperties"
-	/// <summary>TW Border Radius Properties</summary>
-	public partial interface ITwBorderRadiusProperties : IPublishedElement
-	{
-		/// <summary>Border Size</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		string TwRounded { get; }
-	}
-
 	/// <summary>TW Border Radius Properties</summary>
 	[PublishedModel("twBorderRadiusProperties")]
-	public partial class TwBorderRadiusProperties : PublishedElementModel, ITwBorderRadiusProperties
+	public partial class TwBorderRadiusProperties : PublishedElementModel
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -60,16 +50,11 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// Border Size: Select the border radius size
+		/// Rounded
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("twRounded")]
-		public virtual string TwRounded => GetTwRounded(this, _publishedValueFallback);
-
-		/// <summary>Static getter for Border Size</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static string GetTwRounded(ITwBorderRadiusProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "twRounded");
+		public virtual string TwRounded => this.Value<string>(_publishedValueFallback, "twRounded");
 	}
 }

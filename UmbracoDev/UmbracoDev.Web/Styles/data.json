@@ -1,3 +1,8 @@
 [
-  "rounded-sm"
+  "accent-[#CA6C6C]",
+  "text-[#000000]",
+  "bg-[#EEEED5]",
+  "dark:accent-[#F0D5D5]",
+  "dark:text-[#F2F2F2]",
+  "dark:bg-[#33330D]"
 ]
