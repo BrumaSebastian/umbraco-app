@@ -1,14 +1,14 @@
 [
-  "accent-[#7ED321]",
-  "text-[#040A3E]",
-  "bg-[#FF0000]",
-  "accent-[#CA6C6C]",
+  "bg-[#0936c8e6]",
+  "dark:accent-[#CA6C6C]",
+  "dark:text-[#000000]",
+  "dark:bg-[#454512]",
+  "accent-[#B42D2D]",
   "text-[#000000]",
-  "bg-[#EEEED5]",
-  "dark:accent-[#F0D5D5]",
-  "dark:text-[#F2F2F2]",
-  "dark:bg-[#33330D]",
-  "dark:accent-[#85ED1DE3]",
-  "dark:text-[#E20808F0]",
-  "dark:bg-[#AE0FCD]"
+  "bg-[#F6F6EA]",
+  "mr-15",
+  "ml-15",
+  "mt-15",
+  "mb-15",
+  "gap-5"
 ]

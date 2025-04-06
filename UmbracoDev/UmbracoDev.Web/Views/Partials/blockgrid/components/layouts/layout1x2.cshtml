@@ -2,15 +2,14 @@
 
 @{
     if (Model?.Areas.Count() != 2) { return; }
-    // var themeColorsCss = Model.Settings?.GetThemeClasses(); @themeColorsCss
     var themeClasses = Model.Settings?.GenerateTailwindClasses<ITwThemeProperties>();
-    var layoutStyle = Model.Settings?.GenerateCss<ILayoutProperties>(Compositions.LAYOUT);
-    var gridStyles = Model.Settings?.GenerateCss<IGridGapProperties>();
+    var layoutClasses = Model.Settings?.GenerateTailwindClasses<ITwLayoutProperties>();
+    var layoutGapClass = Model.Settings?.GenerateTailwindClasses<ITwLayoutGapProperties>();
     var areas = Model.Areas.ToList();
 }
 
 <div id="layout1x2" class=" w-full">
-    <div class="grid md:grid-cols-2 @themeClasses" style="@gridStyles">
+    <div class="grid md:grid-cols-2 @themeClasses @layoutClasses @layoutGapClass">
         @foreach(var area in areas) @await Html.GetBlockGridItemsHtmlAsync(area, Components.ITEMS_LAYOUT)
     </div>
 </div>

@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>Layout 1x2 Settings</summary>
 	[PublishedModel("layout1X2Settings")]
-	public partial class Layout1X2Settings : PublishedElementModel, IGridGapProperties, ILayoutProperties, ITwThemeProperties
+	public partial class Layout1X2Settings : PublishedElementModel, ITwLayoutGapProperties, ITwLayoutProperties, ITwThemeProperties
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -53,64 +53,64 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		/// Gap
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("gap")]
-		public virtual int Gap => global::Umbraco.Cms.Web.Common.PublishedModels.GridGapProperties.GetGap(this, _publishedValueFallback);
+		[ImplementPropertyType("twLayoutGap")]
+		public virtual int TwLayoutGap => global::Umbraco.Cms.Web.Common.PublishedModels.TwLayoutGapProperties.GetTwLayoutGap(this, _publishedValueFallback);
 
 		///<summary>
-		/// Layout Margin Bottom
+		/// Margin Bottom
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("layoutMarginBottom")]
-		public virtual int LayoutMarginBottom => global::Umbraco.Cms.Web.Common.PublishedModels.LayoutProperties.GetLayoutMarginBottom(this, _publishedValueFallback);
+		[ImplementPropertyType("twMarginBottom")]
+		public virtual int TwMarginBottom => global::Umbraco.Cms.Web.Common.PublishedModels.TwLayoutProperties.GetTwMarginBottom(this, _publishedValueFallback);
 
 		///<summary>
-		/// Layout Margin Left
+		/// Margin Left
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("layoutMarginLeft")]
-		public virtual int LayoutMarginLeft => global::Umbraco.Cms.Web.Common.PublishedModels.LayoutProperties.GetLayoutMarginLeft(this, _publishedValueFallback);
+		[ImplementPropertyType("twMarginLeft")]
+		public virtual int TwMarginLeft => global::Umbraco.Cms.Web.Common.PublishedModels.TwLayoutProperties.GetTwMarginLeft(this, _publishedValueFallback);
 
 		///<summary>
-		/// Layout Margin Right
+		/// Margin Right
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("layoutMarginRight")]
-		public virtual int LayoutMarginRight => global::Umbraco.Cms.Web.Common.PublishedModels.LayoutProperties.GetLayoutMarginRight(this, _publishedValueFallback);
+		[ImplementPropertyType("twMarginRight")]
+		public virtual int TwMarginRight => global::Umbraco.Cms.Web.Common.PublishedModels.TwLayoutProperties.GetTwMarginRight(this, _publishedValueFallback);
 
 		///<summary>
-		/// Layout Margin Top
+		/// Margin Top
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("layoutMarginTop")]
-		public virtual int LayoutMarginTop => global::Umbraco.Cms.Web.Common.PublishedModels.LayoutProperties.GetLayoutMarginTop(this, _publishedValueFallback);
+		[ImplementPropertyType("twMarginTop")]
+		public virtual int TwMarginTop => global::Umbraco.Cms.Web.Common.PublishedModels.TwLayoutProperties.GetTwMarginTop(this, _publishedValueFallback);
 
 		///<summary>
-		/// Layout Padding Bottom
+		/// Padding Bottom
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("layoutPaddingBottom")]
-		public virtual int LayoutPaddingBottom => global::Umbraco.Cms.Web.Common.PublishedModels.LayoutProperties.GetLayoutPaddingBottom(this, _publishedValueFallback);
+		[ImplementPropertyType("twPaddingBottom")]
+		public virtual int TwPaddingBottom => global::Umbraco.Cms.Web.Common.PublishedModels.TwLayoutProperties.GetTwPaddingBottom(this, _publishedValueFallback);
 
 		///<summary>
-		/// Layout Padding Left
+		/// Padding Left
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("layoutPaddingLeft")]
-		public virtual int LayoutPaddingLeft => global::Umbraco.Cms.Web.Common.PublishedModels.LayoutProperties.GetLayoutPaddingLeft(this, _publishedValueFallback);
+		[ImplementPropertyType("twPaddingLeft")]
+		public virtual int TwPaddingLeft => global::Umbraco.Cms.Web.Common.PublishedModels.TwLayoutProperties.GetTwPaddingLeft(this, _publishedValueFallback);
 
 		///<summary>
-		/// Layout Padding Right
+		/// Padding Right
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("layoutPaddingRight")]
-		public virtual int LayoutPaddingRight => global::Umbraco.Cms.Web.Common.PublishedModels.LayoutProperties.GetLayoutPaddingRight(this, _publishedValueFallback);
+		[ImplementPropertyType("twPaddingRight")]
+		public virtual int TwPaddingRight => global::Umbraco.Cms.Web.Common.PublishedModels.TwLayoutProperties.GetTwPaddingRight(this, _publishedValueFallback);
 
 		///<summary>
-		/// Layout Padding Top
+		/// Padding Top
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("layoutPaddingTop")]
-		public virtual int LayoutPaddingTop => global::Umbraco.Cms.Web.Common.PublishedModels.LayoutProperties.GetLayoutPaddingTop(this, _publishedValueFallback);
+		[ImplementPropertyType("twPaddingTop")]
+		public virtual int TwPaddingTop => global::Umbraco.Cms.Web.Common.PublishedModels.TwLayoutProperties.GetTwPaddingTop(this, _publishedValueFallback);
 
 		///<summary>
 		/// Dark Mode Accent

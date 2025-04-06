@@ -1,7 +1,10 @@
-﻿using System.Text.Json;
+﻿using NuGet.Packaging;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Umbraco.Cms.Core.Events;
+using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.Notifications;
+using Umbraco.Cms.Core.Services;
 using UmbracoDev.Web.Helpers.Css;
 using static Umbraco.Cms.Core.PropertyEditors.ValueConverters.ColorPickerValueConverter;
 
@@ -9,6 +12,8 @@ namespace UmbracoDev.Web.Handlers.Notifications;
 
 public class GenerateTailwindClasses : INotificationAsyncHandler<ContentSavedNotification>
 {
+    private readonly IContentService _contentService;
+
     private static readonly JsonSerializerOptions JsonSerializerOptions = new()
     {
         WriteIndented = true
@@ -17,17 +22,35 @@ public class GenerateTailwindClasses : INotificationAsyncHandler<ContentSavedNot
     private readonly string _tailwindOutputPath;
     private readonly ILogger<GenerateTailwindClasses> _logger;
 
-    public GenerateTailwindClasses(ILogger<GenerateTailwindClasses> logger)
+    public GenerateTailwindClasses(ILogger<GenerateTailwindClasses> logger, IContentService contentService)
     {
         _logger = logger;
         _tailwindOutputPath = Path.Combine($"{Directory.GetCurrentDirectory()}/Styles/", "data.json");
+        _contentService = contentService;
     }
 
     public async Task HandleAsync(ContentSavedNotification notification, CancellationToken cancellationToken)
     {
+        var rootContent = _contentService.GetRootContent().ToList();
+        List<IContent> allContentNodes = new();
+
+        foreach (var root in rootContent)
+        {
+            allContentNodes.Add(root);
+            allContentNodes.AddRange(GetAllDescendants(_contentService, root.Id));
+        }
+
         HashSet<string> tailwindClasses = new();
 
-        foreach (var content in notification.SavedEntities)
+        // Construct Site Settings
+        var siteSettings = allContentNodes.SingleOrDefault(n => n.ContentType.Alias == "siteSettings");
+        var siteTailwindProperties = siteSettings?.Properties
+         .Where(p => p.Alias.StartsWith(TailwindClassBuilderHelper.TAILWIND_PREFIX) && p.GetValue() is not null)
+         .Select(p => $"{TailwindClassBuilderHelper.ProcessClassNameReplacements(p.Alias)}{TailwindClassBuilderHelper.GetClassValue(p.GetValue())}");
+        tailwindClasses.AddRange(siteTailwindProperties);
+
+        // Construct Blocks
+        foreach (var content in allContentNodes)
         {
             var contentProperties = content.Properties
                 .Where(p => p.PropertyType.PropertyEditorAlias == "Umbraco.BlockGrid"
@@ -51,17 +74,40 @@ public class GenerateTailwindClasses : INotificationAsyncHandler<ContentSavedNot
             }
         }
 
+        await WriteTailwindClassesToFile(tailwindClasses, cancellationToken).ConfigureAwait(false);
+
+        return;
+    }
+
+    private IEnumerable<IContent> GetAllDescendants(IContentService contentService, int parentId)
+    {
+        const int pageSize = 100;
+        int pageIndex = 0;
+        long totalRecords;
+        var results = new List<IContent>();
+
+        do
+        {
+            var page = contentService.GetPagedDescendants(parentId, pageIndex, pageSize, out totalRecords);
+            results.AddRange(page);
+            pageIndex++;
+        }
+        while (results.Count < totalRecords);
+
+        return results;
+    }
+
+    private async Task WriteTailwindClassesToFile(HashSet<string> tailwindClasses, CancellationToken cancellationToken)
+    {
         try
         {
             var json = JsonSerializer.Serialize(tailwindClasses, JsonSerializerOptions);
-            await File.WriteAllTextAsync(_tailwindOutputPath, json, cancellationToken).ConfigureAwait(false);
+            await System.IO.File.WriteAllTextAsync(_tailwindOutputPath, json, cancellationToken).ConfigureAwait(false);
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error writing Tailwind classes to file.");
         }
-
-        return;
     }
 
     private static void ConstructTailwindClasses(IEnumerable<SettingsElement> tailwindSettings, HashSet<string> tailwindClasses)
@@ -85,6 +131,9 @@ public class GenerateTailwindClasses : INotificationAsyncHandler<ContentSavedNot
                     case JsonValueKind.String when setting.EditorAlias.Equals("Umbraco.ColorPicker.EyeDropper"):
                         string eyeDropperColor = JsonSerializer.Deserialize<string>(setting.Value);
                         classValue = string.IsNullOrWhiteSpace(eyeDropperColor) ? string.Empty : $"[{eyeDropperColor.ToUpper()}]";
+                        break;
+                    case JsonValueKind.Number:
+                        classValue = setting.Value.ToString();
                         break;
                     default:
                         break;

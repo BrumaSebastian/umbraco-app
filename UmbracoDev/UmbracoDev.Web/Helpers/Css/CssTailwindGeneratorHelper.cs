@@ -2,13 +2,11 @@
 using System.Text;
 using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Web.Common.PublishedModels;
-using static Umbraco.Cms.Core.PropertyEditors.ValueConverters.ColorPickerValueConverter;
 
 namespace UmbracoDev.Web.Helpers.Css;
 
 public static class CssTailwindGeneratorHelper
 {
-    private const string DEFAULT = "unset";
 
     public static string GenerateTailwindClasses<T>(this IPublishedElement settings) where T : IPublishedElement
     {
@@ -25,38 +23,14 @@ public static class CssTailwindGeneratorHelper
             if (value is null || string.IsNullOrWhiteSpace(value.ToString())) continue;
 
             string className = TailwindClassBuilderHelper.ProcessClassNameReplacements(property.Name);
-            string classValue = GetClassValue(value);
+            string classValue = TailwindClassBuilderHelper.GetClassValue(value);
 
             if (string.IsNullOrWhiteSpace(classValue)) continue;
 
-            classBuilder.Append($"{className}[{classValue}] ");
+            classBuilder.Append($"{className}{classValue} ");
         }
 
         return classBuilder.ToString().TrimEnd();
-    }
-
-    private static string GetClassValue(object value)
-    {
-        object? classValue = null;
-
-        switch (value)
-        {
-            case PickedColor pickedColor:
-                classValue = pickedColor.Color;
-                break;
-            case string stringValue when !string.IsNullOrWhiteSpace(stringValue) && stringValue.StartsWith("#"):
-                classValue = stringValue;
-                break;
-            case string stringValue when !string.IsNullOrWhiteSpace(stringValue)
-                && !stringValue.Equals(DEFAULT, comparisonType: StringComparison.OrdinalIgnoreCase):
-                classValue = stringValue;
-                break;
-            default:
-                //Console.WriteLine($"Problem with the css generator {value} - {property.Name}");
-                break;
-        }
-
-        return classValue?.ToString() ?? string.Empty;
     }
 
     private static PropertyInfo[] PrepareProperties<T>(PropertyInfo[] props, IPublishedElement instance)

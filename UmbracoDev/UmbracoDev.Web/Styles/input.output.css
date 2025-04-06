@@ -7,6 +7,7 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --spacing: 0.25rem;
     --ease-out: cubic-bezier(0, 0, 0.2, 1);
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --default-transition-duration: 150ms;
@@ -979,6 +980,27 @@
       }
     }
   }
+  .mt-10 {
+    margin-top: calc(var(--spacing) * 10);
+  }
+  .mt-15 {
+    margin-top: calc(var(--spacing) * 15);
+  }
+  .mr-15 {
+    margin-right: calc(var(--spacing) * 15);
+  }
+  .mr-20 {
+    margin-right: calc(var(--spacing) * 20);
+  }
+  .mb-5 {
+    margin-bottom: calc(var(--spacing) * 5);
+  }
+  .mb-15 {
+    margin-bottom: calc(var(--spacing) * 15);
+  }
+  .ml-15 {
+    margin-left: calc(var(--spacing) * 15);
+  }
   .badge {
     display: inline-flex;
     align-items: center;
@@ -1055,15 +1077,36 @@
   .flex-wrap {
     flex-wrap: wrap;
   }
+  .gap-5 {
+    gap: calc(var(--spacing) * 5);
+  }
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
+  .bg-\[\#0936c8e6\] {
+    background-color: #0936c8e6;
+  }
   .bg-\[\#EEEED5\] {
     background-color: #EEEED5;
   }
+  .bg-\[\#F6F6EA\] {
+    background-color: #F6F6EA;
+  }
   .bg-\[\#FF0000\] {
     background-color: #FF0000;
+  }
+  .pt-10 {
+    padding-top: calc(var(--spacing) * 10);
+  }
+  .pr-15 {
+    padding-right: calc(var(--spacing) * 15);
+  }
+  .pb-10 {
+    padding-bottom: calc(var(--spacing) * 10);
+  }
+  .pl-15 {
+    padding-left: calc(var(--spacing) * 15);
   }
   .text-wrap {
     text-wrap: wrap;
@@ -1082,6 +1125,9 @@
   }
   .accent-\[\#7ED321\] {
     accent-color: #7ED321;
+  }
+  .accent-\[\#B42D2D\] {
+    accent-color: #B42D2D;
   }
   .accent-\[\#CA6C6C\] {
     accent-color: #CA6C6C;
@@ -1111,9 +1157,24 @@
       background-color: #33330D;
     }
   }
+  .dark\:bg-\[\#454512\] {
+    &:where([data-theme=dark], [data-theme=dark] *) {
+      background-color: #454512;
+    }
+  }
   .dark\:bg-\[\#AE0FCD\] {
     &:where([data-theme=dark], [data-theme=dark] *) {
       background-color: #AE0FCD;
+    }
+  }
+  .dark\:bg-\[\#C5C56C\] {
+    &:where([data-theme=dark], [data-theme=dark] *) {
+      background-color: #C5C56C;
+    }
+  }
+  .dark\:text-\[\#000000\] {
+    &:where([data-theme=dark], [data-theme=dark] *) {
+      color: #000000;
     }
   }
   .dark\:text-\[\#E20808F0\] {
@@ -1129,6 +1190,11 @@
   .dark\:accent-\[\#85ED1DE3\] {
     &:where([data-theme=dark], [data-theme=dark] *) {
       accent-color: #85ED1DE3;
+    }
+  }
+  .dark\:accent-\[\#CA6C6C\] {
+    &:where([data-theme=dark], [data-theme=dark] *) {
+      accent-color: #CA6C6C;
     }
   }
   .dark\:accent-\[\#F0D5D5\] {

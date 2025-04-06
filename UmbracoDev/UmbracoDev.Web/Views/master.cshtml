@@ -3,7 +3,9 @@
 
 @{
     var siteSettings = Model.GetSiteSettings();
-    var themeColorsCss = siteSettings?.GetThemeClasses();
+    // var themeColorsCss = siteSettings?.GetThemeClasses();
+    var themeClasses = siteSettings?.GenerateTailwindClasses<ITwThemeProperties>();
+
 }
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -16,11 +18,11 @@
     <title>DevApp</title>
 </head>
 <body class="min-h-screen">
-    <header class="sticky top-0 z-50 @themeColorsCss">
+    <header class="sticky top-0 z-50 @themeClasses">
         @await Html.PartialAsync("Header")
     </header>
 
-    <main class="w-full @themeColorsCss">
+    <main class="w-full @themeClasses">
         @RenderBody()
     </main>
 
