@@ -1,5 +1,4 @@
-﻿using NuGet.Packaging;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 using Umbraco.Cms.Core.Events;
 using Umbraco.Cms.Core.Models;
@@ -45,9 +44,23 @@ public class GenerateTailwindClasses : INotificationAsyncHandler<ContentSavedNot
         // Construct Site Settings
         var siteSettings = allContentNodes.SingleOrDefault(n => n.ContentType.Alias == "siteSettings");
         var siteTailwindProperties = siteSettings?.Properties
-         .Where(p => p.Alias.StartsWith(TailwindClassBuilderHelper.TAILWIND_PREFIX) && p.GetValue() is not null)
-         .Select(p => $"{TailwindClassBuilderHelper.ProcessClassNameReplacements(p.Alias)}{TailwindClassBuilderHelper.GetClassValue(p.GetValue())}");
-        tailwindClasses.AddRange(siteTailwindProperties);
+         .Where(p => p.Alias.StartsWith(TailwindClassBuilderHelper.TAILWIND_PREFIX) && p.GetValue() is not null).ToList();
+
+        foreach (var property in siteTailwindProperties)
+        {
+            string classValue = string.Empty;
+
+            if (property.PropertyType.PropertyEditorAlias == "Umbraco.ColorPicker")
+            {
+                classValue = TailwindClassBuilderHelper.GetClassValue(JsonSerializer.Deserialize<PickedColor>(property.GetValue().ToString()));
+            }
+            else
+            {
+                classValue = TailwindClassBuilderHelper.GetClassValue(property.GetValue());
+            }
+
+            tailwindClasses.Add($"{TailwindClassBuilderHelper.ProcessClassNameReplacements(property.Alias)}{classValue}");
+        }
 
         // Construct Blocks
         foreach (var content in allContentNodes)
@@ -122,7 +135,7 @@ public class GenerateTailwindClasses : INotificationAsyncHandler<ContentSavedNot
                 switch (setting.Value.ValueKind)
                 {
                     case JsonValueKind.String when setting.EditorAlias.Equals("Umbraco.DropDown.Flexible"):
-                        classValue = JsonSerializer.Deserialize<List<string>>(setting.Value)?.FirstOrDefault() ?? string.Empty;
+                        classValue = JsonSerializer.Deserialize<string[]>(setting.Value.GetString())[0].ToLower() ?? string.Empty;
                         break;
                     case JsonValueKind.String when setting.EditorAlias.Equals("Umbraco.ColorPicker"):
                         PickedColor? pickedColor = JsonSerializer.Deserialize<PickedColor>(setting.Value.GetString());
@@ -132,9 +145,13 @@ public class GenerateTailwindClasses : INotificationAsyncHandler<ContentSavedNot
                         string eyeDropperColor = JsonSerializer.Deserialize<string>(setting.Value);
                         classValue = string.IsNullOrWhiteSpace(eyeDropperColor) ? string.Empty : $"[{eyeDropperColor.ToUpper()}]";
                         break;
+                    case JsonValueKind.String:
+                        classValue = setting.Value.ToString();
+                        break;
                     case JsonValueKind.Number:
                         classValue = setting.Value.ToString();
                         break;
+                    
                     default:
                         break;
                 }

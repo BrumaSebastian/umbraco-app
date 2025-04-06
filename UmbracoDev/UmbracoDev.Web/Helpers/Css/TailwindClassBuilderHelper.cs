@@ -23,6 +23,12 @@ public static class TailwindClassBuilderHelper
         { "MarginLeft", "ml-" },
         { "MarginRight", "mr-" },
         { "Gap", "gap-" },
+        { "JustifyItems", "justify-items-" },
+        { "JustifySelf", "justify-self-" },
+        { "JustifyContent", "justify-" },
+        { "AlignItems", "items-" },
+        { "AlignSelf", "self-" },
+        { "Align", "content-" },
     };
 
     public static List<string> CustomKeywords = [
@@ -76,7 +82,7 @@ public static class TailwindClassBuilderHelper
                 classValue = $"[{stringValue}]";
                 break;
             case string stringValue when !stringValue.Equals(DEFAULT, comparisonType: StringComparison.OrdinalIgnoreCase):
-                classValue = $"[{stringValue}]";
+                classValue = $"{stringValue}";
                 break;
             case int intValue when intValue > 0:
                 classValue = $"{intValue}";
@@ -87,6 +93,6 @@ public static class TailwindClassBuilderHelper
                 break;
         }
 
-        return classValue;
+        return classValue.ToLower();
     }
 }

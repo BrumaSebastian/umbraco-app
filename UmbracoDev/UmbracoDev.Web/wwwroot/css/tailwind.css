@@ -1512,6 +1512,9 @@
   .mt-auto {
     margin-top: auto;
   }
+  .mr-10 {
+    margin-right: calc(var(--spacing) * 10);
+  }
   .mr-15 {
     margin-right: calc(var(--spacing) * 15);
   }
@@ -1521,8 +1524,14 @@
   .mb-5 {
     margin-bottom: calc(var(--spacing) * 5);
   }
+  .mb-10 {
+    margin-bottom: calc(var(--spacing) * 10);
+  }
   .mb-15 {
     margin-bottom: calc(var(--spacing) * 15);
+  }
+  .ml-10 {
+    margin-left: calc(var(--spacing) * 10);
   }
   .ml-15 {
     margin-left: calc(var(--spacing) * 15);
@@ -1738,6 +1747,15 @@
   .flex-wrap {
     flex-wrap: wrap;
   }
+  .content-center {
+    align-content: center;
+  }
+  .justify-center {
+    justify-content: center;
+  }
+  .justify-items-center {
+    justify-items: center;
+  }
   .gap-0 {
     gap: calc(var(--spacing) * 0);
   }
@@ -1822,6 +1840,9 @@
   }
   .bg-\[\#FF0000\] {
     background-color: #FF0000;
+  }
+  .bg-\[\#f6f6ea\] {
+    background-color: #f6f6ea;
   }
   .bg-base-100 {
     background-color: var(--color-base-100);
@@ -2091,6 +2112,16 @@
       background-color: #F6F6EA;
     }
   }
+  .dark\:bg-\[\#b40404eb\] {
+    &:where([data-theme=dark], [data-theme=dark] *) {
+      background-color: #b40404eb;
+    }
+  }
+  .dark\:bg-\[\#cb7e7eeb\] {
+    &:where([data-theme=dark], [data-theme=dark] *) {
+      background-color: #cb7e7eeb;
+    }
+  }
   .dark\:text-\[\#000000\] {
     &:where([data-theme=dark], [data-theme=dark] *) {
       color: #000000;
@@ -2104,6 +2135,11 @@
   .dark\:text-\[\#F2F2F2\] {
     &:where([data-theme=dark], [data-theme=dark] *) {
       color: #F2F2F2;
+    }
+  }
+  .dark\:text-\[\#f2f2f2\] {
+    &:where([data-theme=dark], [data-theme=dark] *) {
+      color: #f2f2f2;
     }
   }
   .dark\:accent-\[\#85ED1DE3\] {
@@ -2144,6 +2180,11 @@
   .dark\:accent-\[\#F7EAEA\] {
     &:where([data-theme=dark], [data-theme=dark] *) {
       accent-color: #F7EAEA;
+    }
+  }
+  .dark\:accent-\[\#b42d2d\] {
+    &:where([data-theme=dark], [data-theme=dark] *) {
+      accent-color: #b42d2d;
     }
   }
 }

@@ -986,6 +986,9 @@
   .mt-15 {
     margin-top: calc(var(--spacing) * 15);
   }
+  .mr-10 {
+    margin-right: calc(var(--spacing) * 10);
+  }
   .mr-15 {
     margin-right: calc(var(--spacing) * 15);
   }
@@ -995,8 +998,14 @@
   .mb-5 {
     margin-bottom: calc(var(--spacing) * 5);
   }
+  .mb-10 {
+    margin-bottom: calc(var(--spacing) * 10);
+  }
   .mb-15 {
     margin-bottom: calc(var(--spacing) * 15);
+  }
+  .ml-10 {
+    margin-left: calc(var(--spacing) * 10);
   }
   .ml-15 {
     margin-left: calc(var(--spacing) * 15);
@@ -1077,6 +1086,15 @@
   .flex-wrap {
     flex-wrap: wrap;
   }
+  .content-center {
+    align-content: center;
+  }
+  .justify-center {
+    justify-content: center;
+  }
+  .justify-items-center {
+    justify-items: center;
+  }
   .gap-5 {
     gap: calc(var(--spacing) * 5);
   }
@@ -1095,6 +1113,9 @@
   }
   .bg-\[\#FF0000\] {
     background-color: #FF0000;
+  }
+  .bg-\[\#f6f6ea\] {
+    background-color: #f6f6ea;
   }
   .pt-10 {
     padding-top: calc(var(--spacing) * 10);
@@ -1157,6 +1178,11 @@
       background-color: #33330D;
     }
   }
+  .dark\:bg-\[\#191919\] {
+    &:where([data-theme=dark], [data-theme=dark] *) {
+      background-color: #191919;
+    }
+  }
   .dark\:bg-\[\#454512\] {
     &:where([data-theme=dark], [data-theme=dark] *) {
       background-color: #454512;
@@ -1170,6 +1196,16 @@
   .dark\:bg-\[\#C5C56C\] {
     &:where([data-theme=dark], [data-theme=dark] *) {
       background-color: #C5C56C;
+    }
+  }
+  .dark\:bg-\[\#b40404eb\] {
+    &:where([data-theme=dark], [data-theme=dark] *) {
+      background-color: #b40404eb;
+    }
+  }
+  .dark\:bg-\[\#cb7e7eeb\] {
+    &:where([data-theme=dark], [data-theme=dark] *) {
+      background-color: #cb7e7eeb;
     }
   }
   .dark\:text-\[\#000000\] {
@@ -1187,6 +1223,11 @@
       color: #F2F2F2;
     }
   }
+  .dark\:text-\[\#f2f2f2\] {
+    &:where([data-theme=dark], [data-theme=dark] *) {
+      color: #f2f2f2;
+    }
+  }
   .dark\:accent-\[\#85ED1DE3\] {
     &:where([data-theme=dark], [data-theme=dark] *) {
       accent-color: #85ED1DE3;
@@ -1200,6 +1241,11 @@
   .dark\:accent-\[\#F0D5D5\] {
     &:where([data-theme=dark], [data-theme=dark] *) {
       accent-color: #F0D5D5;
+    }
+  }
+  .dark\:accent-\[\#b42d2d\] {
+    &:where([data-theme=dark], [data-theme=dark] *) {
+      accent-color: #b42d2d;
     }
   }
 }

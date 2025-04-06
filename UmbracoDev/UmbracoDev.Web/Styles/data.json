@@ -1,14 +1,21 @@
 [
+  "bg-[#f6f6ea]",
+  "text-[#000000]",
+  "dark:bg-[#191919]",
+  "dark:text-[#f2f2f2]",
+  "dark:accent-[#b42d2d]",
   "bg-[#0936c8e6]",
+  "dark:bg-[#cb7e7eeb]",
   "dark:accent-[#CA6C6C]",
   "dark:text-[#000000]",
   "dark:bg-[#454512]",
   "accent-[#B42D2D]",
-  "text-[#000000]",
   "bg-[#F6F6EA]",
-  "mr-15",
-  "ml-15",
-  "mt-15",
-  "mb-15",
-  "gap-5"
+  "gap-5",
+  "justify-items-center",
+  "content-center",
+  "mr-10",
+  "ml-10",
+  "mt-10",
+  "mb-10"
 ]

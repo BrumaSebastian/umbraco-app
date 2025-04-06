@@ -1,14 +1,13 @@
-﻿@* @inherits UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<ColumnLayout, ColumnSettings>>
+﻿@inherits UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<ColumnLayout, ColumnLayoutSettings>>
 
 @{
     var area = Model?.Areas.SingleOrDefault();
 
     if (area is null) { return; }
 
-    var columnStyle = Model.Settings?.GenerateCss<ColumnSettings>(Compositions.COLUMN);
+    var columnLayoutClasses = Model.Settings?.GenerateTailwindClasses<ColumnLayoutSettings>();
 }
 
-<div id="@area.Alias" style="@columnStyle">
+<div id="@area.Alias" class="@columnLayoutClasses">
     @await Html.GetBlockGridItemsHtmlAsync(area)
 </div>
- *@

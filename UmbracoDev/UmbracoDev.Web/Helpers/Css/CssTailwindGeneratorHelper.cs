@@ -7,7 +7,6 @@ namespace UmbracoDev.Web.Helpers.Css;
 
 public static class CssTailwindGeneratorHelper
 {
-
     public static string GenerateTailwindClasses<T>(this IPublishedElement settings) where T : IPublishedElement
     {
         if (settings is not T) return string.Empty;
