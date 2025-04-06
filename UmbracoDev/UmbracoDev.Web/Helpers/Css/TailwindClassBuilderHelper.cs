@@ -29,6 +29,7 @@ public static class TailwindClassBuilderHelper
         { "AlignItems", "items-" },
         { "AlignSelf", "self-" },
         { "Align", "content-" },
+        { "Rounded", "rounded-" },
     };
 
     public static List<string> CustomKeywords = [

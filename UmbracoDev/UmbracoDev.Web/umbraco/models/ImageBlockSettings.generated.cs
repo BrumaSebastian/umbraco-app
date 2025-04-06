@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>Image Block Settings</summary>
 	[PublishedModel("imageBlockSettings")]
-	public partial class ImageBlockSettings : PublishedElementModel, IImageBlockProperties, IPaddingProperties
+	public partial class ImageBlockSettings : PublishedElementModel, IImageBlockProperties, ITwBorderRadiusProperties
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -72,31 +72,11 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual int ImageWidthPercent => global::Umbraco.Cms.Web.Common.PublishedModels.ImageBlockProperties.GetImageWidthPercent(this, _publishedValueFallback);
 
 		///<summary>
-		/// Padding Bottom
+		/// Rounded
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("paddingBottom")]
-		public virtual int PaddingBottom => global::Umbraco.Cms.Web.Common.PublishedModels.PaddingProperties.GetPaddingBottom(this, _publishedValueFallback);
-
-		///<summary>
-		/// Padding Left
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("paddingLeft")]
-		public virtual int PaddingLeft => global::Umbraco.Cms.Web.Common.PublishedModels.PaddingProperties.GetPaddingLeft(this, _publishedValueFallback);
-
-		///<summary>
-		/// Padding Right
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("paddingRight")]
-		public virtual int PaddingRight => global::Umbraco.Cms.Web.Common.PublishedModels.PaddingProperties.GetPaddingRight(this, _publishedValueFallback);
-
-		///<summary>
-		/// Padding Top
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("paddingTop")]
-		public virtual int PaddingTop => global::Umbraco.Cms.Web.Common.PublishedModels.PaddingProperties.GetPaddingTop(this, _publishedValueFallback);
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("twRounded")]
+		public virtual string TwRounded => global::Umbraco.Cms.Web.Common.PublishedModels.TwBorderRadiusProperties.GetTwRounded(this, _publishedValueFallback);
 	}
 }

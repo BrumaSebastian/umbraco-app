@@ -1,32 +1,35 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<MediaWallLayout, MediaWallLayoutSettings>>
 @{
-    var layoutStyle = Model.Settings?.GenerateCss<ILayoutProperties>(Compositions.LAYOUT);
-    var gridStyles = Model.Settings?.GenerateCss<IGridGapProperties>();
+    var layoutClasses = Model.Settings?.GenerateTailwindClasses<ITwLayoutProperties>();
+    var layoutGapClass = Model.Settings?.GenerateTailwindClasses<ITwLayoutGapProperties>();
+    var justifySelfClass = Model.Settings?.GenerateTailwindClasses<ITwJustifySelfProperties>();
+
     var areas = Model.Areas.ToList();
     int size = Model.Settings?.MediaWallSize is int mediaWallSize && mediaWallSize != 0 ? mediaWallSize : 1;
 }
 
-<div id="layout_mediaWall" class="max-w-lg" style="@layoutStyle">
-    <div class="grid grid-cols-1 sm:grid-cols-2" style="@gridStyles">
+<div id="layout_mediaWall" class="max-w-lg @layoutClasses @justifySelfClass">
+    <div class="grid grid-cols-1 sm:grid-cols-2 @layoutGapClass">
         <div class="grid-masonry">
-            <div style="block-size: calc(1em * @size);">
+            <div id="@areas[0].Alias" style="block-size: calc(1em * @size);">
                 @await Html.GetBlockGridItemsHtmlAsync(areas[0])
             </div>
-            <div style="block-size: calc(2em * @size);">
-                @await Html.GetBlockGridItemsHtmlAsync(areas[1])
-            </div>
-            <div style="block-size: calc(2em * @size);">
+            <div id="@areas[2].Alias" style="block-size: calc(2em * @size);">
                 @await Html.GetBlockGridItemsHtmlAsync(areas[2])
             </div>
-        </div>
-        <div class="grid-masonry">
-            <div style="block-size: calc(2em * @size);">
-                @await Html.GetBlockGridItemsHtmlAsync(areas[3])
-            </div>
-            <div style="block-size: calc(2em * @size);">
+            <div id="@areas[4].Alias" style="block-size: calc(2em * @size);">
                 @await Html.GetBlockGridItemsHtmlAsync(areas[4])
             </div>
-            <div style="block-size: calc(1em * @size);">
+           
+        </div>
+        <div class="grid-masonry">
+            <div id="@areas[1].Alias" style="block-size: calc(2em * @size);">
+                @await Html.GetBlockGridItemsHtmlAsync(areas[1])
+            </div>
+            <div id="@areas[3].Alias" style="block-size: calc(2em * @size);">
+                @await Html.GetBlockGridItemsHtmlAsync(areas[3])
+            </div>
+            <div id="@areas[5].Alias" style="block-size: calc(1em * @size);">
                 @await Html.GetBlockGridItemsHtmlAsync(areas[5])
             </div>
         </div>

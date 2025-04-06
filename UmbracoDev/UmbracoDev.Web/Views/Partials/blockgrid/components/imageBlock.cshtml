@@ -3,9 +3,10 @@
     if (Model.Content.Image is null) return;
     var paddingStyle = Model.Settings?.GenerateCss<IPaddingProperties>();
     var imageStyle = Model.Settings?.GenerateCss<IImageBlockProperties>(Compositions.IMAGE);
+    var borderRadiusClass = Model.Settings?.GenerateTailwindClasses<ITwBorderRadiusProperties>();
     bool mediaExists = Model.Content.Image.Content.GetProperty("umbracoBytes")?.HasValue() ?? false;
     var src = mediaExists ? Model.Content.Image.GetCropUrl() : "/assets/placeholder_400x300.png";
 }
 
-<img class="rounded-md" src="@src" alt="alt text" style="@imageStyle" />
+<img class="@borderRadiusClass" src="@src" alt="alt text" style="@imageStyle" />
 

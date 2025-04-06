@@ -18,9 +18,19 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
+	// Mixin Content Type with alias "twJustifySelfProperties"
+	/// <summary>TW Justify Self Properties</summary>
+	public partial interface ITwJustifySelfProperties : IPublishedElement
+	{
+		/// <summary>Justify Self</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		string TwJustifySelf { get; }
+	}
+
 	/// <summary>TW Justify Self Properties</summary>
 	[PublishedModel("twJustifySelfProperties")]
-	public partial class TwJustifySelfProperties : PublishedElementModel
+	public partial class TwJustifySelfProperties : PublishedElementModel, ITwJustifySelfProperties
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -55,6 +65,11 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("twJustifySelf")]
-		public virtual string TwJustifySelf => this.Value<string>(_publishedValueFallback, "twJustifySelf");
+		public virtual string TwJustifySelf => GetTwJustifySelf(this, _publishedValueFallback);
+
+		/// <summary>Static getter for Justify Self</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		public static string GetTwJustifySelf(ITwJustifySelfProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "twJustifySelf");
 	}
 }
