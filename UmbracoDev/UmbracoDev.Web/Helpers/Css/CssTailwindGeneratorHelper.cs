@@ -1,5 +1,7 @@
-﻿using System.Text;
+﻿using System.Reflection;
+using System.Text;
 using Umbraco.Cms.Core.Models.PublishedContent;
+using Umbraco.Cms.Web.Common.PublishedModels;
 using static Umbraco.Cms.Core.PropertyEditors.ValueConverters.ColorPickerValueConverter;
 
 namespace UmbracoDev.Web.Helpers.Css;
@@ -12,34 +14,87 @@ public static class CssTailwindGeneratorHelper
     {
         if (settings is not T) return string.Empty;
 
-        var elementProperties = typeof(T).GetProperties();
+        var elementProperties = PrepareProperties<T>(typeof(T).GetProperties(), settings);
 
-        StringBuilder cssBuilder = new();
+        StringBuilder classBuilder = new();
 
         foreach (var property in elementProperties)
         {
             object? value = settings.Value(property.Name);
 
-            if (value is null) continue;
+            if (value is null || string.IsNullOrWhiteSpace(value.ToString())) continue;
 
             string className = TailwindClassBuilderHelper.ProcessClassNameReplacements(property.Name);
+            string classValue = GetClassValue(value);
 
-            switch (value)
-            {
-                case PickedColor pickedColor:
-                    cssBuilder.Append($"{className}[{pickedColor.Color}] ");
-                    break;
-                case string stringValue
-                    when !string.IsNullOrWhiteSpace(stringValue)
-                        && !stringValue.Equals(DEFAULT, comparisonType: StringComparison.OrdinalIgnoreCase):
-                    //cssBuilder.Append($"{ConvertToCssProperty(elementPrefix, property.Name)}:{stringValue.ToLower()}; ");
-                    break;
-                default:
-                    //Console.WriteLine($"Problem with the css generator {value} - {property.Name}");
-                    break;
-            }
+            if (string.IsNullOrWhiteSpace(classValue)) continue;
+
+            classBuilder.Append($"{className}[{classValue}] ");
         }
 
-        return cssBuilder.ToString().TrimEnd();
+        return classBuilder.ToString().TrimEnd();
+    }
+
+    private static string GetClassValue(object value)
+    {
+        object? classValue = null;
+
+        switch (value)
+        {
+            case PickedColor pickedColor:
+                classValue = pickedColor.Color;
+                break;
+            case string stringValue when !string.IsNullOrWhiteSpace(stringValue) && stringValue.StartsWith("#"):
+                classValue = stringValue;
+                break;
+            case string stringValue when !string.IsNullOrWhiteSpace(stringValue)
+                && !stringValue.Equals(DEFAULT, comparisonType: StringComparison.OrdinalIgnoreCase):
+                classValue = stringValue;
+                break;
+            default:
+                //Console.WriteLine($"Problem with the css generator {value} - {property.Name}");
+                break;
+        }
+
+        return classValue?.ToString() ?? string.Empty;
+    }
+
+    private static PropertyInfo[] PrepareProperties<T>(PropertyInfo[] props, IPublishedElement instance)
+    {
+        var propertiesToRemove = new HashSet<string>();
+
+        if (instance is ITwThemeProperties themeProps)
+        {
+            FilterThemeProperties(themeProps, propertiesToRemove);
+        }
+
+        return [.. props.Where(p => p.PropertyType != typeof(bool) && !propertiesToRemove.Contains(p.Name))];
+    }
+
+    private static void FilterThemeProperties(ITwThemeProperties themeProps, HashSet<string> toRemove)
+    {
+        toRemove.Add(themeProps.LightModeBackground
+            ? nameof(themeProps.TwLightModePresetBackgroundColor)
+            : nameof(themeProps.TwLightModeCustomBackgroundColor));
+
+        toRemove.Add(themeProps.LightModeText
+            ? nameof(themeProps.TwLightModePresetTextColor)
+            : nameof(themeProps.TwLightModeCustomTextColor));
+
+        toRemove.Add(themeProps.LightModeAccent
+            ? nameof(themeProps.TwLightModePresetAccentColor)
+            : nameof(themeProps.TwLightModeCustomAccentColor));
+
+        toRemove.Add(themeProps.DarkModeBackground
+            ? nameof(themeProps.TwDarkModePresetBackgroundColor)
+            : nameof(themeProps.TwDarkModeCustomBackgroundColor));
+
+        toRemove.Add(themeProps.DarkModeText
+            ? nameof(themeProps.TwDarkModePresetTextColor)
+            : nameof(themeProps.TwDarkModeCustomTextColor));
+
+        toRemove.Add(themeProps.DarkModeAccent
+            ? nameof(themeProps.TwDarkModePresetAccentColor)
+            : nameof(themeProps.TwDarkModeCustomAccentColor));
     }
 }

@@ -82,6 +82,10 @@ public class GenerateTailwindClasses : INotificationAsyncHandler<ContentSavedNot
                         PickedColor? pickedColor = JsonSerializer.Deserialize<PickedColor>(setting.Value.GetString());
                         classValue = pickedColor is null ? string.Empty : $"[{pickedColor.Color.ToUpper()}]";
                         break;
+                    case JsonValueKind.String when setting.EditorAlias.Equals("Umbraco.ColorPicker.EyeDropper"):
+                        string eyeDropperColor = JsonSerializer.Deserialize<string>(setting.Value);
+                        classValue = string.IsNullOrWhiteSpace(eyeDropperColor) ? string.Empty : $"[{eyeDropperColor.ToUpper()}]";
+                        break;
                     default:
                         break;
                 }
