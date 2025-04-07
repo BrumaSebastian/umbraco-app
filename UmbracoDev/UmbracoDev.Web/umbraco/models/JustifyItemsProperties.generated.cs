@@ -18,9 +18,19 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
+	// Mixin Content Type with alias "justifyItemsProperties"
+	/// <summary>Justify Items Properties</summary>
+	public partial interface IJustifyItemsProperties : IPublishedElement
+	{
+		/// <summary>Justify Items</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		string JustifyItems { get; }
+	}
+
 	/// <summary>Justify Items Properties</summary>
 	[PublishedModel("justifyItemsProperties")]
-	public partial class JustifyItemsProperties : PublishedElementModel
+	public partial class JustifyItemsProperties : PublishedElementModel, IJustifyItemsProperties
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -55,6 +65,11 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("justifyItems")]
-		public virtual string JustifyItems => this.Value<string>(_publishedValueFallback, "justifyItems");
+		public virtual string JustifyItems => GetJustifyItems(this, _publishedValueFallback);
+
+		/// <summary>Static getter for Justify Items</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		public static string GetJustifyItems(IJustifyItemsProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "justifyItems");
 	}
 }

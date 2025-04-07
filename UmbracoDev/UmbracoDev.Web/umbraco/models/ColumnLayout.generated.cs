@@ -18,9 +18,15 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
+	// Mixin Content Type with alias "columnLayout"
+	/// <summary>Column Layout</summary>
+	public partial interface IColumnLayout : IPublishedElement
+	{
+	}
+
 	/// <summary>Column Layout</summary>
 	[PublishedModel("columnLayout")]
-	public partial class ColumnLayout : PublishedElementModel
+	public partial class ColumnLayout : PublishedElementModel, IColumnLayout
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant

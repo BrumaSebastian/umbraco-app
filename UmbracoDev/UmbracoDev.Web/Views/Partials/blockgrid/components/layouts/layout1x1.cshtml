@@ -2,13 +2,11 @@
 
 @{
     if (Model?.Areas.SingleOrDefault() is null) { return; }
-    var themeColorsCss = Model.Settings?.GetThemeClasses();
-    var layoutStyle = Model.Settings?.GenerateCss<ILayoutProperties>(Compositions.LAYOUT);
+    var themeClasses = Model.Settings?.GenerateTailwindClasses<ITwThemeProperties>();
+    var layoutClasses = Model.Settings?.GenerateTailwindClasses<ITwLayoutProperties>();
     var areas = Model.Areas.ToList();
 }
 
-<div id="layout_1x1" class="@themeColorsCss layout" style="@layoutStyle">
-    <div id="@areas[0].Alias">
-        @await Html.GetBlockGridItemsHtmlAsync(areas[0])
-    </div>
+<div id="layout_1x1" class="@themeClasses @layoutClasses layout w-full">
+    @await Html.GetBlockGridItemsHtmlAsync(areas[0])
 </div>

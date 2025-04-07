@@ -18,56 +18,9 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
-	// Mixin Content Type with alias "containerStylingProperties"
-	/// <summary>Container Styling Properties</summary>
-	public partial interface IContainerStylingProperties : IPublishedElement
-	{
-		/// <summary>Container Align Items</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		string ContainerAlignItems { get; }
-
-		/// <summary>Container Justify Content</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		string ContainerJustifyContent { get; }
-
-		/// <summary>Container Margin Bottom</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		int ContainerMarginBottom { get; }
-
-		/// <summary>Container Margin Left</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		int ContainerMarginLeft { get; }
-
-		/// <summary>Container Margin Right</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		int ContainerMarginRight { get; }
-
-		/// <summary>Container Margin Top</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		int ContainerMarginTop { get; }
-
-		/// <summary>Container Padding Bottom</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		int ContainerPaddingBottom { get; }
-
-		/// <summary>Container Padding Left</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		int ContainerPaddingLeft { get; }
-
-		/// <summary>Container Padding Right</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		int ContainerPaddingRight { get; }
-
-		/// <summary>Container PaddingTop</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		int ContainerPaddingTop { get; }
-	}
-
 	/// <summary>Container Styling Properties</summary>
 	[PublishedModel("containerStylingProperties")]
-	public partial class ContainerStylingProperties : PublishedElementModel, IContainerStylingProperties
+	public partial class ContainerStylingProperties : PublishedElementModel
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -102,12 +55,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("containerAlignItems")]
-		public virtual string ContainerAlignItems => GetContainerAlignItems(this, _publishedValueFallback);
-
-		/// <summary>Static getter for Container Align Items</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static string GetContainerAlignItems(IContainerStylingProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "containerAlignItems");
+		public virtual string ContainerAlignItems => this.Value<string>(_publishedValueFallback, "containerAlignItems");
 
 		///<summary>
 		/// Container Justify Content
@@ -115,99 +63,62 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("containerJustifyContent")]
-		public virtual string ContainerJustifyContent => GetContainerJustifyContent(this, _publishedValueFallback);
-
-		/// <summary>Static getter for Container Justify Content</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static string GetContainerJustifyContent(IContainerStylingProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "containerJustifyContent");
+		public virtual string ContainerJustifyContent => this.Value<string>(_publishedValueFallback, "containerJustifyContent");
 
 		///<summary>
 		/// Container Margin Bottom
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[ImplementPropertyType("containerMarginBottom")]
-		public virtual int ContainerMarginBottom => GetContainerMarginBottom(this, _publishedValueFallback);
-
-		/// <summary>Static getter for Container Margin Bottom</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		public static int GetContainerMarginBottom(IContainerStylingProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<int>(publishedValueFallback, "containerMarginBottom");
+		public virtual int ContainerMarginBottom => this.Value<int>(_publishedValueFallback, "containerMarginBottom");
 
 		///<summary>
 		/// Container Margin Left
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[ImplementPropertyType("containerMarginLeft")]
-		public virtual int ContainerMarginLeft => GetContainerMarginLeft(this, _publishedValueFallback);
-
-		/// <summary>Static getter for Container Margin Left</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		public static int GetContainerMarginLeft(IContainerStylingProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<int>(publishedValueFallback, "containerMarginLeft");
+		public virtual int ContainerMarginLeft => this.Value<int>(_publishedValueFallback, "containerMarginLeft");
 
 		///<summary>
 		/// Container Margin Right
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[ImplementPropertyType("containerMarginRight")]
-		public virtual int ContainerMarginRight => GetContainerMarginRight(this, _publishedValueFallback);
-
-		/// <summary>Static getter for Container Margin Right</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		public static int GetContainerMarginRight(IContainerStylingProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<int>(publishedValueFallback, "containerMarginRight");
+		public virtual int ContainerMarginRight => this.Value<int>(_publishedValueFallback, "containerMarginRight");
 
 		///<summary>
 		/// Container Margin Top
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[ImplementPropertyType("containerMarginTop")]
-		public virtual int ContainerMarginTop => GetContainerMarginTop(this, _publishedValueFallback);
-
-		/// <summary>Static getter for Container Margin Top</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		public static int GetContainerMarginTop(IContainerStylingProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<int>(publishedValueFallback, "containerMarginTop");
+		public virtual int ContainerMarginTop => this.Value<int>(_publishedValueFallback, "containerMarginTop");
 
 		///<summary>
 		/// Container Padding Bottom
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[ImplementPropertyType("containerPaddingBottom")]
-		public virtual int ContainerPaddingBottom => GetContainerPaddingBottom(this, _publishedValueFallback);
-
-		/// <summary>Static getter for Container Padding Bottom</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		public static int GetContainerPaddingBottom(IContainerStylingProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<int>(publishedValueFallback, "containerPaddingBottom");
+		public virtual int ContainerPaddingBottom => this.Value<int>(_publishedValueFallback, "containerPaddingBottom");
 
 		///<summary>
 		/// Container Padding Left
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[ImplementPropertyType("containerPaddingLeft")]
-		public virtual int ContainerPaddingLeft => GetContainerPaddingLeft(this, _publishedValueFallback);
-
-		/// <summary>Static getter for Container Padding Left</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		public static int GetContainerPaddingLeft(IContainerStylingProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<int>(publishedValueFallback, "containerPaddingLeft");
+		public virtual int ContainerPaddingLeft => this.Value<int>(_publishedValueFallback, "containerPaddingLeft");
 
 		///<summary>
 		/// Container Padding Right
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[ImplementPropertyType("containerPaddingRight")]
-		public virtual int ContainerPaddingRight => GetContainerPaddingRight(this, _publishedValueFallback);
-
-		/// <summary>Static getter for Container Padding Right</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		public static int GetContainerPaddingRight(IContainerStylingProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<int>(publishedValueFallback, "containerPaddingRight");
+		public virtual int ContainerPaddingRight => this.Value<int>(_publishedValueFallback, "containerPaddingRight");
 
 		///<summary>
 		/// Container PaddingTop
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[ImplementPropertyType("containerPaddingTop")]
-		public virtual int ContainerPaddingTop => GetContainerPaddingTop(this, _publishedValueFallback);
-
-		/// <summary>Static getter for Container PaddingTop</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		public static int GetContainerPaddingTop(IContainerStylingProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<int>(publishedValueFallback, "containerPaddingTop");
+		public virtual int ContainerPaddingTop => this.Value<int>(_publishedValueFallback, "containerPaddingTop");
 	}
 }

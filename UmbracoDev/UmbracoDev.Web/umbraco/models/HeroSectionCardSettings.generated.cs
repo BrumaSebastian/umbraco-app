@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>Hero Section Card Settings</summary>
 	[PublishedModel("heroSectionCardSettings")]
-	public partial class HeroSectionCardSettings : PublishedElementModel, IAlignItemsProperties, IGridLayoutItemProperties, IMarginProperties, IPaddingProperties
+	public partial class HeroSectionCardSettings : PublishedElementModel, ITwAlignItemsProperties, ITwLayoutGapProperties, ITwLayoutProperties
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -54,143 +54,70 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("alignItems")]
-		public virtual string AlignItems => global::Umbraco.Cms.Web.Common.PublishedModels.AlignItemsProperties.GetAlignItems(this, _publishedValueFallback);
+		[ImplementPropertyType("twAlignItems")]
+		public virtual string TwAlignItems => global::Umbraco.Cms.Web.Common.PublishedModels.TwAlignItemsProperties.GetTwAlignItems(this, _publishedValueFallback);
 
 		///<summary>
-		/// Align Items
+		/// Gap
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("gridItemAlignItems")]
-		public virtual string GridItemAlignItems => global::Umbraco.Cms.Web.Common.PublishedModels.GridLayoutItemProperties.GetGridItemAlignItems(this, _publishedValueFallback);
-
-		///<summary>
-		/// Grid Item Background Image
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("gridItemBackgroundImage")]
-		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops GridItemBackgroundImage => global::Umbraco.Cms.Web.Common.PublishedModels.GridLayoutItemProperties.GetGridItemBackgroundImage(this, _publishedValueFallback);
-
-		///<summary>
-		/// Justify Content
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("gridItemJustifyContent")]
-		public virtual string GridItemJustifyContent => global::Umbraco.Cms.Web.Common.PublishedModels.GridLayoutItemProperties.GetGridItemJustifyContent(this, _publishedValueFallback);
+		[ImplementPropertyType("twLayoutGap")]
+		public virtual int TwLayoutGap => global::Umbraco.Cms.Web.Common.PublishedModels.TwLayoutGapProperties.GetTwLayoutGap(this, _publishedValueFallback);
 
 		///<summary>
 		/// Margin Bottom
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("gridItemMarginBottom")]
-		public virtual int GridItemMarginBottom => global::Umbraco.Cms.Web.Common.PublishedModels.GridLayoutItemProperties.GetGridItemMarginBottom(this, _publishedValueFallback);
+		[ImplementPropertyType("twMarginBottom")]
+		public virtual int TwMarginBottom => global::Umbraco.Cms.Web.Common.PublishedModels.TwLayoutProperties.GetTwMarginBottom(this, _publishedValueFallback);
 
 		///<summary>
 		/// Margin Left
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("gridItemMarginLeft")]
-		public virtual int GridItemMarginLeft => global::Umbraco.Cms.Web.Common.PublishedModels.GridLayoutItemProperties.GetGridItemMarginLeft(this, _publishedValueFallback);
+		[ImplementPropertyType("twMarginLeft")]
+		public virtual int TwMarginLeft => global::Umbraco.Cms.Web.Common.PublishedModels.TwLayoutProperties.GetTwMarginLeft(this, _publishedValueFallback);
 
 		///<summary>
 		/// Margin Right
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("gridItemMarginRight")]
-		public virtual int GridItemMarginRight => global::Umbraco.Cms.Web.Common.PublishedModels.GridLayoutItemProperties.GetGridItemMarginRight(this, _publishedValueFallback);
+		[ImplementPropertyType("twMarginRight")]
+		public virtual int TwMarginRight => global::Umbraco.Cms.Web.Common.PublishedModels.TwLayoutProperties.GetTwMarginRight(this, _publishedValueFallback);
 
 		///<summary>
 		/// Margin Top
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("gridItemMarginTop")]
-		public virtual int GridItemMarginTop => global::Umbraco.Cms.Web.Common.PublishedModels.GridLayoutItemProperties.GetGridItemMarginTop(this, _publishedValueFallback);
+		[ImplementPropertyType("twMarginTop")]
+		public virtual int TwMarginTop => global::Umbraco.Cms.Web.Common.PublishedModels.TwLayoutProperties.GetTwMarginTop(this, _publishedValueFallback);
 
 		///<summary>
 		/// Padding Bottom
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("gridItemPaddingBottom")]
-		public virtual int GridItemPaddingBottom => global::Umbraco.Cms.Web.Common.PublishedModels.GridLayoutItemProperties.GetGridItemPaddingBottom(this, _publishedValueFallback);
+		[ImplementPropertyType("twPaddingBottom")]
+		public virtual int TwPaddingBottom => global::Umbraco.Cms.Web.Common.PublishedModels.TwLayoutProperties.GetTwPaddingBottom(this, _publishedValueFallback);
 
 		///<summary>
 		/// Padding Left
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("gridItemPaddingLeft")]
-		public virtual int GridItemPaddingLeft => global::Umbraco.Cms.Web.Common.PublishedModels.GridLayoutItemProperties.GetGridItemPaddingLeft(this, _publishedValueFallback);
+		[ImplementPropertyType("twPaddingLeft")]
+		public virtual int TwPaddingLeft => global::Umbraco.Cms.Web.Common.PublishedModels.TwLayoutProperties.GetTwPaddingLeft(this, _publishedValueFallback);
 
 		///<summary>
 		/// Padding Right
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("gridItemPaddingRight")]
-		public virtual int GridItemPaddingRight => global::Umbraco.Cms.Web.Common.PublishedModels.GridLayoutItemProperties.GetGridItemPaddingRight(this, _publishedValueFallback);
+		[ImplementPropertyType("twPaddingRight")]
+		public virtual int TwPaddingRight => global::Umbraco.Cms.Web.Common.PublishedModels.TwLayoutProperties.GetTwPaddingRight(this, _publishedValueFallback);
 
 		///<summary>
 		/// Padding Top
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("gridItemPaddingTop")]
-		public virtual int GridItemPaddingTop => global::Umbraco.Cms.Web.Common.PublishedModels.GridLayoutItemProperties.GetGridItemPaddingTop(this, _publishedValueFallback);
-
-		///<summary>
-		/// Margin Bottom
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("marginBottom")]
-		public virtual int MarginBottom => global::Umbraco.Cms.Web.Common.PublishedModels.MarginProperties.GetMarginBottom(this, _publishedValueFallback);
-
-		///<summary>
-		/// Margin Left
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("marginLeft")]
-		public virtual int MarginLeft => global::Umbraco.Cms.Web.Common.PublishedModels.MarginProperties.GetMarginLeft(this, _publishedValueFallback);
-
-		///<summary>
-		/// Margin Right
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("marginRight")]
-		public virtual int MarginRight => global::Umbraco.Cms.Web.Common.PublishedModels.MarginProperties.GetMarginRight(this, _publishedValueFallback);
-
-		///<summary>
-		/// Margin Top
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("marginTop")]
-		public virtual int MarginTop => global::Umbraco.Cms.Web.Common.PublishedModels.MarginProperties.GetMarginTop(this, _publishedValueFallback);
-
-		///<summary>
-		/// Padding Bottom
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("paddingBottom")]
-		public virtual int PaddingBottom => global::Umbraco.Cms.Web.Common.PublishedModels.PaddingProperties.GetPaddingBottom(this, _publishedValueFallback);
-
-		///<summary>
-		/// Padding Left
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("paddingLeft")]
-		public virtual int PaddingLeft => global::Umbraco.Cms.Web.Common.PublishedModels.PaddingProperties.GetPaddingLeft(this, _publishedValueFallback);
-
-		///<summary>
-		/// Padding Right
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("paddingRight")]
-		public virtual int PaddingRight => global::Umbraco.Cms.Web.Common.PublishedModels.PaddingProperties.GetPaddingRight(this, _publishedValueFallback);
-
-		///<summary>
-		/// Padding Top
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("paddingTop")]
-		public virtual int PaddingTop => global::Umbraco.Cms.Web.Common.PublishedModels.PaddingProperties.GetPaddingTop(this, _publishedValueFallback);
+		[ImplementPropertyType("twPaddingTop")]
+		public virtual int TwPaddingTop => global::Umbraco.Cms.Web.Common.PublishedModels.TwLayoutProperties.GetTwPaddingTop(this, _publishedValueFallback);
 	}
 }

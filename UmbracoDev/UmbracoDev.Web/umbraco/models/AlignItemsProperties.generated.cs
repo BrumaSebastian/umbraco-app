@@ -18,19 +18,9 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
-	// Mixin Content Type with alias "alignItemsProperties"
-	/// <summary>Align Items Properties</summary>
-	public partial interface IAlignItemsProperties : IPublishedElement
-	{
-		/// <summary>Align Items</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		string AlignItems { get; }
-	}
-
 	/// <summary>Align Items Properties</summary>
 	[PublishedModel("alignItemsProperties")]
-	public partial class AlignItemsProperties : PublishedElementModel, IAlignItemsProperties
+	public partial class AlignItemsProperties : PublishedElementModel
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -65,11 +55,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("alignItems")]
-		public virtual string AlignItems => GetAlignItems(this, _publishedValueFallback);
-
-		/// <summary>Static getter for Align Items</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static string GetAlignItems(IAlignItemsProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "alignItems");
+		public virtual string AlignItems => this.Value<string>(_publishedValueFallback, "alignItems");
 	}
 }

@@ -1,18 +1,18 @@
 ﻿@inherits UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<Layout1x1_1x3, Layout1X1_1X3Settings>>
 
 @{
-    var themeColorsCss = Model.Settings?.GetThemeClasses();
-    var layoutStyles = Model.Settings?.GenerateCss<ILayoutProperties>(Compositions.LAYOUT);
-    var gridStyles = Model.Settings?.GenerateCss<IGridGapProperties>();
+    var themeClasses = Model.Settings?.GenerateTailwindClasses<ITwThemeProperties>();
+    var layoutClasses = Model.Settings?.GenerateTailwindClasses<ITwLayoutProperties>();
+    var layoutGapClass = Model.Settings?.GenerateTailwindClasses<ITwLayoutGapProperties>();
     var areas = Model.Areas.ToList();
 }
 
-<div id="layout1x1_1x3" class="@themeColorsCss w-full" style="@layoutStyles">
-    <div class="flex w-full flex-col">
+<div id="layout1x1_1x3" class="@themeClasses @layoutClasses w-full">
+    <div class="flex w-full flex-col @layoutGapClass">
         <div id="@areas[0].Alias">
-            @await Html.GetBlockGridItemsHtmlAsync(areas[0], Components.ITEMS_GRID)
+            @await Html.GetBlockGridItemsHtmlAsync(areas[0], Components.ITEMS_LAYOUT)
         </div>
-        <div class="grid md:grid-cols-3" style="@gridStyles">
+        <div class="grid md:grid-cols-3 @layoutGapClass">
             @for (int i = 1; i < 4; i++)
             {
                 @await Html.GetBlockGridItemsHtmlAsync(areas[i], Components.ITEMS_LAYOUT)

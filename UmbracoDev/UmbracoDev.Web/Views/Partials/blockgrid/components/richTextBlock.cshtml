@@ -1,9 +1,9 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<RichTextBlock, RichTextBlockSettings>>
 @{
-    var paddingStyle = Model.Settings?.GenerateCss<IPaddingProperties>();
-    var marginStyle = Model.Settings?.GenerateCss<IMarginProperties>();
+    var layoutClasses = Model.Settings?.GenerateTailwindClasses<ITwLayoutProperties>();
+    var justifyContentClass = Model.Settings?.GenerateTailwindClasses<ITwJustifyContentProperties>();
 }
 
-<div id="@Model.Content.ContentType.Alias" style="@paddingStyle@marginStyle">
+<div id="@Model.Content.ContentType.Alias" class="@layoutClasses@justifyContentClass">
     @Html.Raw(Model.Content.Text)
 </div>

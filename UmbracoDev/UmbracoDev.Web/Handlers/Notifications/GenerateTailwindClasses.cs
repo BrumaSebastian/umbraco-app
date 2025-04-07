@@ -130,6 +130,8 @@ public class GenerateTailwindClasses : INotificationAsyncHandler<ContentSavedNot
             string className = TailwindClassBuilderHelper.ProcessClassNameReplacements(setting.Alias);
             string classValue = string.Empty;
 
+            if (string.IsNullOrWhiteSpace(setting.EditorAlias)) continue;
+
             try
             {
                 switch (setting.Value.ValueKind)
