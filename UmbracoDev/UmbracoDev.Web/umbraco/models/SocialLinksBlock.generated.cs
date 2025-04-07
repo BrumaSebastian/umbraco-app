@@ -18,24 +18,14 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
-	// Mixin Content Type with alias "column1Properties"
-	/// <summary>Column 1 Properties</summary>
-	public partial interface IColumn1Properties : IPublishedElement
-	{
-		/// <summary>Column 1 Align Content</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		string Column1AlignContent { get; }
-	}
-
-	/// <summary>Column 1 Properties</summary>
-	[PublishedModel("column1Properties")]
-	public partial class Column1Properties : PublishedElementModel, IColumn1Properties
+	/// <summary>Social Links Block</summary>
+	[PublishedModel("socialLinksBlock")]
+	public partial class SocialLinksBlock : PublishedElementModel
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		public new const string ModelTypeAlias = "column1Properties";
+		public new const string ModelTypeAlias = "socialLinksBlock";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
@@ -44,14 +34,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 			=> PublishedModelUtility.GetModelContentType(contentTypeCache, ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedContentTypeCache contentTypeCache, Expression<Func<Column1Properties, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedContentTypeCache contentTypeCache, Expression<Func<SocialLinksBlock, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(contentTypeCache), selector);
 #pragma warning restore 0109
 
 		private IPublishedValueFallback _publishedValueFallback;
 
 		// ctor
-		public Column1Properties(IPublishedElement content, IPublishedValueFallback publishedValueFallback)
+		public SocialLinksBlock(IPublishedElement content, IPublishedValueFallback publishedValueFallback)
 			: base(content, publishedValueFallback)
 		{
 			_publishedValueFallback = publishedValueFallback;
@@ -60,16 +50,19 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// Column 1 Align Content
+		/// Links
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("column1AlignContent")]
-		public virtual string Column1AlignContent => GetColumn1AlignContent(this, _publishedValueFallback);
+		[ImplementPropertyType("links")]
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel Links => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "links");
 
-		/// <summary>Static getter for Column 1 Align Content</summary>
+		///<summary>
+		/// Title
+		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static string GetColumn1AlignContent(IColumn1Properties that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "column1AlignContent");
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("title")]
+		public virtual string Title => this.Value<string>(_publishedValueFallback, "title");
 	}
 }

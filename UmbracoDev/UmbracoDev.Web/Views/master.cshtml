@@ -26,8 +26,8 @@
         @RenderBody()
     </main>
 
-    <footer class="mt-auto">
-        @* @await Component.InvokeAsync("Footer") *@
+    <footer>
+        @await Html.GetBlockGridHtmlAsync(siteSettings?.FooterContent)
     </footer>
 </body>
 </html>

@@ -1,0 +1,19 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<SubscribeSectionBlock>>
+@{
+    var layoutClasses = Model.Settings?.GenerateTailwindClasses<ITwLayoutProperties>();
+    var justifyContentClass = Model.Settings?.GenerateTailwindClasses<ITwJustifyContentProperties>();
+    var layoutGapClass = Model.Settings?.GenerateTailwindClasses<ITwLayoutGapProperties>();
+}
+
+<div id="@Model.Content.ContentType.Alias" class="@layoutClasses @justifyContentClass">
+    <div class="flex flex-col @layoutGapClass">
+        @Html.Raw(Model.Content.Title)
+        @Html.Raw(Model.Content.Subtitle)
+        <div class="flex flex-wrap gap-2">
+            <input type="email" placeholder="@Model.Content.Input.Name"
+                   class="input border-2 w-full rounded-xl md:w-75" />
+            <button class="btn border-3 w-full rounded-xl md:w-25">@Model.Content.Button.Name</button>
+        </div>
+        <p>@Model.Content.AknowledgeText</p>
+    </div>
+</div>

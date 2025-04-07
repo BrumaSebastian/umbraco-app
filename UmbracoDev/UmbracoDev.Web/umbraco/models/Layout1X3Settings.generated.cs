@@ -18,14 +18,14 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
-	/// <summary>Site Settings</summary>
-	[PublishedModel("siteSettings")]
-	public partial class SiteSettings : PublishedContentModel, INavigationProperties, ISiteProperties, ITwThemeProperties
+	/// <summary>Layout 1x3 Settings</summary>
+	[PublishedModel("layout1X3Settings")]
+	public partial class Layout1X3Settings : PublishedElementModel, ITwLayoutGapProperties, ITwLayoutProperties, ITwThemeProperties
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		public new const string ModelTypeAlias = "siteSettings";
+		public new const string ModelTypeAlias = "layout1X3Settings";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
@@ -34,14 +34,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 			=> PublishedModelUtility.GetModelContentType(contentTypeCache, ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedContentTypeCache contentTypeCache, Expression<Func<SiteSettings, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedContentTypeCache contentTypeCache, Expression<Func<Layout1X3Settings, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(contentTypeCache), selector);
 #pragma warning restore 0109
 
 		private IPublishedValueFallback _publishedValueFallback;
 
 		// ctor
-		public SiteSettings(IPublishedContent content, IPublishedValueFallback publishedValueFallback)
+		public Layout1X3Settings(IPublishedElement content, IPublishedValueFallback publishedValueFallback)
 			: base(content, publishedValueFallback)
 		{
 			_publishedValueFallback = publishedValueFallback;
@@ -50,59 +50,67 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// Footer Content
+		/// Gap
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("footerContent")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel FooterContent => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel>(_publishedValueFallback, "footerContent");
+		[ImplementPropertyType("twLayoutGap")]
+		public virtual int TwLayoutGap => global::Umbraco.Cms.Web.Common.PublishedModels.TwLayoutGapProperties.GetTwLayoutGap(this, _publishedValueFallback);
 
 		///<summary>
-		/// Hide From Navigation
+		/// Margin Bottom
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[ImplementPropertyType("umbracoNaviHide")]
-		public virtual bool UmbracoNaviHide => global::Umbraco.Cms.Web.Common.PublishedModels.NavigationProperties.GetUmbracoNaviHide(this, _publishedValueFallback);
+		[ImplementPropertyType("twMarginBottom")]
+		public virtual int TwMarginBottom => global::Umbraco.Cms.Web.Common.PublishedModels.TwLayoutProperties.GetTwMarginBottom(this, _publishedValueFallback);
 
 		///<summary>
-		/// Meta Description
+		/// Margin Left
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("metaDescription")]
-		public virtual string MetaDescription => global::Umbraco.Cms.Web.Common.PublishedModels.SiteProperties.GetMetaDescription(this, _publishedValueFallback);
+		[ImplementPropertyType("twMarginLeft")]
+		public virtual int TwMarginLeft => global::Umbraco.Cms.Web.Common.PublishedModels.TwLayoutProperties.GetTwMarginLeft(this, _publishedValueFallback);
 
 		///<summary>
-		/// Redirect Type
+		/// Margin Right
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("redirectType")]
-		public virtual string RedirectType => global::Umbraco.Cms.Web.Common.PublishedModels.SiteProperties.GetRedirectType(this, _publishedValueFallback);
+		[ImplementPropertyType("twMarginRight")]
+		public virtual int TwMarginRight => global::Umbraco.Cms.Web.Common.PublishedModels.TwLayoutProperties.GetTwMarginRight(this, _publishedValueFallback);
 
 		///<summary>
-		/// Redirect URL
+		/// Margin Top
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("redirectUrl")]
-		public virtual global::Umbraco.Cms.Core.Models.Link RedirectUrl => global::Umbraco.Cms.Web.Common.PublishedModels.SiteProperties.GetRedirectUrl(this, _publishedValueFallback);
+		[ImplementPropertyType("twMarginTop")]
+		public virtual int TwMarginTop => global::Umbraco.Cms.Web.Common.PublishedModels.TwLayoutProperties.GetTwMarginTop(this, _publishedValueFallback);
 
 		///<summary>
-		/// Site Logo
+		/// Padding Bottom
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("siteLogo")]
-		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops SiteLogo => global::Umbraco.Cms.Web.Common.PublishedModels.SiteProperties.GetSiteLogo(this, _publishedValueFallback);
+		[ImplementPropertyType("twPaddingBottom")]
+		public virtual int TwPaddingBottom => global::Umbraco.Cms.Web.Common.PublishedModels.TwLayoutProperties.GetTwPaddingBottom(this, _publishedValueFallback);
 
 		///<summary>
-		/// Site Name
+		/// Padding Left
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("siteName")]
-		public virtual string SiteName => global::Umbraco.Cms.Web.Common.PublishedModels.SiteProperties.GetSiteName(this, _publishedValueFallback);
+		[ImplementPropertyType("twPaddingLeft")]
+		public virtual int TwPaddingLeft => global::Umbraco.Cms.Web.Common.PublishedModels.TwLayoutProperties.GetTwPaddingLeft(this, _publishedValueFallback);
+
+		///<summary>
+		/// Padding Right
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[ImplementPropertyType("twPaddingRight")]
+		public virtual int TwPaddingRight => global::Umbraco.Cms.Web.Common.PublishedModels.TwLayoutProperties.GetTwPaddingRight(this, _publishedValueFallback);
+
+		///<summary>
+		/// Padding Top
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[ImplementPropertyType("twPaddingTop")]
+		public virtual int TwPaddingTop => global::Umbraco.Cms.Web.Common.PublishedModels.TwLayoutProperties.GetTwPaddingTop(this, _publishedValueFallback);
 
 		///<summary>
 		/// Dark Mode Accent

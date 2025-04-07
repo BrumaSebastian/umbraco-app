@@ -1,0 +1,9 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem<SocialLink>>
+@{
+
+}
+
+<div class="flex content-center gap-3">
+    <img src="@Model.Content.Icon.GetCropUrl()" width="32" />
+    <a href="@Model.Content.Link.Url">@Model.Content.Link.Name </a>
+</div>

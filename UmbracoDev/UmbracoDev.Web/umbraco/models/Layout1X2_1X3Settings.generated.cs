@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>Layout 1x2 1x3 Settings</summary>
 	[PublishedModel("layout1X2_1X3Settings")]
-	public partial class Layout1X2_1X3Settings : PublishedElementModel, IColumn1Properties, IColumn2Properties, IGridGapProperties, ILayoutProperties, IThemeProperties
+	public partial class Layout1X2_1X3Settings : PublishedElementModel, IGridGapProperties, ILayoutProperties, IThemeProperties
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -48,22 +48,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		}
 
 		// properties
-
-		///<summary>
-		/// Column 1 Align Content
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("column1AlignContent")]
-		public virtual string Column1AlignContent => global::Umbraco.Cms.Web.Common.PublishedModels.Column1Properties.GetColumn1AlignContent(this, _publishedValueFallback);
-
-		///<summary>
-		/// Column 2 Align Content
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("column2AlignContent")]
-		public virtual string Column2AlignContent => global::Umbraco.Cms.Web.Common.PublishedModels.Column2Properties.GetColumn2AlignContent(this, _publishedValueFallback);
 
 		///<summary>
 		/// Gap

@@ -4,8 +4,6 @@
     var themeColorsCss = Model.Settings?.GetThemeClasses();
     var layoutStyles = Model.Settings?.GenerateCss<ILayoutProperties>(Compositions.LAYOUT);
     var gridStyles = Model.Settings?.GenerateCss<IGridGapProperties>();
-    var column1Styles = Model.Settings?.GenerateCss<IColumn1Properties>($"{Compositions.COLUMN}1");
-    var column2Styles = Model.Settings?.GenerateCss<IColumn2Properties>($"{Compositions.COLUMN}2");
     var areas = Model.Areas.ToList();
 }
 

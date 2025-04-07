@@ -1,0 +1,9 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<SocialLinksBlock>>
+@{
+
+}
+
+<div class="flex flex-col gap-2">
+    <h3>@Model.Content.Title</h3>
+    @await Html.GetBlockListHtmlAsync(Model.Content.Links)
+</div>

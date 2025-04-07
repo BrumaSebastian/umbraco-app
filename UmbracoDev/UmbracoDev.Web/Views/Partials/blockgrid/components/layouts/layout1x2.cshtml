@@ -1,14 +1,13 @@
 ﻿@inherits UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<Layout1x2, Layout1X2Settings>>
 
 @{
-    if (Model?.Areas.Count() != 2) { return; }
     var themeClasses = Model.Settings?.GenerateTailwindClasses<ITwThemeProperties>();
     var layoutClasses = Model.Settings?.GenerateTailwindClasses<ITwLayoutProperties>();
     var layoutGapClass = Model.Settings?.GenerateTailwindClasses<ITwLayoutGapProperties>();
     var areas = Model.Areas.ToList();
 }
 
-<div id="layout1x2" class=" w-full">
+<div id="layout1x2" class="w-full">
     <div class="grid md:grid-cols-2 @themeClasses @layoutClasses @layoutGapClass">
         @foreach(var area in areas) @await Html.GetBlockGridItemsHtmlAsync(area, Components.ITEMS_LAYOUT)
     </div>
