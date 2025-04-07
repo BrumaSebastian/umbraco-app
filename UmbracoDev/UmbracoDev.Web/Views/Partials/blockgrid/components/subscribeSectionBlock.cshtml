@@ -9,7 +9,7 @@
     <div class="flex flex-col @layoutGapClass">
         @Html.Raw(Model.Content.Title)
         @Html.Raw(Model.Content.Subtitle)
-        <div class="flex flex-wrap gap-2">
+        <div class="flex flex-wrap gap-2 md:flex-nowrap">
             <input type="email" placeholder="@Model.Content.Input.Name"
                    class="input border-2 w-full rounded-xl md:w-75" />
             <button class="btn border-3 w-full rounded-xl md:w-25">@Model.Content.Button.Name</button>

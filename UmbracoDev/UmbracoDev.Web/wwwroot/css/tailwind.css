@@ -2310,6 +2310,11 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
+  .md\:flex-nowrap {
+    @media (width >= 48rem) {
+      flex-wrap: nowrap;
+    }
+  }
   .lg\:flex {
     @media (width >= 64rem) {
       display: flex;
