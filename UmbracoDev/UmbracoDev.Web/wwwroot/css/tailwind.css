@@ -1938,6 +1938,9 @@
   .gap-10 {
     gap: calc(var(--spacing) * 10);
   }
+  .self-center {
+    align-self: center;
+  }
   .justify-self-center-safe {
     justify-self: safe center;
   }
@@ -2313,6 +2316,16 @@
   .md\:flex-nowrap {
     @media (width >= 48rem) {
       flex-wrap: nowrap;
+    }
+  }
+  .md\:content-start {
+    @media (width >= 48rem) {
+      align-content: flex-start;
+    }
+  }
+  .md\:self-start {
+    @media (width >= 48rem) {
+      align-self: flex-start;
     }
   }
   .lg\:flex {

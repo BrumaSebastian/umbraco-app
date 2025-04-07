@@ -7,7 +7,9 @@
 
 <div id="@Model.Content.ContentType.Alias" class="@layoutClasses @justifyContentClass">
     <div class="flex flex-col @layoutGapClass">
-        @Html.Raw(Model.Content.Title)
+        <div class="self-center md:self-start">
+            @Html.Raw(Model.Content.Title)
+        </div>
         @Html.Raw(Model.Content.Subtitle)
         <div class="flex flex-wrap gap-2 md:flex-nowrap">
             <input type="email" placeholder="@Model.Content.Input.Name"
