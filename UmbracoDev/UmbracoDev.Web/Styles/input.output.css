@@ -1222,6 +1222,11 @@
       background-color: #454512;
     }
   }
+  .dark\:bg-\[\#ADAD2D\] {
+    &:where([data-theme=dark], [data-theme=dark] *) {
+      background-color: #ADAD2D;
+    }
+  }
   .dark\:bg-\[\#cb7e7eeb\] {
     &:where([data-theme=dark], [data-theme=dark] *) {
       background-color: #cb7e7eeb;

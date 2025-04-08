@@ -2,7 +2,7 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @plugin "daisyui" {
-    themes: forest --default;
+    themes: light --default, forest --prefersdark;
 }
 
 @layer base {
