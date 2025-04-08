@@ -1,5 +1,5 @@
 [
-  "dark:bg-[#191919]",
+  "dark:bg-[#4c4c4c]",
   "dark:text-[#f2f2f2]",
   "dark:accent-[#b42d2d]",
   "bg-[#f6f6ea]",
@@ -11,6 +11,7 @@
   "pb-10",
   "dark:accent-[#CA6C6C]",
   "dark:text-[#F2F2F2]",
+  "dark:bg-[#191919]",
   "accent-[#B42D2D]",
   "bg-[#F6F6EA]",
   "pr-10",

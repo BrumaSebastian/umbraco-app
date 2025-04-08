@@ -1,0 +1,42 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@using Microsoft.AspNetCore.Http.Extensions
+@using Umbraco.Cms.Web.Common.Models
+@using Umbraco.Cms.Web.Website.Controllers
+@using Umbraco.Extensions
+
+@{
+    var isLoggedIn = Context.User.GetMemberIdentity()?.IsAuthenticated ?? false;
+    var logoutModel = new PostRedirectModel();
+    // You can modify this to redirect to a different URL instead of the current one
+    logoutModel.RedirectUrl = null;
+}
+
+
+@if (isLoggedIn)
+{
+    <div class="dropdown dropdown-bottom dropdown-end">
+        <div tabindex="0" role="button" class="btn btn-ghost">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="size-9">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+            </svg>
+        </div>
+
+        <div tabindex="0" class="dropdown-content z-1 w-64 bg-red-300 py-3 shadow-md">
+            <div class="flex flex-col items-center gap-3">
+                <p>Hello <strong>@Context.User?.GetMemberIdentity()?.Name</strong>!</p>
+                @using (Html.BeginUmbracoForm<UmbLoginStatusController>("HandleLogout", new { RedirectUrl = logoutModel.RedirectUrl }))
+                {
+                    <button type="submit" class="btn btn-primary">Log out</button>
+                }
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="flex justify-center gap-2">
+        <a class="btn btn-primary btn-sm border-2 rounded-lg sm:btn-md" href="/sign-up">Sign up</a>
+        <a class="btn btn-outline btn-secondary border-2 hidden rounded-lg sm:inline-flex" href="/authentication-page">Log in</a>
+    </div>
+}

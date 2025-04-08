@@ -17,12 +17,12 @@
     <link rel="stylesheet" href="/css/main.css" />
     <title>DevApp</title>
 </head>
-<body class="min-h-screen">
+<body>
     <header class="sticky top-0 z-50 @themeClasses">
         @await Html.PartialAsync("Header")
     </header>
 
-    <main class="w-full @themeClasses">
+    <main class="min-h-screen w-full @themeClasses">
         @RenderBody()
     </main>
 

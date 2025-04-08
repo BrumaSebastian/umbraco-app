@@ -1077,17 +1077,8 @@
   .items-center {
     align-items: center;
   }
-  .items-center-safe {
-    align-items: safe center;
-  }
-  .justify-center {
-    justify-content: center;
-  }
   .justify-items-center {
     justify-items: center;
-  }
-  .justify-items-center-safe {
-    justify-items: safe center;
   }
   .gap-1 {
     gap: calc(var(--spacing) * 1);
@@ -1132,9 +1123,6 @@
   .bg-\[\#D8D8D8\] {
     background-color: #D8D8D8;
   }
-  .bg-\[\#F2F2F2\] {
-    background-color: #F2F2F2;
-  }
   .bg-\[\#F6F6EA\] {
     background-color: #F6F6EA;
   }
@@ -1150,9 +1138,6 @@
   .pt-20 {
     padding-top: calc(var(--spacing) * 20);
   }
-  .pr-2 {
-    padding-right: calc(var(--spacing) * 2);
-  }
   .pr-5 {
     padding-right: calc(var(--spacing) * 5);
   }
@@ -1167,9 +1152,6 @@
   }
   .pb-20 {
     padding-bottom: calc(var(--spacing) * 20);
-  }
-  .pl-2 {
-    padding-left: calc(var(--spacing) * 2);
   }
   .pl-5 {
     padding-left: calc(var(--spacing) * 5);
@@ -1220,6 +1202,16 @@
       background-color: #4C4C4C;
     }
   }
+  .dark\:bg-\[\#4c4c4c\] {
+    &:where([data-theme=dark], [data-theme=dark] *) {
+      background-color: #4c4c4c;
+    }
+  }
+  .dark\:bg-\[\#7f7f7f\] {
+    &:where([data-theme=dark], [data-theme=dark] *) {
+      background-color: #7f7f7f;
+    }
+  }
   .dark\:bg-\[\#191919\] {
     &:where([data-theme=dark], [data-theme=dark] *) {
       background-color: #191919;
@@ -1233,11 +1225,6 @@
   .dark\:bg-\[\#cb7e7eeb\] {
     &:where([data-theme=dark], [data-theme=dark] *) {
       background-color: #cb7e7eeb;
-    }
-  }
-  .dark\:text-\[\#000000\] {
-    &:where([data-theme=dark], [data-theme=dark] *) {
-      color: #000000;
     }
   }
   .dark\:text-\[\#F2F2F2\] {

@@ -1,0 +1,12 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<SignUpPage>
+@{
+    Layout = "master.cshtml";
+}
+
+<div class="grid h-full grid-cols-1 lg:grid-cols-2">
+    @await Html.PartialAsync("Register")
+    <div class="hidden lg:contents">
+        @await Html.CachedPartialAsync("InformationSection", null, cacheTimeout: TimeSpan.FromMinutes(20))
+    </div>
+</div>
