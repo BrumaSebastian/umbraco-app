@@ -1077,17 +1077,8 @@
   .items-center {
     align-items: center;
   }
-  .items-center-safe {
-    align-items: safe center;
-  }
-  .justify-center {
-    justify-content: center;
-  }
   .justify-items-center {
     justify-items: center;
-  }
-  .justify-items-center-safe {
-    justify-items: safe center;
   }
   .gap-1 {
     gap: calc(var(--spacing) * 1);
@@ -1129,9 +1120,6 @@
   .bg-\[\#ADAD2D\] {
     background-color: #ADAD2D;
   }
-  .bg-\[\#D8D8D8\] {
-    background-color: #D8D8D8;
-  }
   .bg-\[\#F6F6EA\] {
     background-color: #F6F6EA;
   }
@@ -1147,9 +1135,6 @@
   .pt-20 {
     padding-top: calc(var(--spacing) * 20);
   }
-  .pr-2 {
-    padding-right: calc(var(--spacing) * 2);
-  }
   .pr-5 {
     padding-right: calc(var(--spacing) * 5);
   }
@@ -1164,9 +1149,6 @@
   }
   .pb-20 {
     padding-bottom: calc(var(--spacing) * 20);
-  }
-  .pl-2 {
-    padding-left: calc(var(--spacing) * 2);
   }
   .pl-5 {
     padding-left: calc(var(--spacing) * 5);
@@ -1211,11 +1193,6 @@
   .ease-out {
     --tw-ease: var(--ease-out);
     transition-timing-function: var(--ease-out);
-  }
-  .dark\:bg-\[\#4C4C4C\] {
-    &:where([data-theme=dark], [data-theme=dark] *) {
-      background-color: #4C4C4C;
-    }
   }
   .dark\:bg-\[\#4c4c4c\] {
     &:where([data-theme=dark], [data-theme=dark] *) {

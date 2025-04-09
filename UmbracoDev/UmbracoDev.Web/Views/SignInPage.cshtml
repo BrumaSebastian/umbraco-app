@@ -2,9 +2,12 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<SignInPage>
 @{
     Layout = "master.cshtml";
+
+    var siteSettings = Model.GetSiteSettings();
+    var themeClasses = siteSettings?.GenerateTailwindClasses<ITwThemeProperties>();
 }
 
-<div class="grid h-full grid-cols-1 lg:grid-cols-2">
+<div class="grid h-full grid-cols-1 lg:grid-cols-2 @themeClasses">
     @await Html.PartialAsync("Login")
     <div class="hidden lg:contents">
         @await Html.CachedPartialAsync("InformationSection", null, cacheTimeout: TimeSpan.FromMinutes(20))

@@ -4,7 +4,6 @@
 @{
     var siteSettings = Model.GetSiteSettings();
     var themeClasses = siteSettings?.GenerateTailwindClasses<ITwThemeProperties>();
-
 }
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -14,6 +13,7 @@
     <link rel="stylesheet" href="~/css/blockgridlayout.css" />
     <link rel="stylesheet" href="/css/tailwind.css" />
     <link rel="stylesheet" href="/css/main.css" />
+    <script src="/js/theme.js"></script>
     <title>DevApp</title>
 </head>
 <body>

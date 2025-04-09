@@ -18,9 +18,34 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
+	// Mixin Content Type with alias "seoProperties"
+	/// <summary>SEO Properties</summary>
+	public partial interface ISeoProperties : IPublishedElement
+	{
+		/// <summary>Cannonical URL</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		string CannonicalUrl { get; }
+
+		/// <summary>Meta Description</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		string MetaDescription { get; }
+
+		/// <summary>Page Title</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		string PageTitle { get; }
+
+		/// <summary>SEO Keywords</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		string SeoKeywords { get; }
+	}
+
 	/// <summary>SEO Properties</summary>
 	[PublishedModel("seoProperties")]
-	public partial class SeoProperties : PublishedElementModel
+	public partial class SeoProperties : PublishedElementModel, ISeoProperties
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -55,7 +80,12 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("cannonicalUrl")]
-		public virtual string CannonicalUrl => this.Value<string>(_publishedValueFallback, "cannonicalUrl");
+		public virtual string CannonicalUrl => GetCannonicalUrl(this, _publishedValueFallback);
+
+		/// <summary>Static getter for Cannonical URL</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		public static string GetCannonicalUrl(ISeoProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "cannonicalUrl");
 
 		///<summary>
 		/// Meta Description
@@ -63,7 +93,12 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("metaDescription")]
-		public virtual string MetaDescription => this.Value<string>(_publishedValueFallback, "metaDescription");
+		public virtual string MetaDescription => GetMetaDescription(this, _publishedValueFallback);
+
+		/// <summary>Static getter for Meta Description</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		public static string GetMetaDescription(ISeoProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "metaDescription");
 
 		///<summary>
 		/// Page Title
@@ -71,7 +106,12 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("pageTitle")]
-		public virtual string PageTitle => this.Value<string>(_publishedValueFallback, "pageTitle");
+		public virtual string PageTitle => GetPageTitle(this, _publishedValueFallback);
+
+		/// <summary>Static getter for Page Title</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		public static string GetPageTitle(ISeoProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "pageTitle");
 
 		///<summary>
 		/// SEO Keywords
@@ -79,6 +119,11 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("seoKeywords")]
-		public virtual string SeoKeywords => this.Value<string>(_publishedValueFallback, "seoKeywords");
+		public virtual string SeoKeywords => GetSeoKeywords(this, _publishedValueFallback);
+
+		/// <summary>Static getter for SEO Keywords</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		public static string GetSeoKeywords(ISeoProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "seoKeywords");
 	}
 }
