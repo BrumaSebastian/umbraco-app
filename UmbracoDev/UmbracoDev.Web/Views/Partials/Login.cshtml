@@ -11,8 +11,7 @@
 @{
     var loginModel = new LoginModel();
     // You can modify this to redirect to a different URL instead of the current one
-    loginModel.RedirectUrl = "/";
-
+    loginModel.RedirectUrl = Context.Request.Path == "/sign-in" ? "/" : Context.Request.Path;
 
     var siteSettings = Model.GetSiteSettings();
 }
