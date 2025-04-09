@@ -1,0 +1,6 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+    var siteSettings = Model.GetSiteSettings();
+}
+
+@await Html.GetBlockGridHtmlAsync(siteSettings?.FooterContent)

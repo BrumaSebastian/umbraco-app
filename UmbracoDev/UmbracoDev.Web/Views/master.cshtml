@@ -3,7 +3,6 @@
 
 @{
     var siteSettings = Model.GetSiteSettings();
-    // var themeColorsCss = siteSettings?.GetThemeClasses();
     var themeClasses = siteSettings?.GenerateTailwindClasses<ITwThemeProperties>();
 
 }
@@ -19,7 +18,7 @@
 </head>
 <body>
     <header class="sticky top-0 z-50 @themeClasses">
-        @await Html.PartialAsync("Header")
+        @await RenderSectionAsync("HeaderSection", false)
     </header>
 
     <main class="min-h-screen w-full @themeClasses">
@@ -27,7 +26,7 @@
     </main>
 
     <footer>
-        @await Html.GetBlockGridHtmlAsync(siteSettings?.FooterContent)
+        @await RenderSectionAsync("FooterSection", false)
     </footer>
 </body>
 </html>

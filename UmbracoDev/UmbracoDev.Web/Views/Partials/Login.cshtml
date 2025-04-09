@@ -12,6 +12,9 @@
     var loginModel = new LoginModel();
     // You can modify this to redirect to a different URL instead of the current one
     loginModel.RedirectUrl = "/";
+
+
+    var siteSettings = Model.GetSiteSettings();
 }
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -43,13 +46,18 @@
 }
 else
 {
-    <div class="login-form flex justify-center py-10">
+    <div class="login-form mt-10 flex justify-center">
 
         @using (Html.BeginUmbracoForm<UmbLoginController>("HandleLogin", new { RedirectUrl = loginModel.RedirectUrl }))
         {
+            <div class="flex justify-center">
+                <a class="btn btn-link text-xl" href="/">
+                    <img class="h-auto w-32" src="@(siteSettings?.SiteLogo?.GetCropUrl() ?? "/assets//placeholder_32x32.png")" alt="Site logo"/>
+                </a>
+            </div>
 
             <div class="flex w-xs flex-col gap-1 px-5 sm:w-lg">
-
+                
                 <h3>Log in with a local account.</h3>
                 <hr />
                 <div asp-validation-summary="ModelOnly" class="text-error"></div>
@@ -74,6 +82,8 @@ else
                 </div>
 
                 <button type="submit" class="btn btn-primary">Log in</button>
+
+                <p>Don’t have an account yet? <a class="text-primary" href="/sign-up">Sign up for free</a></p>
             </div>
 
         }

@@ -25,11 +25,9 @@
         .Build();
 
     var success = TempData["FormSuccess"] != null;
-}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+    var siteSettings = Model.GetSiteSettings();
+}
 
 @if (success)
 {
@@ -48,6 +46,11 @@ else
            AutomaticLogIn = registerModel.AutomaticLogIn
        }))
         {
+            <div class="mt-10 flex justify-center">
+                <a class="btn btn-link text-xl" href="/">
+                    <img class="h-auto w-32" src="@(siteSettings?.SiteLogo?.GetCropUrl() ?? "/assets//placeholder_32x32.png")" alt="Site logo" />
+                </a>
+            </div>
 
             <h2>Create a new account.</h2>
             <hr />
@@ -92,6 +95,9 @@ else
                 }
 
                 <button type="submit" class="btn btn-primary mt-3">Register</button>
+
+                <p>Already got an account? <a class="text-primary" href="/sign-in">Log in</a></p>
+
             </div>
         }
     </div>
