@@ -1,0 +1,45 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using UmbracoDev.Web.Controllers.Surface
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<SubmitRentalFormPage>
+@{
+    Layout = "master.cshtml";
+}
+
+@section HeaderSection {
+    @await Html.PartialAsync("Header")
+}
+
+
+@section FooterSection {
+    @await Html.PartialAsync("Footer")
+}
+
+<div class="flex min-h-dvh justify-center">
+
+    @using (Html.BeginUmbracoForm<RentalSurfaceController>("SubmitItem", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="flex flex-col">
+            <div>
+                <label for="itemTitle">Title:</label>
+                <input class="input" type="text" id="itemTitle" name="itemTitle" required />
+            </div>
+            <div>
+                <label for="itemDescription">Description:</label>
+                <textarea class="input" id="itemDescription" name="itemDescription" required></textarea>
+            </div>
+            <div>
+                <label for="itemPrice">Price:</label>
+                <input class="input" type="number" id="itemPrice" name="itemPrice" step="0.01" required />
+            </div>
+            @* <div>
+            <label for="previewImage">Preview Image:</label>
+            <input type="file" id="previewImage" name="previewImage" accept="image/*" required />
+        </div>
+        <div>
+            <label for="galleryImages">Gallery Images:</label>
+            <input type="file" id="galleryImages" name="galleryImages" multiple accept="image/*" />
+        </div> *@
+            <button class="btn" type="submit">Submit Item</button>
+        </div>
+    }
+</div>

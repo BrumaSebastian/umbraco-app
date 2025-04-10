@@ -2,6 +2,10 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
     Layout = "master.cshtml";
+
+    var rentals = Umbraco.ContentAtRoot().DescendantsOrSelf<Rental>();
+
+    var addRentalFormPath = Model.Children<SubmitRentalFormPage>().Single().UrlSegment;
 }
 
 @section HeaderSection {
@@ -25,33 +29,20 @@
                     </svg>
                 </label>
             </div>
-            <div class="drawer-side mt-18 rounded-lg lg:mt-0">
+            <div class="drawer-side mt-18 lg:mt-0">
                 <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
                 <ul class="menu text-base-content min-h-dvh w-50 bg-red-300 p-4">
                     <!-- Sidebar content here -->
-                    <li><a>Sidebar Item 1</a></li>
-                    <li><a>Sidebar Item 2</a></li>
+                    <li><a href="@addRentalFormPath" class="btn btn-primary">Add Rental</a></li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="size-full flex-1 p-10">
         <div class="grid grid-cols-1 place-items-center gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-            @for (int i = 0; i < 10; i++)
+            @foreach(var rental in rentals)
             {
-                <div class="card bg-base-100 shadow-sm">
-                    <figure>
-                        <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                             alt="Shoes" />
-                    </figure>
-                    <div class="card-body">
-                        <h2 class="card-title">Card Title</h2>
-                        <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-                        <div class="card-actions justify-end">
-                            <button class="btn btn-primary">Buy Now</button>
-                        </div>
-                    </div>
-                </div>
+                @await Html.PartialAsync("Components/RentalCard", rental)
             }
         </div>
     </div>

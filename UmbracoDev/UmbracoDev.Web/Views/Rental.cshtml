@@ -1,0 +1,19 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Rental>
+@{
+	Layout = "master.cshtml";
+}
+
+@section HeaderSection {
+    @await Html.PartialAsync("Header")
+}
+
+
+@section FooterSection {
+    @await Html.PartialAsync("Footer")
+}
+
+
+<div class="min-h-dvh p-10">
+    @await Html.PartialAsync("Components/RentalCard", Model)
+</div>
