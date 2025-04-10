@@ -9,8 +9,8 @@
 
 <div class="navbar shadow-sm">
     <div class="navbar-start">
-        <a class="btn btn-ghost text-xl" href="/">
-            <img class="w-1/2 object-contain" src="@(siteSettings?.SiteLogo?.GetCropUrl() ?? "/assets//placeholder_32x32.png")" />
+        <a class="flex place-items-center text-xl" href="/">
+            <img class="w-24 object-contain" src="@(siteSettings?.SiteLogo?.GetCropUrl() ?? "/assets//placeholder_32x32.png")" />
             <p class="hidden md:block">
                 @(siteSettings?.SiteName ?? "SiteName")
             </p>

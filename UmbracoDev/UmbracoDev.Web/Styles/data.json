@@ -1,11 +1,11 @@
 [
-  "bg-[#f6f6ea]",
-  "text-[#000000]",
   "dark:bg-[#4c4c4c]",
   "dark:text-[#f2f2f2]",
   "dark:accent-[#b42d2d]",
-  "bg-[#0936c8e6]",
+  "bg-[#f6f6ea]",
+  "text-[#000000]",
   "dark:bg-[#cb7e7eeb]",
+  "bg-[#0936c8e6]",
   "gap-5",
   "pt-10",
   "pb-10",
@@ -42,5 +42,9 @@
   "mr-10",
   "ml-10",
   "mt-10",
-  "mb-10"
+  "mb-10",
+  "gap-10",
+  "pt-15",
+  "pb-15",
+  "dark:bg-[#ADAD2D]"
 ]

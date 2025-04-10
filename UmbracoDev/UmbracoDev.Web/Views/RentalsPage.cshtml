@@ -1,7 +1,7 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
-	Layout = "master.cshtml";
+    Layout = "master.cshtml";
 }
 
 @section HeaderSection {
@@ -13,8 +13,8 @@
     @await Html.PartialAsync("Footer")
 }
 
-<div class="flex size-full">
-    <div class="sidebar z-51">
+<div class="flex min-h-dvh">
+    <div class="sidebar z-2">
         <div class="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
             <div class="drawer-content flex flex-col items-center justify-center">
@@ -25,9 +25,9 @@
                     </svg>
                 </label>
             </div>
-            <div class="drawer-side">
+            <div class="drawer-side mt-18 rounded-lg lg:mt-0">
                 <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
-                <ul class="menu bg-base-200 text-base-content min-h-full w-50 p-4">
+                <ul class="menu text-base-content min-h-dvh w-50 bg-red-300 p-4">
                     <!-- Sidebar content here -->
                     <li><a>Sidebar Item 1</a></li>
                     <li><a>Sidebar Item 2</a></li>
@@ -35,7 +35,24 @@
             </div>
         </div>
     </div>
-    <div class="flex-1 size-full">
-        <h1>sdafga</h1>
+    <div class="size-full flex-1 p-10">
+        <div class="grid grid-cols-1 place-items-center gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+            @for (int i = 0; i < 10; i++)
+            {
+                <div class="card bg-base-100 shadow-sm">
+                    <figure>
+                        <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                             alt="Shoes" />
+                    </figure>
+                    <div class="card-body">
+                        <h2 class="card-title">Card Title</h2>
+                        <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+                        <div class="card-actions justify-end">
+                            <button class="btn btn-primary">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
     </div>
 </div>
