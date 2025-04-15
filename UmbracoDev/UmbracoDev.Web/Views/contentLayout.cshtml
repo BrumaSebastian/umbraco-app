@@ -18,16 +18,8 @@
     <title>DevApp</title>
 </head>
 <body>
-    <header class="sticky top-0 z-50 @themeClasses">
-        @await Html.PartialAsync("Shared/Header")
-    </header>
-
     <main class="w-full @themeClasses">
         @RenderBody()
     </main>
-
-    <footer>
-        @await Html.PartialAsync("Shared/Footer")
-    </footer>
 </body>
 </html>
