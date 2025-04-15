@@ -8,15 +8,6 @@
     var addRentalFormPath = Model.Children<SubmitRentalFormPage>().Single().UrlSegment;
 }
 
-@section HeaderSection {
-    @await Html.PartialAsync("Header")
-}
-
-
-@section FooterSection {
-    @await Html.PartialAsync("Footer")
-}
-
 <div class="flex min-h-dvh">
     <div class="sidebar z-2">
         <div class="drawer lg:drawer-open">

@@ -1,7 +1,7 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<SignInPage>
 @{
-    Layout = "master.cshtml";
+    Layout = "contentLayout.cshtml";
 
     var siteSettings = Model.GetSiteSettings();
     var themeClasses = siteSettings?.GenerateTailwindClasses<ITwThemeProperties>();

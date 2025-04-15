@@ -5,15 +5,6 @@
     Layout = "master.cshtml";
 }
 
-@section HeaderSection {
-    @await Html.PartialAsync("Header")
-}
-
-
-@section FooterSection {
-    @await Html.PartialAsync("Footer")
-}
-
 <div class="flex min-h-dvh justify-center">
 
     @using (Html.BeginUmbracoForm<RentalSurfaceController>("SubmitItem", FormMethod.Post, new { enctype = "multipart/form-data" }))

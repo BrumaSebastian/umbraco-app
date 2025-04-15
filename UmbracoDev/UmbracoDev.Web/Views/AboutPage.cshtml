@@ -4,13 +4,4 @@
 	Layout = "master.cshtml";
 }
 
-@section HeaderSection {
-    @await Html.PartialAsync("Header")
-}
-
-
-@section FooterSection {
-    @await Html.PartialAsync("Footer")
-}
-
 @await Html.GetBlockGridHtmlAsync(Model, "bodyContent")
