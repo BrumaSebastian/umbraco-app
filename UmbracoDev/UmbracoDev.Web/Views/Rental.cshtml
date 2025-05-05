@@ -1,9 +1,66 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Rental>
 @{
-	Layout = "master.cshtml";
+    Layout = "master.cshtml";
+
+    var gallery = Model.Gallery.ToList();
+    var totalSlides = gallery?.Count ?? 0;
 }
 
 <div class="min-h-dvh p-10">
-    @await Html.PartialAsync("Components/RentalCard", Model)
+    <div class="grid grid-cols-2 gap-5">
+        <img src="@gallery.First().GetCropUrl()" class="cursor-pointer rounded-md transition duration-200 hover:opacity-80 hover:scale-105"
+             onclick="carousel.showModal()" />
+
+        <div class="grid grid-cols-2 grid-rows-2 gap-5 rounded-md" onclick="carousel.showModal()">
+            @foreach (var item in gallery.Skip(1).Take(3))
+            {
+                <img src="@item.GetCropUrl()" onclick="carousel.showModal()" class="cursor-pointer rounded-md object-contain transition duration-200 hover:opacity-80 hover:scale-105" />
+            }
+
+            <img src="@gallery.Skip(4).Take(1).First().GetCropUrl()" onclick="carousel.showModal()" class="cursor-pointer rounded-md object-contain transition duration-200 hover:opacity-80 hover:scale-105" />
+
+        </div>
+    </div>
 </div>
+
+<dialog id="carousel" class="modal">
+    <div class="size-full p-10">
+
+        <form method="dialog">
+            <button class="btn btn-sm btn-circle absolute top-2 left-2">✕</button>
+        </form>
+
+        @if (gallery != null && gallery.Any())
+        {
+            <div class="carousel rounded-box">
+                @for (int i = 0; i < gallery.Count; i++)
+                {
+                    var media = gallery[i];
+                    var prevId = $"#slide{(i == 0 ? totalSlides : i)}";
+                    var nextId = $"#slide{(i == totalSlides - 1 ? 1 : i + 2)}";
+                    var currentId = $"slide{(i + 1)}";
+
+                    <div id="@currentId" class="carousel-item relative w-full">
+                        <img src="@media.MediaUrl()" class="w-full object-cover" />
+                        <div class="absolute top-1/2 flex -translate-y-1/2 transform justify-between">
+                            <a href="@prevId" class="btn btn-circle absolute left-5">❮</a>
+                            <a href="@nextId" class="btn btn-circle absolute right-5">❯</a>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <!-- Thumbnails -->
+            <div class="mt-4 flex flex-wrap justify-center gap-4">
+                @for (int i = 0; i < gallery.Count; i++)
+                {
+                    var thumbId = $"#slide{i + 1}";
+                    <a href="@thumbId">
+                        <img src="@gallery[i].MediaUrl()" class="border-2 border-transparent h-16 w-16 cursor-pointer rounded-lg object-cover transition hover:border-primary" />
+                    </a>
+                }
+            </div>
+        }
+    </div>
+</dialog>

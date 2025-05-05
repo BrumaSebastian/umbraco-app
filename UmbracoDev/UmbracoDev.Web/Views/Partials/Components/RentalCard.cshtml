@@ -2,12 +2,12 @@
 
 <div class="card bg-base-100 shadow-sm">
     <figure>
-        <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+        <img src="@Model.Gallery?.First().GetCropUrl()"
              alt="Shoes" />
     </figure>
     <div class="card-body">
         <h2 class="card-title">@Model.Title</h2>
-        <p>@Model.Description</p>
+        @Html.Raw(Model.Description)
         <p>$@Model.Price</p>
         <div class="card-actions justify-end">
             <a href="@Model.UrlSegment" class="btn btn-primary">See more</a>
