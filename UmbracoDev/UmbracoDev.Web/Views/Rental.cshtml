@@ -7,60 +7,150 @@
     var totalSlides = gallery?.Count ?? 0;
 }
 
-<div class="min-h-dvh p-10">
-    <div class="grid grid-cols-2 gap-5">
-        <img src="@gallery.First().GetCropUrl()" class="cursor-pointer rounded-md transition duration-200 hover:opacity-80 hover:scale-105"
-             onclick="carousel.showModal()" />
+<div class="min-h-dvh max-w-screen-2xl justify-self-center p-10">
 
-        <div class="grid grid-cols-2 grid-rows-2 gap-5 rounded-md" onclick="carousel.showModal()">
-            @foreach (var item in gallery.Skip(1).Take(3))
+    <div id="top-bar" class="flex">
+        <button id="previous" onclick="moveToPreviousSlide()" class="btn btn-lg btn-ghost absolute top-1/2 left-1 z-10 -translate-y-1/2 text-white">❮</button>
+    </div>
+
+    <div id="gallery" class="grid gap-5 lg:grid-cols-2">
+        <img src="@gallery.First().GetCropUrl()" class="cursor-pointer rounded-md transition duration-200 hover:opacity-90 hover:scale-105"
+             onclick="openCarousel(0)" />
+
+        <div class="grid grid-cols-2 grid-rows-2 gap-5 rounded-md">
+            @for (int i = 1; i <= 4; i++)
             {
-                <img src="@item.GetCropUrl()" onclick="carousel.showModal()" class="cursor-pointer rounded-md object-contain transition duration-200 hover:opacity-80 hover:scale-105" />
+                <img src="@gallery[i].GetCropUrl()" onclick="openCarousel(@i)" class="cursor-pointer rounded-md object-contain transition duration-200 hover:opacity-80 hover:scale-105" />
             }
+        </div>
+    </div>
 
-            <img src="@gallery.Skip(4).Take(1).First().GetCropUrl()" onclick="carousel.showModal()" class="cursor-pointer rounded-md object-contain transition duration-200 hover:opacity-80 hover:scale-105" />
+    <div id="details" class="grid gap-5 pt-5 lg:grid-cols-3">
+        <div id="rental-details" class="col-span-2 flex flex-col gap-5 p-5">
+            <div class="flex flex-col">
+                <h2 class="m-0">@Model.Title</h2>
+                @Html.Raw(Model.Description)
+                <p>$@Model.Price</p>
+            </div>
 
+            <div id="placeholder">
+                <div class="m-auto flex w-full flex-col gap-4">
+                    <div class="skeleton h-32 w-full"></div>
+                    <div class="skeleton h-4 w-28"></div>
+                    <div class="skeleton h-4 w-full"></div>
+                    <div class="skeleton h-4 w-full"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="person-details" class="p-5">
+            <div class="flex w-full flex-col gap-4">
+                <div class="skeleton h-32 w-full"></div>
+                <div class="skeleton h-4 w-28"></div>
+                <div class="skeleton h-4 w-full"></div>
+                <div class="skeleton h-4 w-full"></div>
+            </div>
         </div>
     </div>
 </div>
 
-<dialog id="carousel" class="modal">
-    <div class="size-full p-10">
+<dialog id="carousel" class="modal" style="background-color: oklch(0% 0 0 / 0.8)">
+    <div class="max-w-screen-2xl md:px-10">
 
         <form method="dialog">
-            <button class="btn btn-sm btn-circle absolute top-2 left-2">✕</button>
+            <button class="btn btn-lg btn-ghost absolute top-2 left-2 text-white">✕</button>
         </form>
 
         @if (gallery != null && gallery.Any())
         {
-            <div class="carousel rounded-box">
+            <div id="gallery-carousel" class="flex snap-x snap-mandatory overflow-x-auto scroll-smooth" style="scrollbar-width:none;">
                 @for (int i = 0; i < gallery.Count; i++)
                 {
-                    var media = gallery[i];
-                    var prevId = $"#slide{(i == 0 ? totalSlides : i)}";
-                    var nextId = $"#slide{(i == totalSlides - 1 ? 1 : i + 2)}";
-                    var currentId = $"slide{(i + 1)}";
-
-                    <div id="@currentId" class="carousel-item relative w-full">
-                        <img src="@media.MediaUrl()" class="w-full object-cover" />
-                        <div class="absolute top-1/2 flex -translate-y-1/2 transform justify-between">
-                            <a href="@prevId" class="btn btn-circle absolute left-5">❮</a>
-                            <a href="@nextId" class="btn btn-circle absolute right-5">❯</a>
-                        </div>
+                    var currentId = $"slide{i}";
+                    <div id="@currentId" class="carousel-item w-full" data-index="@i">
+                        <img src="@gallery[i].MediaUrl()" class="w-full object-cover" />
                     </div>
                 }
+                <!-- Dynamic Nav Buttons -->
+                <div class="invisible md:visible">
+                    <a id="prevBtn" onclick="moveToPreviousSlide()" class="absolute top-1/2 left-1 z-10 h-full w-8 -translate-y-1/2 cursor-pointer content-center text-center text-white">❮</a>
+                    <a id="nextBtn" onclick="moveToNextSlide()" class="absolute top-1/2 right-1 z-10 h-full w-8 -translate-y-1/2 cursor-pointer content-center text-center text-white">❯</a>
+                </div>
             </div>
 
             <!-- Thumbnails -->
-            <div class="mt-4 flex flex-wrap justify-center gap-4">
-                @for (int i = 0; i < gallery.Count; i++)
-                {
-                    var thumbId = $"#slide{i + 1}";
-                    <a href="@thumbId">
-                        <img src="@gallery[i].MediaUrl()" class="border-2 border-transparent h-16 w-16 cursor-pointer rounded-lg object-cover transition hover:border-primary" />
-                    </a>
-                }
+            <div class="mx-auto mt-4 flex flex-wrap justify-center gap-4">
+                <div id="thumbnails" class="flex snap-x snap-mandatory overflow-x-auto scroll-smooth" style="scrollbar-width:none;">
+                    @for (int i = 0; i < gallery.Count; i++)
+                    {
+                        <div class="carousel-item" id="item-@i">
+                            <a onclick="updateIndex(@i)">
+                                <img src="@gallery[i].MediaUrl()" class="border-2 border-transparent h-16 w-16 cursor-pointer rounded-lg object-cover transition hover:border-primary" />
+                            </a>
+                        </div>
+                    }
+                </div>
             </div>
+
         }
     </div>
 </dialog>
+
+<script>
+    const galleryContainer = document.getElementById('gallery-carousel');
+    const thumbnailsContainer = document.getElementById('thumbnails');
+
+    const slides = galleryContainer.querySelectorAll('.carousel-item');
+    const thumbnails = thumbnailsContainer.querySelectorAll('.carousel-item');
+
+    let currentIndex = 0;
+
+    function showSlide(index){
+        slides[index].scrollIntoView();
+
+        thumbnails.forEach((thumb, i) => {
+            if (i === index) {
+                thumb.classList.add('border-indigo-500/75');
+                thumb.classList.add('rounded-md');
+                thumb.classList.add('border-2');
+            } else {
+                thumb.classList.remove('border-indigo-500/75');
+                thumb.classList.remove('rounded-md');
+                thumb.classList.remove('border-2');
+            }
+        });
+
+        thumbnails[index].scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "center"
+        });
+    }
+
+    function moveToPreviousSlide()
+    {
+        currentIndex = currentIndex === 0 ? slides.length - 1 : currentIndex - 1;
+        showSlide(currentIndex);
+        console.log("previous", currentIndex);
+    }
+
+    function moveToNextSlide()
+    {
+        currentIndex = currentIndex === slides.length - 1 ? 0 : currentIndex + 1;
+        showSlide(currentIndex);
+        console.log(currentIndex);
+    }
+
+    function updateIndex(index){
+        currentIndex = index;
+        showSlide(currentIndex);
+        console.log(currentIndex);
+    }
+
+    function openCarousel(index){
+        currentIndex = index;
+        carousel.showModal();
+        showSlide(currentIndex);
+        console.log(currentIndex);
+    }
+</script>
