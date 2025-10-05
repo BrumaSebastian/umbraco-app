@@ -1,6 +1,7 @@
-# UmbracoDev.Web
+# UmbracoDev
 
 Short presentation of the project and how the custom Tailwind CSS generator works.
+My main focus for this project was creating a customizable interface using Umbraco Backoffice structure to generate tailwindcss on the fly.
 
 ## Overview
 
@@ -62,3 +63,48 @@ https://github.com/user-attachments/assets/0fbf93b3-4b24-43ab-a9f2-c5db37f935ea
 7. Navigate to homepage.
 
 For the tailwindcss generator to work, run the 'npm run build:css' at the root of the project
+
+## How It Works
+
+This integration connects Umbraco component properties to Tailwind CSS utility classes, enabling flexible, CMS-driven styling while keeping the Tailwind build process intact.
+
+1. Property Mapping
+
+Each Umbraco property is mapped to a specific Tailwind utility.
+For example:
+
+twPaddingTop → pt-[value]
+
+twMarginBottom → mb-[value]
+
+These mappings are handled in the **TailwindClassBuilderHelper.cs** class, which converts property values defined in Umbraco into valid Tailwind class names.
+
+2. Dynamic Class Collection
+
+All Tailwind classes generated through these mappings are collected and written to a JSON file at:
+
+```
+  /Styles/data.json
+```
+
+This file acts as a registry of every dynamically generated class used across Umbraco components.
+
+3. Tailwind Compilation
+
+Tailwind CSS uses a content scanning process to determine which CSS utilities to include in the final stylesheet.
+It only generates CSS for class names it finds within the project files (e.g., .cshtml, .ts, .json, etc.).
+
+Because these dynamic class names don’t exist directly in the source code, they need to be stored in a file that Tailwind can scan. By including them in Styles/data.json, we ensure that Tailwind’s build process detects and compiles all necessary styles into:
+```
+  /wwwroot/css/tailwind.css
+```
+
+4. Why data.json Is Important
+
+Without this step, Tailwind would purge unused classes (since it never “sees” the dynamically generated names), and the resulting CSS wouldn’t include the expected styling.
+By centralizing all generated class names into data.json, we give Tailwind a reliable source to read from, ensuring that every Umbraco-driven style is properly compiled.
+
+<img width="1919" height="1080" alt="image" src="https://github.com/user-attachments/assets/e868f6fc-78b8-4e18-b6a1-5af3133c6a65" />
+<img width="1919" height="1080" alt="image" src="https://github.com/user-attachments/assets/146e9e9e-195b-42d1-97f5-38b69a009217" />
+
+
