@@ -64,7 +64,7 @@ https://github.com/user-attachments/assets/0fbf93b3-4b24-43ab-a9f2-c5db37f935ea
 
 For the tailwindcss generator to work, run the 'npm run build:css' at the root of the project
 
-## How It Works
+## Tailwind css generator
 
 This integration connects Umbraco component properties to Tailwind CSS utility classes, enabling flexible, CMS-driven styling while keeping the Tailwind build process intact.
 
