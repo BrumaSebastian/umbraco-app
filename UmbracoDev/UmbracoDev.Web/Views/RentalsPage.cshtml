@@ -1,11 +1,12 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using UmbracoDev.Web.Controllers.Surface
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
     Layout = "master.cshtml";
 
     var rentals = Umbraco.ContentAtRoot().DescendantsOrSelf<Rental>();
 
-    var addRentalFormPath = Model.Children<SubmitRentalFormPage>().Single().UrlSegment;
+    // var addRentalFormPath = Model.Children<SubmitRentalFormPage>().Single().UrlSegment;
 }
 
 <div class="flex min-h-dvh">
@@ -24,17 +25,53 @@
                 <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
                 <ul class="menu text-base-content min-h-dvh w-50 bg-red-300 p-4">
                     <!-- Sidebar content here -->
-                    <li><a href="@addRentalFormPath" class="btn btn-primary">Add Rental</a></li>
+                    <li>
+                        <button class="btn btn-primary" onclick="my_modal_1.showModal()">Submit Rental</button>
+                    </li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="size-full flex-1 p-10">
         <div class="grid grid-cols-1 place-items-center gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-            @foreach(var rental in rentals)
+            @foreach (var rental in rentals)
             {
                 @await Html.PartialAsync("Components/RentalCard", rental)
             }
         </div>
     </div>
 </div>
+
+
+<dialog id="my_modal_1" class="modal">
+    <div class="modal-box">
+        <h3 class="text-lg font-bold">Submit your Rental!</h3>
+        <div class="modal-action justify-center">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute top-2 right-2">✕</button>
+            </form>
+
+            @using (Html.BeginUmbracoForm<RentalSurfaceController>("SubmitItem", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <fieldset class="fieldset">
+                    <label for="itemTitle">Title:</label>
+                    <input class="input" type="text" id="itemTitle" name="itemTitle" required />
+
+                    <label for="itemDescription">Description:</label>
+                    <textarea class="input" id="itemDescription" name="itemDescription" required></textarea>
+
+                    <label for="itemPrice">Price:</label>
+                    <input class="input" type="number" id="itemPrice" name="itemPrice" step="0.01" required />
+
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">Pick images of your rental</legend>
+                        <input type="file" class="file-input file-input-primary" id="galleryImages" name="galleryImages" multiple accept="image/*" />
+                        <label class="label">Max size 2MB</label>
+                    </fieldset>
+
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </fieldset>
+            }
+        </div>
+    </div>
+</dialog>

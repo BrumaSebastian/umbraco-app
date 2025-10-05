@@ -1,9 +1,207 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Rental>
 @{
-	Layout = "master.cshtml";
+    Layout = "master.cshtml";
+
+    var gallery = Model.Gallery.ToList();
+    var totalSlides = gallery?.Count ?? 0;
 }
 
-<div class="min-h-dvh p-10">
-    @await Html.PartialAsync("Components/RentalCard", Model)
+<div class="min-h-dvh max-w-screen-2xl justify-self-center p-10 pt-0">
+
+    <div id="top-bar" class="flex">
+        <button id="previous" onclick="history.back()" class="btn btn-lg btn-ghost">❮</button>
+    </div>
+
+    <div id="gallery" class="grid gap-5 lg:grid-cols-2">
+        <img src="@gallery.First().GetCropUrl()" class="cursor-pointer rounded-md transition duration-200 hover:opacity-90 hover:scale-105"
+             onclick="openCarousel(0)" />
+
+        <div class="grid grid-cols-2 grid-rows-2 gap-5 rounded-md">
+            @for (int i = 1; i <= 4; i++)
+            {
+                <img src="@gallery[i].GetCropUrl()" onclick="openCarousel(@i)" class="cursor-pointer rounded-md object-contain transition duration-200 hover:opacity-80 hover:scale-105" />
+            }
+        </div>
+    </div>
+
+    <div id="details" class="grid gap-5 pt-5 lg:grid-cols-3">
+        <div id="rental-details" class="col-span-2 flex flex-col gap-5 p-5">
+            <div class="flex flex-col">
+                <h2 class="m-0">@Model.Title</h2>
+                <p>$@Model.Price/month + Rent $@Model.Price</p>
+            </div>
+
+            <div class="grid-col-2 grid">
+                <p>Incalzire: </p>
+                <p>Nicio informatie </p>
+                <div class="divider col-span-2 m-0"></div>
+                <p>Etaj: </p>
+                <p>Nicio informatie </p>
+                <div class="divider col-span-2 m-0"></div>
+                <p>Stare: </p>
+                <p>Nicio informatie </p>
+                <div class="divider col-span-2 m-0"></div>
+                <p>Liber de la: </p>
+                <p>Nicio informatie </p>
+                <div class="divider col-span-2 m-0"></div>
+                <p>Chirie: </p>
+                <p>Nicio informatie </p>
+                <div class="divider col-span-2 m-0"></div>
+                <p>Garantie: </p>
+                <p>Nicio informatie </p>
+                <div class="divider col-span-2 m-0"></div>
+                <p>Tip Vanzator: </p>
+                <p>Nicio informatie </p>
+            </div>
+
+            <div tabindex="0" class="collapse-arrow collapse">
+                <div class="collapse-title pl-0 font-semibold">Cladire si materiale</div>
+                <div class="collapse-content grid-col-2 grid">
+                    <p>Lift: </p>
+                    <p>Nicio informatie </p>
+                    <div class="divider col-span-2 m-0"></div>
+                    <p>Etaj: </p>
+                    <p>Nicio informatie </p>
+                    <div class="divider col-span-2 m-0"></div>
+                </div>
+            </div>
+
+            <div class="divider col-span-2 m-0"></div>
+
+            <div tabindex="0" class="collapse-arrow collapse">
+                <div class="collapse-title pl-0 font-semibold">Facilitati</div>
+                <div class="collapse-content grid-col-2 grid">
+                    <p>Lift: </p>
+                    <p>Nicio informatie </p>
+                    <div class="divider col-span-2 m-0"></div>
+                    <p>Etaj: </p>
+                    <p>Nicio informatie </p>
+                    <div class="divider col-span-2 m-0"></div>
+                </div>
+            </div>
+
+            <div class="flex flex-col">
+                <h2>Descriere</h2>
+                @Html.Raw(Model.Description)
+            </div>
+
+        </div>
+
+        <div id="person-details" class="p-5">
+            <div class="flex w-full flex-col gap-4">
+                <div class="skeleton h-32 w-full"></div>
+                <div class="skeleton h-4 w-28"></div>
+                <div class="skeleton h-4 w-full"></div>
+                <div class="skeleton h-4 w-full"></div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<dialog id="carousel" class="modal" style="background-color: oklch(0% 0 0 / 0.8)">
+    <div class="max-w-screen-2xl md:px-10">
+
+        <form method="dialog">
+            <button class="btn btn-lg btn-ghost absolute top-2 left-2 text-white">✕</button>
+        </form>
+
+        @if (gallery != null && gallery.Any())
+        {
+            <div id="gallery-carousel" class="flex snap-x snap-mandatory overflow-x-auto scroll-smooth" style="scrollbar-width:none;">
+                @for (int i = 0; i < gallery.Count; i++)
+                {
+                    var currentId = $"slide{i}";
+                    <div id="@currentId" class="carousel-item w-full" data-index="@i">
+                        <img src="@gallery[i].MediaUrl()" class="w-full object-cover" />
+                    </div>
+                }
+                <!-- Dynamic Nav Buttons -->
+                <div class="invisible md:visible">
+                    <a id="prevBtn" onclick="moveToPreviousSlide()" class="absolute top-1/2 left-1 z-10 h-full w-8 -translate-y-1/2 cursor-pointer content-center text-center text-white">❮</a>
+                    <a id="nextBtn" onclick="moveToNextSlide()" class="absolute top-1/2 right-1 z-10 h-full w-8 -translate-y-1/2 cursor-pointer content-center text-center text-white">❯</a>
+                </div>
+            </div>
+
+            <!-- Thumbnails -->
+            <div class="mx-auto mt-4 flex flex-wrap justify-center gap-4">
+                <div id="thumbnails" class="flex snap-x snap-mandatory overflow-x-auto scroll-smooth" style="scrollbar-width:none;">
+                    @for (int i = 0; i < gallery.Count; i++)
+                    {
+                        <div class="carousel-item" id="item-@i">
+                            <a onclick="updateIndex(@i)">
+                                <img src="@gallery[i].MediaUrl()" class="border-2 border-transparent h-16 w-16 cursor-pointer rounded-lg object-cover transition hover:border-primary" />
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</dialog>
+
+<style>
+    #carousel:not(:open) #prevBtn,
+    #carousel:not(:open) #nextBtn {
+        display: none;
+    }
+</style>
+
+<script>
+    const galleryContainer = document.getElementById('gallery-carousel');
+    const thumbnailsContainer = document.getElementById('thumbnails');
+
+    const slides = galleryContainer.querySelectorAll('.carousel-item');
+    const thumbnails = thumbnailsContainer.querySelectorAll('.carousel-item');
+
+    let currentIndex = 0;
+
+    function showSlide(index){
+        slides[index].scrollIntoView();
+
+        thumbnails.forEach((thumb, i) => {
+            if (i === index) {
+                thumb.classList.add('border-indigo-500/75');
+                thumb.classList.add('rounded-md');
+                thumb.classList.add('border-2');
+            } else {
+                thumb.classList.remove('border-indigo-500/75');
+                thumb.classList.remove('rounded-md');
+                thumb.classList.remove('border-2');
+            }
+        });
+
+        thumbnails[index].scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "center"
+        });
+    }
+
+    function moveToPreviousSlide()
+    {
+        currentIndex = currentIndex === 0 ? slides.length - 1 : currentIndex - 1;
+        showSlide(currentIndex);
+        console.log("previous", currentIndex);
+    }
+
+    function moveToNextSlide()
+    {
+        currentIndex = currentIndex === slides.length - 1 ? 0 : currentIndex + 1;
+        showSlide(currentIndex);
+        console.log(currentIndex);
+    }
+
+    function updateIndex(index){
+        currentIndex = index;
+        showSlide(currentIndex);
+        console.log(currentIndex);
+    }
+
+    function openCarousel(index){
+        currentIndex = index;
+        carousel.showModal();
+        showSlide(currentIndex);
+        console.log(currentIndex);
+    }
+</script>
