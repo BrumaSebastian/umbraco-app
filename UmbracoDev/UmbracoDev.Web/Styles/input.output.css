@@ -1,4 +1,4 @@
-/*! tailwindcss v4.1.5 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.1.10 | MIT License | https://tailwindcss.com */
 @layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
@@ -1111,17 +1111,17 @@
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
-  .bg-\[\#100CED7D\] {
-    background-color: #100CED7D;
-  }
   .bg-\[\#0936c8e6\] {
     background-color: #0936c8e6;
   }
+  .bg-\[\#417505\] {
+    background-color: #417505;
+  }
+  .bg-\[\#454512\] {
+    background-color: #454512;
+  }
   .bg-\[\#ADAD2D\] {
     background-color: #ADAD2D;
-  }
-  .bg-\[\#F6F6EA\] {
-    background-color: #F6F6EA;
   }
   .bg-\[\#f6f6ea\] {
     background-color: #f6f6ea;
@@ -1161,6 +1161,9 @@
   }
   .text-\[\#000000\] {
     color: #000000;
+  }
+  .text-\[\#BD10E0\] {
+    color: #BD10E0;
   }
   .text-\[\#F2F2F2\] {
     color: #F2F2F2;
