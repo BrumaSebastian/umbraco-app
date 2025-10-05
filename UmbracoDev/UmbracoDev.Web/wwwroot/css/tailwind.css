@@ -2075,8 +2075,20 @@
   .border-transparent {
     border-color: transparent;
   }
+  .bg-\[\#8A8A24\] {
+    background-color: #8A8A24;
+  }
+  .bg-\[\#738EE0\] {
+    background-color: #738EE0;
+  }
   .bg-\[\#0936c8e6\] {
     background-color: #0936c8e6;
+  }
+  .bg-\[\#1942BD\] {
+    background-color: #1942BD;
+  }
+  .bg-\[\#33330D\] {
+    background-color: #33330D;
   }
   .bg-\[\#417505\] {
     background-color: #417505;
@@ -2086,6 +2098,15 @@
   }
   .bg-\[\#ADAD2D\] {
     background-color: #ADAD2D;
+  }
+  .bg-\[\#C5C56C\] {
+    background-color: #C5C56C;
+  }
+  .bg-\[\#EEEED5\] {
+    background-color: #EEEED5;
+  }
+  .bg-\[\#F6F6EA\] {
+    background-color: #F6F6EA;
   }
   .bg-\[\#f6f6ea\] {
     background-color: #f6f6ea;
@@ -2209,6 +2230,12 @@
   .text-\[\#BD10E0\] {
     color: #BD10E0;
   }
+  .text-\[\#D72271\] {
+    color: #D72271;
+  }
+  .text-\[\#E9213F\] {
+    color: #E9213F;
+  }
   .text-\[\#F2F2F2\] {
     color: #F2F2F2;
   }
@@ -2246,6 +2273,12 @@
   }
   .underline-offset-1 {
     text-underline-offset: 1px;
+  }
+  .accent-\[\#360D0D\] {
+    accent-color: #360D0D;
+  }
+  .accent-\[\#481212\] {
+    accent-color: #481212;
   }
   .accent-\[\#902424\] {
     accent-color: #902424;
@@ -2492,6 +2525,16 @@
       background-color: #4c4c4c;
     }
   }
+  .dark\:bg-\[\#8A8A24\] {
+    &:where([data-theme=dark], [data-theme=dark] *) {
+      background-color: #8A8A24;
+    }
+  }
+  .dark\:bg-\[\#33330D\] {
+    &:where([data-theme=dark], [data-theme=dark] *) {
+      background-color: #33330D;
+    }
+  }
   .dark\:bg-\[\#191919\] {
     &:where([data-theme=dark], [data-theme=dark] *) {
       background-color: #191919;
@@ -2507,9 +2550,19 @@
       background-color: #ADAD2D;
     }
   }
+  .dark\:bg-\[\#F2F2F2\] {
+    &:where([data-theme=dark], [data-theme=dark] *) {
+      background-color: #F2F2F2;
+    }
+  }
   .dark\:bg-\[\#cb7e7eeb\] {
     &:where([data-theme=dark], [data-theme=dark] *) {
       background-color: #cb7e7eeb;
+    }
+  }
+  .dark\:text-\[\#000000\] {
+    &:where([data-theme=dark], [data-theme=dark] *) {
+      color: #000000;
     }
   }
   .dark\:text-\[\#F2F2F2\] {
