@@ -36,13 +36,20 @@ It's intended to demonstrate the concept of integrating Tailwind CSS with Umbrac
 ## Presentation
 
 CMS capabilities of changing design tokens in the backoffice and instantly seeing the changes reflected on the frontend:
+
 https://github.com/user-attachments/assets/e28bc74a-642c-4c2b-a79f-d9547f1d9bec
 
 Changing theme colors in the backoffice choosing from the predefined colors:
 
+https://github.com/user-attachments/assets/428c364b-2876-4655-a9a6-475a91646d3a
+
 Changing theme colors in the backoffice choosing custom colors:
 
+https://github.com/user-attachments/assets/2ccb08c8-49fd-43c9-a2ea-d76addc4e38a
+
 Application overview:
+
+https://github.com/user-attachments/assets/0fbf93b3-4b24-43ab-a9f2-c5db37f935ea
 
 ## Instalation
 
